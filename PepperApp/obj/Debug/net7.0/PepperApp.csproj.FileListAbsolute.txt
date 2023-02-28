@@ -1,0 +1,14 @@
+C:\Users\nicho\source\repos\PepperApp\PepperApp\bin\Debug\net7.0\PepperApp.deps.json
+C:\Users\nicho\source\repos\PepperApp\PepperApp\bin\Debug\net7.0\PepperApp.runtimeconfig.json
+C:\Users\nicho\source\repos\PepperApp\PepperApp\bin\Debug\net7.0\PepperApp.dll
+C:\Users\nicho\source\repos\PepperApp\PepperApp\bin\Debug\net7.0\PepperApp.pdb
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\PepperApp.csproj.AssemblyReference.cache
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\PepperApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\PepperApp.AssemblyInfoInputs.cache
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\PepperApp.AssemblyInfo.cs
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\PepperApp.csproj.CoreCompileInputs.cache
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\PepperApp.dll
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\refint\PepperApp.dll
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\PepperApp.pdb
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\PepperApp.genruntimeconfig.cache
+C:\Users\nicho\source\repos\PepperApp\PepperApp\obj\Debug\net7.0\ref\PepperApp.dll
