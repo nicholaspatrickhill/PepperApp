@@ -117,7 +117,7 @@ namespace PepperApp.UI
 
                 var pepperToRemove = new Pepper();
 
-                pepperToRemove.PepperName = ReadLine();
+                pepperToRemove.PepperName = ReadLine()?.ToLower();
 
                 try
                 {
