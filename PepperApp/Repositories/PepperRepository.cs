@@ -4,6 +4,7 @@ using PepperApp.Entities;
 
 namespace PepperApp.Repository
 {
+
     public class PepperRepository : IPepperRepository
     {
         private readonly PepperContext _context;
@@ -62,3 +63,4 @@ namespace PepperApp.Repository
         }
     }
 }
+

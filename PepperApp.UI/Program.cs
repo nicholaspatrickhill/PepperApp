@@ -2,6 +2,7 @@
 using PepperApp.Entities;
 using PepperApp.Repository;
 
+
 namespace PepperApp.UI
 {
     internal class Program
@@ -117,7 +118,7 @@ namespace PepperApp.UI
 
                 var pepperToRemove = new Pepper();
 
-                pepperToRemove.PepperName = ReadLine()?.ToLower();
+                pepperToRemove.PepperName = ReadLine();
 
                 try
                 {
