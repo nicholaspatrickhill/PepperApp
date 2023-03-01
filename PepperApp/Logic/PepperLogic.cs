@@ -2,14 +2,14 @@
 using PepperApp.Data;
 using PepperApp.Entities;
 
-namespace PepperApp.Repository
+namespace PepperApp.Logic
 {
 
-    public class PepperRepository : IPepperRepository
+    public class PepperLogic : IPepperLogic
     {
         private readonly PepperContext _context;
 
-        public PepperRepository()
+        public PepperLogic()
         {
             _context = new PepperContext();
         }

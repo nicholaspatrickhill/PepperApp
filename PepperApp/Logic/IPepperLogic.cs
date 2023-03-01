@@ -1,8 +1,8 @@
 ﻿using PepperApp.Entities;
 
-namespace PepperApp.Repository
+namespace PepperApp.Logic
 {
-    public interface IPepperRepository
+    public interface IPepperLogic
     {
         Task AddPepperAsync(Pepper pepper);
         void Dispose();

@@ -1,6 +1,6 @@
 ﻿using static System.Console;
 using PepperApp.Entities;
-using PepperApp.Repository;
+using PepperApp.Logic;
 
 
 namespace PepperApp.UI
@@ -9,7 +9,7 @@ namespace PepperApp.UI
     {
         static void Main(string[] args)
         {
-            var pepperRepository = new PepperRepository();
+            var pepperLogic = new PepperLogic();
             var pepper = new Pepper();
 
             WriteLine("Press 1 to add a Pepper");
@@ -17,12 +17,12 @@ namespace PepperApp.UI
             WriteLine("Press 3 to remove a Pepper");
 
             string? userInput = ReadLine();
-            _ = AddUserPepperName(pepperRepository, pepper, userInput);
-            ListAllPeppersInDatabase(pepperRepository, userInput);
-            _ = RemoveUserPepper(pepperRepository, userInput);
+            _ = AddUserPepperName(pepperLogic, pepper, userInput);
+            ListAllPeppersInDatabase(pepperLogic, userInput);
+            _ = RemoveUserPepper(pepperLogic, userInput);
         }
 
-        private static async Task AddUserPepperName(PepperRepository pepperRepository, Pepper pepper, string? userInput)
+        private static async Task AddUserPepperName(PepperLogic pepperLogic, Pepper pepper, string? userInput)
         {
             while (userInput == "1")
             {
@@ -37,7 +37,7 @@ namespace PepperApp.UI
                 else
                 {
                     // check if the pepper name already exists in the database
-                    var existingPepper = await pepperRepository.GetPepperByNameAsync(pepperName);
+                    var existingPepper = await pepperLogic.GetPepperByNameAsync(pepperName);
                     if (existingPepper?.PepperName != null)
                     {
                         WriteLine("A pepper with that name already exists in the database. Please enter a unique name.");
@@ -45,14 +45,14 @@ namespace PepperApp.UI
                     else
                     {
                         pepper.PepperName = pepperName;
-                        await AddUserPepperScovilleMinimum(pepperRepository, pepper);
+                        await AddUserPepperScovilleMinimum(pepperLogic, pepper);
                         break;
                     }
                 }
             }
         }
 
-        private static async Task AddUserPepperScovilleMinimum(PepperRepository pepperRepository, Pepper pepper)
+        private static async Task AddUserPepperScovilleMinimum(PepperLogic pepperLogic, Pepper pepper)
         {
             WriteLine("Please enter its minimum Scoville Heat Unit rating");
 
@@ -62,16 +62,16 @@ namespace PepperApp.UI
             {
                 pepper.PepperScovilleUnitMin = ShuMinValue;
 
-                await AddUserPepperScovilleMaximum(pepperRepository, pepper);
+                await AddUserPepperScovilleMaximum(pepperLogic, pepper);
             }
             else
             {
                 WriteLine("Invalid input. Please enter a number.");
-                await AddUserPepperScovilleMinimum(pepperRepository, pepper);
+                await AddUserPepperScovilleMinimum(pepperLogic, pepper);
             }
         }
 
-        private static async Task AddUserPepperScovilleMaximum(PepperRepository pepperRepository, Pepper pepper)
+        private static async Task AddUserPepperScovilleMaximum(PepperLogic pepperLogic, Pepper pepper)
         {
             WriteLine("Please enter its maximum Scoville Heat Unit rating");
 
@@ -82,22 +82,22 @@ namespace PepperApp.UI
                 pepper.PepperScovilleUnitMax = ShuMaxValue;
 
                 WriteLine($"You added {pepper.PepperName} to the database");
-                await pepperRepository.AddPepperAsync(pepper);
+                await pepperLogic.AddPepperAsync(pepper);
 
                 ReadLine();
             }
             else
             {
                 WriteLine("Invalid input. Please enter a number.");
-                await AddUserPepperScovilleMaximum(pepperRepository, pepper);
+                await AddUserPepperScovilleMaximum(pepperLogic, pepper);
             }
         }
 
-        private static void ListAllPeppersInDatabase(PepperRepository pepperRepository, string? userInput)
+        private static void ListAllPeppersInDatabase(PepperLogic pepperLogic, string? userInput)
         {
             if (userInput == "2")
             {
-                var peppers = pepperRepository.GetAllPeppersAsync().Result;
+                var peppers = pepperLogic.GetAllPeppersAsync().Result;
 
                 peppers.ForEach(p => PrintPepperToConsole(p));
 
@@ -110,7 +110,7 @@ namespace PepperApp.UI
             WriteLine($"The {pepper.PepperName} is a {pepper.PepperHeatClass} pepper with SHU rating of {pepper.PepperScovilleUnitMin} - {pepper.PepperScovilleUnitMax}");
         }
 
-        private static async Task RemoveUserPepper(PepperRepository pepperRepository, string? userInput)
+        private static async Task RemoveUserPepper(PepperLogic pepperLogic, string? userInput)
         {
             while (userInput == "3")
             {
@@ -122,7 +122,7 @@ namespace PepperApp.UI
 
                 try
                 {
-                    await pepperRepository.RemovePepperAsync(pepperToRemove);
+                    await pepperLogic.RemovePepperAsync(pepperToRemove);
                     WriteLine($"You removed {pepperToRemove.PepperName} from the database.");
                     ReadLine();
                     break;
