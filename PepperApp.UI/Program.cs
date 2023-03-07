@@ -109,29 +109,7 @@ namespace PepperApp.UI
                 WriteLine("Invalid input. Please enter a number.");
                 await AddUserPepperScovilleMaximum(pepperRepository, pepper);
             }
-        }
-
-        //private static async Task AddUserPepperScovilleMaximum(PepperRepository pepperRepository, Pepper pepper)
-        //{
-        //    WriteLine("Please enter its maximum Scoville Heat Unit rating");
-
-        //    string? userShuMaxInput = ReadLine();
-
-        //    if (int.TryParse(userShuMaxInput, out int ShuMaxValue))
-        //    {
-        //        pepper.PepperScovilleUnitMax = ShuMaxValue;
-
-        //        WriteLine($"You added {pepper.PepperName} to the database");
-        //        await pepperRepository.AddPepperAsync(pepper);
-
-        //        ReadLine();
-        //    }
-        //    else
-        //    {
-        //        WriteLine("Invalid input. Please enter a number.");
-        //        await AddUserPepperScovilleMaximum(pepperRepository, pepper);
-        //    }
-        //}
+        }        
 
         private static void ListAllPeppersInDatabase(PepperRepository pepperRepository, string? userInput)
         {
