@@ -8,16 +8,21 @@ using System.Threading.Tasks;
 
 namespace PepperApp.Validators
 {
-    internal class PepperValidator : AbstractValidator<Pepper>
+    public class PepperValidator : AbstractValidator<Pepper>
     {
         public PepperValidator() 
         { 
-            RuleFor(x => x.PepperName).NotEmpty();
-            RuleFor(x => x.PepperId).NotEmpty();
-            RuleFor(x => x.PepperHeatClass).NotEmpty();
-            RuleFor(x => x.PepperScovilleUnitMin).GreaterThanOrEqualTo(0);
-            RuleFor(x => x.PepperScovilleUnitMax).LessThanOrEqualTo(5000000);
-        }
+            RuleFor(x => x.PepperName)
+                .NotEmpty()
+                .Length(1, 100);
 
+            RuleFor(x => x.PepperScovilleUnitMin)
+                .GreaterThanOrEqualTo(0)
+                .LessThanOrEqualTo(5000000);
+
+            RuleFor(x => x.PepperScovilleUnitMax)
+                .GreaterThanOrEqualTo(0)
+                .LessThanOrEqualTo(5000000);
+        }
     }
 }
