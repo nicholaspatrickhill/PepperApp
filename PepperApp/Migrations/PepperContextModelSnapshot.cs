@@ -19,7 +19,7 @@ namespace PepperApp.Migrations
 
             modelBuilder.Entity("PepperApp.Entities.Pepper", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("PepperId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
@@ -38,14 +38,14 @@ namespace PepperApp.Migrations
                     b.Property<int>("PepperScovilleUnitMin")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("Id");
+                    b.HasKey("PepperId");
 
                     b.ToTable("Peppers");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("de49b21d-ecdd-4fea-8202-fd44e90c692c"),
+                            PepperId = new Guid("9adbc0ea-4054-4531-a224-7a999395cc7a"),
                             IsReadOnly = true,
                             PepperHeatClass = "mild",
                             PepperName = "Anaheim",
@@ -54,7 +54,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("46f0d70f-ba24-4a61-8e00-ba5288e53f59"),
+                            PepperId = new Guid("bca6042a-f862-446a-8953-4a9dd544b27c"),
                             IsReadOnly = true,
                             PepperHeatClass = "mild",
                             PepperName = "Bell Pepper",
@@ -63,7 +63,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2c80af23-1ebd-4516-8996-1a4074836365"),
+                            PepperId = new Guid("fcbeaeee-d83a-4b49-89db-fca3f01c55ef"),
                             IsReadOnly = true,
                             PepperHeatClass = "super-hot",
                             PepperName = "Carolina Reaper",
@@ -72,7 +72,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2b31826c-993b-4a5f-a362-22b184dbbd9f"),
+                            PepperId = new Guid("f1ee99b2-a44b-4ba8-8c9b-c5c09095763f"),
                             IsReadOnly = true,
                             PepperHeatClass = "medium-hot",
                             PepperName = "Cayenne",
@@ -81,7 +81,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e0712107-4fa9-4891-a157-f52c28e6f513"),
+                            PepperId = new Guid("aea587b7-0896-4df0-8b38-c68c650e62fa"),
                             IsReadOnly = true,
                             PepperHeatClass = "mild",
                             PepperName = "Banana Pepper",
@@ -90,7 +90,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a8e26d11-a9ce-4c36-a146-c16df5639b2e"),
+                            PepperId = new Guid("aa84715b-bf26-4de2-9bf8-854c63aab24d"),
                             IsReadOnly = true,
                             PepperHeatClass = "super-hot",
                             PepperName = "Ghost Pepper",
@@ -99,7 +99,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d10c5bc3-f4c0-45e0-872e-6c10266c9940"),
+                            PepperId = new Guid("d8797ab4-2660-4d87-9354-43a417b6c682"),
                             IsReadOnly = true,
                             PepperHeatClass = "hot",
                             PepperName = "Habanero",
@@ -108,7 +108,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d98e4119-4839-4a86-a197-f0579272d93f"),
+                            PepperId = new Guid("0f008a7d-7a39-44c3-a633-aca915d10bc4"),
                             IsReadOnly = true,
                             PepperHeatClass = "medium",
                             PepperName = "Jalapeno",
@@ -117,7 +117,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("edb4ec07-0182-461d-b0ff-757818e3377b"),
+                            PepperId = new Guid("7e6354ce-9bdb-4d1c-9950-9c5e142af144"),
                             IsReadOnly = true,
                             PepperHeatClass = "mild",
                             PepperName = "Poblano",
@@ -126,7 +126,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("af7c3106-8847-4b11-adf4-0daea5b73819"),
+                            PepperId = new Guid("2d60a7c6-2580-423b-8b1b-c18ba2741bcc"),
                             IsReadOnly = true,
                             PepperHeatClass = "hot",
                             PepperName = "Scotch Bonnet",
@@ -135,7 +135,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("435fafff-ecf7-48ce-9a32-147f77a3e983"),
+                            PepperId = new Guid("384e7fed-0b0b-4ffa-b2f6-d4dc6c0c6dc6"),
                             IsReadOnly = true,
                             PepperHeatClass = "medium-hot",
                             PepperName = "Serrano",
@@ -144,7 +144,7 @@ namespace PepperApp.Migrations
                         },
                         new
                         {
-                            Id = new Guid("135d96a8-29e7-4804-86db-462ab90c11a2"),
+                            PepperId = new Guid("dd7f3107-61ca-4fa0-989f-c4acf9d442b0"),
                             IsReadOnly = true,
                             PepperHeatClass = "medium-hot",
                             PepperName = "Thai Chili",

@@ -2,7 +2,7 @@
 {
     public class Pepper : IPepper, IReadOnlyPepper
     {
-        public Guid Id { get; set; }
+        public Guid PepperId { get; set; }
         public string? PepperName { get; set; }
         public string? PepperHeatClass { get; set; }
         public int PepperScovilleUnitMin { get; set; }

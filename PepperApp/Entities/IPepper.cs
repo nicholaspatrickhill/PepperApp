@@ -2,7 +2,7 @@
 {
     public interface IPepper
     {
-        Guid Id { get; set; }
+        Guid PepperId { get; set; }
         bool IsReadOnly { get; set; }
         string? PepperHeatClass { get; set; }
         string? PepperName { get; set; }
