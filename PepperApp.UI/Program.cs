@@ -8,6 +8,8 @@ namespace PepperApp.UI
     {
         static void Main(string[] args)
         {
+            Title = "Pepper!";
+
             var pepperRepository = new PepperRepository();
             var pepper = new Pepper();
 
