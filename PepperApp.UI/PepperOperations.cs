@@ -8,6 +8,7 @@ namespace PepperApp.UI
 {
     public class PepperOperations
     {
+        // Adds new pepper name
         public static async Task AddUserPepperName(PepperRepository pepperRepository, Pepper pepper, string? userInput)
         {
             while (userInput == "1")
@@ -38,6 +39,7 @@ namespace PepperApp.UI
             }
         }
 
+        // Adds new pepper Scoville minimum rating
         public static async Task AddUserPepperScovilleMinimum(PepperRepository pepperRepository, Pepper pepper)
         {
             WriteLine("Please enter its minimum Scoville Heat Unit rating");
@@ -56,6 +58,8 @@ namespace PepperApp.UI
                 await AddUserPepperScovilleMinimum(pepperRepository, pepper);
             }
         }
+
+        // Adds new pepper Scoville maximum rating and sends it to the database if valid
 
         public static async Task AddUserPepperScovilleMaximum(PepperRepository pepperRepository, Pepper pepper)
         {
@@ -94,6 +98,8 @@ namespace PepperApp.UI
             }
         }
 
+        // Lists all peppers in the database sorted by name
+
         public static void ListAllPeppersInDatabase(PepperRepository pepperRepository, string? userInput)
         {
             if (userInput == "2")
@@ -106,11 +112,13 @@ namespace PepperApp.UI
             }
         }
 
+        // Console message displaying information about a pepper
         public static void PrintPepperToConsole(Pepper pepper)
         {
             WriteLine($"The {pepper.PepperName} is a {pepper.PepperHeatClass} pepper with SHU rating of {pepper.PepperScovilleUnitMin} - {pepper.PepperScovilleUnitMax}");
         }
 
+        // Removes a pepper from the database
         public static async Task RemoveUserPepper(PepperRepository pepperRepository, string? userInput)
         {
             while (userInput == "3")
