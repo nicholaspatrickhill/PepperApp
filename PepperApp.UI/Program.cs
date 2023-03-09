@@ -1,6 +1,7 @@
 ﻿using static System.Console;
 using PepperApp.Entities;
 using PepperApp.Repositories;
+using PepperApp.Services;
 
 namespace PepperApp.UI
 {
@@ -11,6 +12,7 @@ namespace PepperApp.UI
             Title = "Pepper!";
 
             var pepperRepository = new PepperRepository();
+            var pepperService = new PepperService(pepperRepository);
             var pepper = new Pepper();
 
             WriteLine("Press 1 to add a Pepper");
@@ -18,7 +20,8 @@ namespace PepperApp.UI
             WriteLine("Press 3 to remove a Pepper");
 
             string? userInput = ReadLine();
-            _ = PepperOperations.AddUserPepperName(pepperRepository, pepper, userInput);
+            //_ = PepperOperations.AddUserPepperName(pepperRepository, pepper, userInput);
+            _ = PepperOperations.AddUserPepperName(pepperService, userInput);
             PepperOperations.ListAllPeppersInDatabase(pepperRepository, userInput);
             _ = PepperOperations.RemoveUserPepper(pepperRepository, userInput);
         } 

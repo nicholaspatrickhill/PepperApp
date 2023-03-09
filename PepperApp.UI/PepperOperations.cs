@@ -3,100 +3,181 @@ using PepperApp.Repositories;
 using PepperApp.Validators;
 using static System.Console;
 using FluentValidation.Results;
+using PepperApp.Services;
+using FluentValidation;
 
 namespace PepperApp.UI
 {
     public class PepperOperations
     {
-        // Adds new pepper name
-        public static async Task AddUserPepperName(PepperRepository pepperRepository, Pepper pepper, string? userInput)
+        public static async Task AddUserPepperName(PepperService pepperService, string userInput)
         {
-            while (userInput == "1")
+            if (userInput == "1")
             {
-                WriteLine("Please add your pepper");
+                var pepper = new Pepper();
 
-                string? pepperName = ReadLine();
+                while (true)
+                {
+                    WriteLine("Please enter the pepper name");
+                    string? pepperName = ReadLine();
 
-                if (string.IsNullOrEmpty(pepperName))
-                {
-                    WriteLine("Invalid input. Please try again");
-                }
-                else
-                {
-                    // check if the pepper name already exists in the database
-                    var existingPepper = await pepperRepository.GetPepperByNameAsync(pepperName);
-                    if (existingPepper?.PepperName != null)
+                    if (string.IsNullOrEmpty(pepperName))
                     {
-                        WriteLine("A pepper with that name already exists in the database. Please enter a unique name.");
+                        WriteLine("Invalid input. Please try again");
                     }
                     else
                     {
                         pepper.PepperName = pepperName;
-                        await AddUserPepperScovilleMinimum(pepperRepository, pepper);
+                        await AddUserPepperScovilleMinimum(pepperService, pepper, pepperName);
                         break;
                     }
                 }
             }
         }
 
-        // Adds new pepper Scoville minimum rating
-        public static async Task AddUserPepperScovilleMinimum(PepperRepository pepperRepository, Pepper pepper)
+        public static async Task AddUserPepperScovilleMinimum(PepperService pepperService, Pepper pepper, string pepperName)
         {
-            WriteLine("Please enter its minimum Scoville Heat Unit rating");
-
-            string? userShuMinInput = ReadLine();
-
-            if (int.TryParse(userShuMinInput, out int ShuMinValue))
+            while (true)
             {
-                pepper.PepperScovilleUnitMin = ShuMinValue;
+                WriteLine("Please enter its minimum Scoville Heat Unit rating");
+                string? userShuMinInput = ReadLine();
 
-                await AddUserPepperScovilleMaximum(pepperRepository, pepper);
-            }
-            else
-            {
-                WriteLine("Invalid input. Please enter a number.");
-                await AddUserPepperScovilleMinimum(pepperRepository, pepper);
-            }
-        }
-
-        // Adds new pepper Scoville maximum rating and sends it to the database if valid
-
-        public static async Task AddUserPepperScovilleMaximum(PepperRepository pepperRepository, Pepper pepper)
-        {
-            WriteLine("Please enter its maximum Scoville Heat Unit rating");
-
-            string? userShuMaxInput = ReadLine();
-
-            if (int.TryParse(userShuMaxInput, out int shuMaxValue))
-            {
-                var validator = new PepperValidator();
-                pepper.PepperScovilleUnitMax = shuMaxValue;
-
-                ValidationResult results = validator.Validate(pepper);
-
-                if (!results.IsValid)
+                if (int.TryParse(userShuMinInput, out int shuMinValue))
                 {
-                    foreach (var failure in results.Errors)
-                    {
-                        WriteLine($"Pepper failed validation. Error was {failure.ErrorMessage}");
-                        await AddUserPepperScovilleMaximum(pepperRepository, pepper);
-                    }
+                    pepper.PepperScovilleUnitMin = shuMinValue;
+                    await AddUserPepperScovilleMaximum(pepperService, pepper, shuMinValue, pepperName);
+                    break;
                 }
                 else
                 {
-                    pepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepper.PepperScovilleUnitMax);
-                    WriteLine($"You added {pepper.PepperName} to the database");
-                    await pepperRepository.AddPepperAsync(pepper);
+                    WriteLine("Invalid input. Please enter a number.");
                 }
-
-                ReadLine();
-            }
-            else
-            {
-                WriteLine("Invalid input. Please enter a number.");
-                await AddUserPepperScovilleMaximum(pepperRepository, pepper);
             }
         }
+
+        public static async Task AddUserPepperScovilleMaximum(PepperService pepperService, Pepper pepper, int shuMinValue, string pepperName)
+        {
+            while (true)
+            {
+                WriteLine("Please enter its maximum Scoville Heat Unit rating");
+                string? userShuMaxInput = ReadLine();
+
+                if (int.TryParse(userShuMaxInput, out int shuMaxValue))
+                {
+                    pepper.PepperScovilleUnitMax = shuMaxValue;
+
+                    try
+                    {
+                        await pepperService.AddPepperServiceAsync(pepperName, shuMinValue, shuMaxValue);
+                        WriteLine($"You added {pepper.PepperName} to the database");
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        
+                        WriteLine(ex.Message);
+                        
+                        WriteLine("Please try again.");
+                    }
+                    break;
+                }
+                else
+                {
+                    WriteLine("Invalid input. Please enter a number.");
+                }
+            }
+        }
+
+
+
+        //public static async Task AddUserPepperName(PepperRepository pepperRepository, Pepper pepper, string? userInput)
+        //{
+        //    while (userInput == "1")
+        //    {
+        //        WriteLine("Please add your pepper");
+
+        //        string? pepperName = ReadLine();
+
+        //        if (string.IsNullOrEmpty(pepperName))
+        //        {
+        //            WriteLine("Invalid input. Please try again");
+        //        }
+        //        else
+        //        {
+        //            // check if the pepper name already exists in the database
+        //            var existingPepper = await pepperRepository.GetPepperByNameAsync(pepperName);
+        //            if (existingPepper?.PepperName != null)
+        //            {
+        //                WriteLine("A pepper with that name already exists in the database. Please enter a unique name.");
+        //            }
+        //            else
+        //            {
+        //                pepper.PepperName = pepperName;
+        //                await AddUserPepperScovilleMinimum(pepperRepository, pepper);
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
+
+
+        // Adds new pepper Scoville minimum rating
+        //public static async Task AddUserPepperScovilleMinimum(PepperRepository pepperRepository, Pepper pepper)
+        ////{
+        ////    WriteLine("Please enter its minimum Scoville Heat Unit rating");
+
+        ////    string? userShuMinInput = ReadLine();
+
+        ////    if (int.TryParse(userShuMinInput, out int ShuMinValue))
+        ////    {
+        ////        pepper.PepperScovilleUnitMin = ShuMinValue;
+
+        ////        await AddUserPepperScovilleMaximum(pepperRepository, pepper);
+        ////    }
+        ////    else
+        ////    {
+        ////        WriteLine("Invalid input. Please enter a number.");
+        ////        await AddUserPepperScovilleMinimum(pepperRepository, pepper);
+        ////    }
+        ////}
+
+        // Adds new pepper Scoville maximum rating and sends it to the database if valid
+
+        //public static async Task AddUserPepperScovilleMaximum(PepperRepository pepperRepository, Pepper pepper)
+        //{
+        //    WriteLine("Please enter its maximum Scoville Heat Unit rating");
+
+        //    string? userShuMaxInput = ReadLine();
+
+        //    if (int.TryParse(userShuMaxInput, out int shuMaxValue))
+        //    {
+        //        var validator = new PepperValidator();
+        //        pepper.PepperScovilleUnitMax = shuMaxValue;
+
+        //        ValidationResult results = validator.Validate(pepper);
+
+        //        if (!results.IsValid)
+        //        {
+        //            foreach (var failure in results.Errors)
+        //            {
+        //                WriteLine($"Pepper failed validation. Error was {failure.ErrorMessage}");
+        //                await AddUserPepperScovilleMaximum(pepperRepository, pepper);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            pepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepper.PepperScovilleUnitMax);
+        //            WriteLine($"You added {pepper.PepperName} to the database");
+        //            await pepperRepository.AddPepperAsync(pepper);
+        //        }
+
+        //        ReadLine();
+        //    }
+        //    else
+        //    {
+        //        WriteLine("Invalid input. Please enter a number.");
+        //        await AddUserPepperScovilleMaximum(pepperRepository, pepper);
+        //    }
+        //}
 
         // Lists all peppers in the database sorted by name
 
@@ -148,3 +229,4 @@ namespace PepperApp.UI
         }
     }
 }
+
