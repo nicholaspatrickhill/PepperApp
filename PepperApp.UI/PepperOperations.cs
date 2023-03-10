@@ -1,10 +1,6 @@
 ﻿using PepperApp.Entities;
-using PepperApp.Repositories;
-using PepperApp.Validators;
-using static System.Console;
-using FluentValidation.Results;
 using PepperApp.Services;
-using FluentValidation;
+using static System.Console;
 
 namespace PepperApp.UI
 {
@@ -74,11 +70,11 @@ namespace PepperApp.UI
                     }
                     catch (ArgumentException ex)
                     {
-                        
+
                         WriteLine(ex.Message);
-                        
+
                         WriteLine("Please try again.");
-                    } 
+                    }
                 }
                 else
                 {

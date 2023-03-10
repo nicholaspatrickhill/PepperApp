@@ -1,7 +1,7 @@
-﻿using static System.Console;
-using PepperApp.Entities;
+﻿using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Services;
+using static System.Console;
 
 namespace PepperApp.UI
 {
@@ -24,6 +24,6 @@ namespace PepperApp.UI
             _ = PepperOperations.AddUserPepperName(pepperService, userInput!);
             PepperOperations.ListAllPeppersInDatabase(pepperService, userInput);
             _ = PepperOperations.RemoveUserPepper(pepperService, userInput);
-        } 
+        }
     }
 }

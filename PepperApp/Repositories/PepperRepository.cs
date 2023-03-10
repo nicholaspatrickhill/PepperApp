@@ -1,10 +1,6 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Update;
+﻿using Microsoft.EntityFrameworkCore;
 using PepperApp.Data;
 using PepperApp.Entities;
-using PepperApp.Validators;
 
 namespace PepperApp.Repositories
 {
