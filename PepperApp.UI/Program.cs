@@ -20,7 +20,7 @@ namespace PepperApp.UI
             WriteLine("Press 3 to remove a Pepper");
 
             string? userInput = ReadLine();
-            //_ = PepperOperations.AddUserPepperName(pepperRepository, pepper, userInput);
+
             _ = PepperOperations.AddUserPepperName(pepperService, userInput!);
             PepperOperations.ListAllPeppersInDatabase(pepperService, userInput);
             _ = PepperOperations.RemoveUserPepper(pepperService, userInput);

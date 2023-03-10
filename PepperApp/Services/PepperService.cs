@@ -5,7 +5,7 @@ using PepperApp.Validators;
 
 namespace PepperApp.Services
 {
-    public class PepperService
+    public class PepperService : IPepperService
     {
         private readonly IPepperRepository _pepperRepository;
 
@@ -13,6 +13,8 @@ namespace PepperApp.Services
         {
             _pepperRepository = pepperRepository;
         }
+
+        // Validates pepper to be added then calls the add method from the repository
 
         public async Task AddPepperServiceAsync(string? pepperName, int? pepperScovilleUnitMin, int? pepperScovilleUnitMax)
         {
@@ -49,21 +51,22 @@ namespace PepperApp.Services
 
             if (!results.IsValid)
             {
-                throw new ArgumentException($"Pepper failed validation. Errors: {string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
+                throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
             }
 
             pepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepper.PepperScovilleUnitMax);
             await _pepperRepository.AddPepperAsync(pepper);
         }
 
-
+        // Calls repository method to get list of all peppers in the database
         public async Task<List<Pepper>> GetAllPeppersServiceAsync()
         {
             return await _pepperRepository.GetAllPeppersAsync();
         }
 
+        // Validates the pepper to be removed and then calls the removal method from the repository
         public async Task RemovePepperServiceAsync(Pepper pepperToRemove)
-        {            
+        {
             var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperToRemove.PepperName ?? string.Empty);
 
             if (existingPepper == null)

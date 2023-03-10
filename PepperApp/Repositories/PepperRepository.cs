@@ -17,11 +17,13 @@ namespace PepperApp.Repositories
             _context = new PepperContext();
         }
 
+        // Gets a pepper by name
         public async Task<Pepper?> GetPepperByNameAsync(string pepperName)
         {
             return await _context.Peppers.FirstOrDefaultAsync(p => p.PepperName == pepperName);
         }
 
+        // Adds a pepper to the database
         public async Task AddPepperAsync(Pepper pepper)
         {
             //pepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepper.PepperScovilleUnitMax);
@@ -30,6 +32,7 @@ namespace PepperApp.Repositories
             await _context.SaveChangesAsync();
         }
 
+        // Removes a pepper from the database
         public async Task RemovePepperAsync(Pepper pepperToRemove)
         {
             var deletedPepper = await _context.Peppers.SingleOrDefaultAsync(p => p.PepperName == pepperToRemove.PepperName);

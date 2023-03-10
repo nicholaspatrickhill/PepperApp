@@ -69,6 +69,8 @@ namespace PepperApp.UI
                     try
                     {
                         await AddUserPepper(pepperService, pepper, shuMinValue, pepperName, shuMaxValue);
+                        ReadLine();
+                        break;
                     }
                     catch (ArgumentException ex)
                     {
@@ -76,8 +78,7 @@ namespace PepperApp.UI
                         WriteLine(ex.Message);
                         
                         WriteLine("Please try again.");
-                    }
-                    break;
+                    } 
                 }
                 else
                 {
