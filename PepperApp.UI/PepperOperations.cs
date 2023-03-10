@@ -68,8 +68,7 @@ namespace PepperApp.UI
 
                     try
                     {
-                        await pepperService.AddPepperServiceAsync(pepperName, shuMinValue, shuMaxValue);
-                        WriteLine($"You added {pepper.PepperName} to the database");
+                        await AddUserPepper(pepperService, pepper, shuMinValue, pepperName, shuMaxValue);
                     }
                     catch (ArgumentException ex)
                     {
@@ -85,6 +84,12 @@ namespace PepperApp.UI
                     WriteLine("Invalid input. Please enter a number.");
                 }
             }
+        }
+
+        private static async Task AddUserPepper(PepperService pepperService, Pepper pepper, int shuMinValue, string pepperName, int shuMaxValue)
+        {
+            await pepperService.AddPepperServiceAsync(pepperName, shuMinValue, shuMaxValue);
+            WriteLine($"You added {pepper.PepperName} to the database");
         }
 
 
@@ -181,17 +186,29 @@ namespace PepperApp.UI
 
         // Lists all peppers in the database sorted by name
 
-        public static void ListAllPeppersInDatabase(PepperRepository pepperRepository, string? userInput)
+        public static void ListAllPeppersInDatabase(PepperService pepperService, string? userInput)
         {
             if (userInput == "2")
             {
-                var peppers = pepperRepository.GetAllPeppersAsync().Result;
+                var peppers = pepperService.GetAllPeppersServiceAsync().Result;
 
                 peppers.ForEach(p => PrintPepperToConsole(p));
 
                 ReadLine();
             }
         }
+
+        //public static void ListAllPeppersInDatabase(PepperRepository pepperRepository, string? userInput)
+        //{
+        //    if (userInput == "2")
+        //    {
+        //        var peppers = pepperRepository.GetAllPeppersAsync().Result;
+
+        //        peppers.ForEach(p => PrintPepperToConsole(p));
+
+        //        ReadLine();
+        //    }
+        //}
 
         // Console message displaying information about a pepper
         public static void PrintPepperToConsole(Pepper pepper)
@@ -200,7 +217,8 @@ namespace PepperApp.UI
         }
 
         // Removes a pepper from the database
-        public static async Task RemoveUserPepper(PepperRepository pepperRepository, string? userInput)
+
+        public static async Task RemoveUserPepper(PepperService pepperService, string? userInput)
         {
             while (userInput == "3")
             {
@@ -212,7 +230,7 @@ namespace PepperApp.UI
 
                 try
                 {
-                    await pepperRepository.RemovePepperAsync(pepperToRemove);
+                    await pepperService.RemovePepperServiceAsync(pepperToRemove);
                     WriteLine($"You removed {pepperToRemove.PepperName} from the database.");
                     ReadLine();
                     break;
@@ -227,6 +245,34 @@ namespace PepperApp.UI
                 }
             }
         }
+
+        //public static async Task RemoveUserPepper(PepperRepository pepperRepository, string? userInput)
+        //{
+        //    while (userInput == "3")
+        //    {
+        //        WriteLine("Which pepper would you like to remove?");
+
+        //        var pepperToRemove = new Pepper();
+
+        //        pepperToRemove.PepperName = ReadLine();
+
+        //        try
+        //        {
+        //            await pepperRepository.RemovePepperAsync(pepperToRemove);
+        //            WriteLine($"You removed {pepperToRemove.PepperName} from the database.");
+        //            ReadLine();
+        //            break;
+        //        }
+        //        catch (ArgumentException ex)
+        //        {
+        //            WriteLine(ex.Message);
+        //        }
+        //        catch (InvalidOperationException ex)
+        //        {
+        //            WriteLine(ex.Message);
+        //        }
+        //    }
+        //}
     }
 }
 

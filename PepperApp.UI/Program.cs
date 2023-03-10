@@ -21,9 +21,9 @@ namespace PepperApp.UI
 
             string? userInput = ReadLine();
             //_ = PepperOperations.AddUserPepperName(pepperRepository, pepper, userInput);
-            _ = PepperOperations.AddUserPepperName(pepperService, userInput);
-            PepperOperations.ListAllPeppersInDatabase(pepperRepository, userInput);
-            _ = PepperOperations.RemoveUserPepper(pepperRepository, userInput);
+            _ = PepperOperations.AddUserPepperName(pepperService, userInput!);
+            PepperOperations.ListAllPeppersInDatabase(pepperService, userInput);
+            _ = PepperOperations.RemoveUserPepper(pepperService, userInput);
         } 
     }
 }

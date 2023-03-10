@@ -2,11 +2,6 @@
 using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Validators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PepperApp.Services
 {
@@ -67,10 +62,21 @@ namespace PepperApp.Services
             return await _pepperRepository.GetAllPeppersAsync();
         }
 
-        // public Task<Pepper?> GetPepperByNameServiceAsync(string pepperName)
-       
+        public async Task RemovePepperServiceAsync(Pepper pepperToRemove)
+        {            
+            var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperToRemove.PepperName ?? string.Empty);
 
-        // public Task RemovePepperServiceAsync(Pepper pepperToRemove)
-        
+            if (existingPepper == null)
+            {
+                throw new ArgumentException("No pepper with the specified name was found in the database. Please try again.");
+            }
+
+            if (existingPepper.IsReadOnly)
+            {
+                throw new InvalidOperationException("I'm sorry but that pepper is read-only and cannot be removed from the database.");
+            }
+
+            await _pepperRepository.RemovePepperAsync(pepperToRemove);
+        }
     }
 }
