@@ -26,7 +26,7 @@ namespace PepperApp.Services
             var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperName);
             if (existingPepper?.PepperName != null)
             {
-                throw new ArgumentException("A pepper with that name already exists in the database. Please enter a unique name.");
+                throw new ArgumentException("A pepper with that name already exists in the database.");
             }
 
             if (!pepperScovilleUnitMin.HasValue)
@@ -71,12 +71,12 @@ namespace PepperApp.Services
 
             if (existingPepper == null)
             {
-                throw new ArgumentException("No pepper with the specified name was found in the database. Please try again.");
+                throw new ArgumentException("No pepper with the specified name was found in the database.");
             }
 
             if (existingPepper.IsReadOnly)
             {
-                throw new InvalidOperationException("I'm sorry but that pepper is read-only and cannot be removed from the database.");
+                throw new InvalidOperationException("That pepper is read-only and cannot be removed from the database.");
             }
 
             await _pepperRepository.RemovePepperAsync(pepperToRemove);
