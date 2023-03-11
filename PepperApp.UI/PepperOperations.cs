@@ -24,14 +24,14 @@ namespace PepperApp.UI
                     else
                     {
                         pepper.PepperName = pepperName;
-                        await AddUserPepperScovilleMinimum(pepperService, pepper, pepperName);
+                        await AddUserPepperScovilleMinimum(pepperService, pepper, pepperName, userInput);
                         break;
                     }
                 }
             }
         }
 
-        public static async Task AddUserPepperScovilleMinimum(PepperService pepperService, Pepper pepper, string pepperName)
+        public static async Task AddUserPepperScovilleMinimum(PepperService pepperService, Pepper pepper, string pepperName, string userInput)
         {
             while (true)
             {
@@ -41,7 +41,7 @@ namespace PepperApp.UI
                 if (int.TryParse(userShuMinInput, out int shuMinValue))
                 {
                     pepper.PepperScovilleUnitMinimum = shuMinValue;
-                    await AddUserPepperScovilleMaximum(pepperService, pepper, shuMinValue, pepperName);
+                    await AddUserPepperScovilleMaximum(pepperService, pepper, shuMinValue, pepperName, userInput);
                     break;
                 }
                 else
@@ -51,7 +51,7 @@ namespace PepperApp.UI
             }
         }
 
-        public static async Task AddUserPepperScovilleMaximum(PepperService pepperService, Pepper pepper, int shuMinValue, string pepperName)
+        public static async Task AddUserPepperScovilleMaximum(PepperService pepperService, Pepper pepper, int shuMinValue, string pepperName, string userInput)
         {
             while (true)
             {
@@ -74,6 +74,8 @@ namespace PepperApp.UI
                         WriteLine(ex.Message);
 
                         WriteLine("Please try again.");
+
+                        await AddUserPepperName(pepperService, userInput);
                     }
                 }
                 else
