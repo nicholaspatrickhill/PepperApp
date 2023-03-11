@@ -14,13 +14,13 @@ namespace PepperApp.Test
             Pepper pep = new()
             {
                 PepperName = "SomePepper",
-                PepperScovilleUnitMin = 1000,
-                PepperScovilleUnitMax = 5000
+                PepperScovilleUnitMinimum = 1000,
+                PepperScovilleUnitMaximum = 5000
             };
 
             string expected = "The SomePepper has a SHU rating of 1000 - 5000";
 
-            string actual = $"The {pep.PepperName} has a SHU rating of {pep.PepperScovilleUnitMin} - {pep.PepperScovilleUnitMax}";
+            string actual = $"The {pep.PepperName} has a SHU rating of {pep.PepperScovilleUnitMinimum} - {pep.PepperScovilleUnitMaximum}";
 
             Assert.AreEqual(expected, actual);
         }
@@ -34,8 +34,8 @@ namespace PepperApp.Test
             Pepper pep = new()
             {
                 PepperName = "SomePepper",
-                PepperScovilleUnitMin = 1000,
-                PepperScovilleUnitMax = 5000
+                PepperScovilleUnitMinimum = 1000,
+                PepperScovilleUnitMaximum = 5000
             };
 
             Assert.IsInstanceOfType(pep, typeof(Pepper));

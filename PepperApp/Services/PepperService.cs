@@ -42,8 +42,8 @@ namespace PepperApp.Services
             var pepper = new Pepper
             {
                 PepperName = pepperName,
-                PepperScovilleUnitMin = pepperScovilleUnitMin.Value,
-                PepperScovilleUnitMax = pepperScovilleUnitMax.Value
+                PepperScovilleUnitMinimum = pepperScovilleUnitMin.Value,
+                PepperScovilleUnitMaximum = pepperScovilleUnitMax.Value
             };
 
             var validator = new PepperValidator();
@@ -54,7 +54,7 @@ namespace PepperApp.Services
                 throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
             }
 
-            pepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepper.PepperScovilleUnitMax);
+            pepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
             await _pepperRepository.AddPepperAsync(pepper);
         }
 

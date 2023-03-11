@@ -40,7 +40,7 @@ namespace PepperApp.UI
 
                 if (int.TryParse(userShuMinInput, out int shuMinValue))
                 {
-                    pepper.PepperScovilleUnitMin = shuMinValue;
+                    pepper.PepperScovilleUnitMinimum = shuMinValue;
                     await AddUserPepperScovilleMaximum(pepperService, pepper, shuMinValue, pepperName);
                     break;
                 }
@@ -60,7 +60,7 @@ namespace PepperApp.UI
 
                 if (int.TryParse(userShuMaxInput, out int shuMaxValue))
                 {
-                    pepper.PepperScovilleUnitMax = shuMaxValue;
+                    pepper.PepperScovilleUnitMaximum = shuMaxValue;
 
                     try
                     {
@@ -210,7 +210,7 @@ namespace PepperApp.UI
         // Console message displaying information about a pepper
         public static void PrintPepperToConsole(Pepper pepper)
         {
-            WriteLine($"The {pepper.PepperName} is a {pepper.PepperHeatClass} pepper with SHU rating of {pepper.PepperScovilleUnitMin} - {pepper.PepperScovilleUnitMax}");
+            WriteLine($"The {pepper.PepperName} is a {pepper.PepperHeatClass} pepper with SHU rating of {pepper.PepperScovilleUnitMinimum} - {pepper.PepperScovilleUnitMaximum}");
         }
 
         // Removes a pepper from the database

@@ -21,11 +21,11 @@ namespace PepperApp.Test
             Pepper pep = new()
             {
                 PepperName = "SomeMildPepper",
-                PepperScovilleUnitMin = 0,
-                PepperScovilleUnitMax = 5000
+                PepperScovilleUnitMinimum = 0,
+                PepperScovilleUnitMaximum = 5000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMax);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "mild";
 
@@ -43,11 +43,11 @@ namespace PepperApp.Test
             Pepper pep = new()
             {
                 PepperName = "SomeMediumPepper",
-                PepperScovilleUnitMin = 5001,
-                PepperScovilleUnitMax = 15000
+                PepperScovilleUnitMinimum = 5001,
+                PepperScovilleUnitMaximum = 15000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMax);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "medium";
 
@@ -65,11 +65,11 @@ namespace PepperApp.Test
             Pepper pep = new()
             {
                 PepperName = "SomeMediumHotPepper",
-                PepperScovilleUnitMin = 15001,
-                PepperScovilleUnitMax = 100000
+                PepperScovilleUnitMinimum = 15001,
+                PepperScovilleUnitMaximum = 100000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMax);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "medium-hot";
 
@@ -87,11 +87,11 @@ namespace PepperApp.Test
             Pepper pep = new()
             {
                 PepperName = "SomeHotPepper",
-                PepperScovilleUnitMin = 100001,
-                PepperScovilleUnitMax = 350000
+                PepperScovilleUnitMinimum = 100001,
+                PepperScovilleUnitMaximum = 350000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMax);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "hot";
 
@@ -109,11 +109,11 @@ namespace PepperApp.Test
             Pepper pep = new()
             {
                 PepperName = "SomeSuperHotPepper",
-                PepperScovilleUnitMin = 350001,
-                PepperScovilleUnitMax = 1000000
+                PepperScovilleUnitMinimum = 350001,
+                PepperScovilleUnitMaximum = 1000000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMax);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "super-hot";
 

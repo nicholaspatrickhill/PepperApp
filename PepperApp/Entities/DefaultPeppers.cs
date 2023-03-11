@@ -7,29 +7,29 @@
         public static readonly Dictionary<string, Pepper> defaultPeppers = new Dictionary<string, Pepper>
         {
             { "anaheim", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName = "Anaheim", PepperScovilleUnitMin = 500, PepperScovilleUnitMax = 2500, PepperHeatClass = "mild", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(), PepperName = "Anaheim", PepperScovilleUnitMinimum = 500, PepperScovilleUnitMaximum = 2500, PepperHeatClass = "mild", IsReadOnly = true } },
             { "bellPepper", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName = "Bell Pepper", PepperScovilleUnitMin = 0, PepperScovilleUnitMax=0, PepperHeatClass = "mild", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(), PepperName = "Bell Pepper", PepperScovilleUnitMinimum = 0, PepperScovilleUnitMaximum=0, PepperHeatClass = "mild", IsReadOnly = true } },
             { "carolinaReaper", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName = "Carolina Reaper", PepperScovilleUnitMin = 1400000, PepperScovilleUnitMax = 2200000, PepperHeatClass = "super-hot", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(), PepperName = "Carolina Reaper", PepperScovilleUnitMinimum = 1400000, PepperScovilleUnitMaximum = 2200000, PepperHeatClass = "super-hot", IsReadOnly = true } },
             { "cayenne", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName = "Cayenne", PepperScovilleUnitMin = 30000, PepperScovilleUnitMax = 50000, PepperHeatClass = "medium-hot", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(), PepperName = "Cayenne", PepperScovilleUnitMinimum = 30000, PepperScovilleUnitMaximum = 50000, PepperHeatClass = "medium-hot", IsReadOnly = true } },
             { "bananaPepper", new Pepper
-                {PepperId = Guid.NewGuid(), PepperName = "Banana Pepper", PepperScovilleUnitMin = 0, PepperScovilleUnitMax = 500, PepperHeatClass = "mild", IsReadOnly = true } },
+                {PepperId = Guid.NewGuid(), PepperName = "Banana Pepper", PepperScovilleUnitMinimum = 0, PepperScovilleUnitMaximum = 500, PepperHeatClass = "mild", IsReadOnly = true } },
             { "ghostPepper", new Pepper
-                { PepperId = Guid.NewGuid(),  PepperName = "Ghost Pepper", PepperScovilleUnitMin = 855000, PepperScovilleUnitMax = 1100000, PepperHeatClass =  "super-hot", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(),  PepperName = "Ghost Pepper", PepperScovilleUnitMinimum = 855000, PepperScovilleUnitMaximum = 1100000, PepperHeatClass =  "super-hot", IsReadOnly = true } },
             { "habanero", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName = "Habanero", PepperScovilleUnitMin = 100000, PepperScovilleUnitMax = 350000, PepperHeatClass = "hot", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(), PepperName = "Habanero", PepperScovilleUnitMinimum = 100000, PepperScovilleUnitMaximum = 350000, PepperHeatClass = "hot", IsReadOnly = true } },
             { "jalapeno", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName = "Jalapeno", PepperScovilleUnitMin = 2500, PepperScovilleUnitMax = 8000, PepperHeatClass = "medium", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(), PepperName = "Jalapeno", PepperScovilleUnitMinimum = 2500, PepperScovilleUnitMaximum = 8000, PepperHeatClass = "medium", IsReadOnly = true } },
             { "poblano", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName= "Poblano", PepperScovilleUnitMin = 1000, PepperScovilleUnitMax = 2000, PepperHeatClass = "mild", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(), PepperName= "Poblano", PepperScovilleUnitMinimum = 1000, PepperScovilleUnitMaximum = 2000, PepperHeatClass = "mild", IsReadOnly = true } },
             { "scotchBonnet", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName = "Scotch Bonnet", PepperScovilleUnitMin = 100000, PepperScovilleUnitMax = 350000, PepperHeatClass = "hot", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(), PepperName = "Scotch Bonnet", PepperScovilleUnitMinimum = 100000, PepperScovilleUnitMaximum = 350000, PepperHeatClass = "hot", IsReadOnly = true } },
             { "serrano", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName = "Serrano", PepperScovilleUnitMin = 10000, PepperScovilleUnitMax = 23000, PepperHeatClass = "medium-hot", IsReadOnly = true } },
+                { PepperId = Guid.NewGuid(), PepperName = "Serrano", PepperScovilleUnitMinimum = 10000, PepperScovilleUnitMaximum = 23000, PepperHeatClass = "medium-hot", IsReadOnly = true } },
             { "thaiChili", new Pepper
-                { PepperId = Guid.NewGuid(), PepperName = "Thai Chili", PepperScovilleUnitMin = 50000, PepperScovilleUnitMax = 100000, PepperHeatClass = "medium-hot", IsReadOnly = true } }
+                { PepperId = Guid.NewGuid(), PepperName = "Thai Chili", PepperScovilleUnitMinimum = 50000, PepperScovilleUnitMaximum = 100000, PepperHeatClass = "medium-hot", IsReadOnly = true } }
         };
     }
 }

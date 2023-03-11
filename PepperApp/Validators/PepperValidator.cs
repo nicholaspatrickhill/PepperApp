@@ -11,11 +11,11 @@ namespace PepperApp.Validators
                 .NotEmpty()
                 .Length(1, 100);
 
-            RuleFor(x => x.PepperScovilleUnitMin)
+            RuleFor(x => x.PepperScovilleUnitMinimum)
                 .GreaterThanOrEqualTo(0)
                 .LessThanOrEqualTo(5000000);
 
-            RuleFor(x => x.PepperScovilleUnitMax)
+            RuleFor(x => x.PepperScovilleUnitMaximum)
                 .GreaterThanOrEqualTo(0)
                 .LessThanOrEqualTo(5000000);
         }
