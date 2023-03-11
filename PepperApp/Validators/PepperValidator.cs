@@ -16,7 +16,7 @@ namespace PepperApp.Validators
                 .LessThanOrEqualTo(5000000);
 
             RuleFor(x => x.PepperScovilleUnitMaximum)
-                .GreaterThanOrEqualTo(0)
+                .GreaterThanOrEqualTo(x => x.PepperScovilleUnitMinimum)
                 .LessThanOrEqualTo(5000000);
         }
     }

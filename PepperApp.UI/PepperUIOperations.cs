@@ -1,5 +1,6 @@
 ﻿using PepperApp.Entities;
 using PepperApp.Services;
+using System.Security.Cryptography.X509Certificates;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -107,7 +108,7 @@ namespace PepperApp.UI
             }
         }    
 
-        // Console message that displays information about a pepper
+        // Console message that displays information about a pepper in the database
         public static void PrintPepperToConsole(Pepper pepper)
         {
             WriteLine($"The {pepper.PepperName} is a {pepper.PepperHeatClass} pepper with SHU rating of {pepper.PepperScovilleUnitMinimum} - {pepper.PepperScovilleUnitMaximum}");
@@ -142,6 +143,7 @@ namespace PepperApp.UI
             }     
         }
 
+        // Updates a pepper in the database
         public static async Task UpdateUserPepper(PepperService pepperService)
         {
             Clear();
@@ -160,7 +162,11 @@ namespace PepperApp.UI
                 {
                     WriteLine($"The pepper '{pepperToUpdate.PepperName}' does not exist in the database.");
                     StartOver();
-                    return;
+                }
+                if (existingPepper!.IsReadOnly)
+                {
+                    WriteLine($"That pepper is read-only and cannot be updated.");
+                    StartOver();
                 }
 
                 WriteLine($"Updating pepper '{pepperToUpdate.PepperName}':");
@@ -172,55 +178,8 @@ namespace PepperApp.UI
                 if (!string.IsNullOrEmpty(newName))
                 {
                     existingPepper.PepperName = newName;
+                    await UpdatePepperSHU(pepperService, existingPepper);
                 }
-
-                // Get new minimum SHU rating
-                WriteLine($"Current minimum SHU rating: {existingPepper.PepperScovilleUnitMinimum}");
-                while (true)
-                {
-                    WriteLine("Enter new minimum SHU rating (or leave blank to keep current rating):");
-                    string? userShuMinInput = ReadLine();
-
-                    if (string.IsNullOrEmpty(userShuMinInput))
-                    {
-                        break;
-                    }
-                    else if (int.TryParse(userShuMinInput, out int shuMinValue))
-                    {
-                        existingPepper.PepperScovilleUnitMinimum = shuMinValue;
-                        break;
-                    }
-                    else
-                    {
-                        WriteLine("Invalid input. Please enter a number.");
-                    }
-                }
-
-                // Get new maximum SHU rating
-                WriteLine($"Current maximum SHU rating: {existingPepper.PepperScovilleUnitMaximum}");
-                while (true)
-                {
-                    WriteLine("Enter new maximum SHU rating (or leave blank to keep current rating):");
-                    string? userShuMaxInput = ReadLine();
-
-                    if (string.IsNullOrEmpty(userShuMaxInput))
-                    {
-                        break;
-                    }
-                    else if (int.TryParse(userShuMaxInput, out int shuMaxValue))
-                    {
-                        existingPepper.PepperScovilleUnitMaximum = shuMaxValue;
-                        break;
-                    }
-                    else
-                    {
-                        WriteLine("Invalid input. Please enter a number.");
-                    }
-                }
-
-                await pepperService.UpdatePepperServiceAsync(existingPepper);
-                WriteLine($"You updated the pepper '{existingPepper.PepperName}' in the database.");
-                StartOver();
             }
             catch (ArgumentException ex)
             {
@@ -232,7 +191,72 @@ namespace PepperApp.UI
                 WriteLine(ex.Message);
                 StartOver();
             }
+
         }
+
+        public static async Task UpdatePepperSHU(PepperService pepperService, Pepper existingPepper)
+        {
+            // Get new minimum SHU rating
+            WriteLine($"Current minimum SHU rating: {existingPepper.PepperScovilleUnitMinimum}");
+            while (true)
+            {
+                WriteLine("Enter new minimum SHU rating (or leave blank to keep current rating):");
+                string? userShuMinInput = ReadLine();
+
+                if (string.IsNullOrEmpty(userShuMinInput))
+                {
+                    break;
+                }
+                else if (int.TryParse(userShuMinInput, out int shuMinValue))
+                {
+                    existingPepper.PepperScovilleUnitMinimum = shuMinValue;
+                    break;
+                }
+                else
+                {
+                    WriteLine("Invalid input. Please enter a number.");
+                }
+            }
+
+            // Get new maximum SHU rating
+            WriteLine($"Current maximum SHU rating: {existingPepper.PepperScovilleUnitMaximum}");
+            while (true)
+            {
+                WriteLine("Enter new maximum SHU rating (or leave blank to keep current rating):");
+                string? userShuMaxInput = ReadLine();
+
+                if (string.IsNullOrEmpty(userShuMaxInput))
+                {
+                    break;
+                }
+                else if (int.TryParse(userShuMaxInput, out int shuMaxValue))
+                {
+                    existingPepper.PepperScovilleUnitMaximum = shuMaxValue;
+                    break;
+                }
+                else
+                {
+                    WriteLine("Invalid input. Please enter a number.");
+                }
+            }
+
+            await pepperService.UpdatePepperServiceAsync(existingPepper);
+            WriteLine($"You updated the pepper '{existingPepper.PepperName}' in the database.");
+            StartOver();
+        }
+
+
+        //catch (ArgumentException ex)
+        //{
+        //    WriteLine(ex.Message);
+        //    StartOver();
+        //}
+        //catch (InvalidOperationException ex)
+        //{
+        //    WriteLine(ex.Message);
+        //    StartOver();
+        //}
+
 
         // Recycles to the main menu when user is finished
         private static void StartOver()

@@ -25,6 +25,14 @@ namespace PepperApp.Repositories
             return await _context.Peppers.FindAsync(pepperId);
         }
 
+        // Generates a list of all peppers in the database sorted by name
+        public async Task<List<Pepper>> GetAllPeppersAsync()
+        {
+            var peppers = await _context.Peppers.ToListAsync();
+
+            return peppers.OrderBy(p => p.PepperName).ToList();
+        }
+
         // Adds a pepper to the database
         public async Task AddPepperAsync(Pepper pepper)
         {
@@ -42,15 +50,7 @@ namespace PepperApp.Repositories
                 _context.Peppers.Remove(deletedPepper);
                 await _context.SaveChangesAsync();
             }
-        }
-
-        // Generates a list of all peppers in the database sorted by name
-        public async Task<List<Pepper>> GetAllPeppersAsync()
-        {
-            var peppers = await _context.Peppers.ToListAsync();
-
-            return peppers.OrderBy(p => p.PepperName).ToList();
-        }
+        } 
 
         // Updates a pepper in the database
         public async Task UpdatePepperAsync(Pepper pepperToUpdate)
@@ -59,13 +59,13 @@ namespace PepperApp.Repositories
 
             if (existingPepper == null)
             {
-                throw new ArgumentException("No pepper with the specified ID was found in the database.");
+                throw new ArgumentException("No pepper with the specified name was found in the database.");
             }
 
-            existingPepper.PepperName = pepperToUpdate.PepperName;
-            existingPepper.PepperScovilleUnitMinimum = pepperToUpdate.PepperScovilleUnitMinimum;
-            existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
-            existingPepper.PepperHeatClass = pepperToUpdate.PepperHeatClass;
+            //existingPepper.PepperName = pepperToUpdate.PepperName;
+            //existingPepper.PepperScovilleUnitMinimum = pepperToUpdate.PepperScovilleUnitMinimum;
+            //existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
+            //existingPepper.PepperHeatClass = pepperToUpdate.PepperHeatClass;
 
             _context.Update(existingPepper);
             await _context.SaveChangesAsync();

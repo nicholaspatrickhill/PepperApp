@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentValidation;
+using FluentValidation.Results;
 using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Validators;
@@ -14,6 +15,7 @@ namespace PepperApp.Services
             _pepperRepository = pepperRepository;
         }
 
+        // Calls method from the repository to get pepper by name
         public async Task<Pepper?> GetPepperByNameAsync(string pepperName)
         {
             return await _pepperRepository.GetPepperByNameAsync(pepperName);
@@ -93,7 +95,7 @@ namespace PepperApp.Services
 
             if (existingPepper == null)
             {
-                throw new ArgumentException("No pepper with the specified name was found in the database.");
+                throw new ArgumentException("No pepper with the specified ID was found in the database.");
             }
 
             if (existingPepper.IsReadOnly)
@@ -101,17 +103,42 @@ namespace PepperApp.Services
                 throw new InvalidOperationException("That pepper is read-only and cannot be updated in the database.");
             }
 
-            var validator = new PepperValidator();
-            ValidationResult results = validator.Validate(updatedPepper);
+            existingPepper.PepperName = updatedPepper.PepperName;
+            existingPepper.PepperScovilleUnitMinimum = updatedPepper.PepperScovilleUnitMinimum;
+            existingPepper.PepperScovilleUnitMaximum = updatedPepper.PepperScovilleUnitMaximum;
+            existingPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(updatedPepper.PepperScovilleUnitMaximum);
 
-            if (!results.IsValid)
-            {
-                throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
-            }
-
-            updatedPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(updatedPepper.PepperScovilleUnitMaximum);
-            await _pepperRepository.UpdatePepperAsync(updatedPepper);
+            await _pepperRepository.UpdatePepperAsync(existingPepper);
         }
+
+
+        //public async Task UpdatePepperServiceAsync(Pepper updatedPepper)
+        //{
+        //    var existingPepper = await _pepperRepository.GetPepperByIdAsync(updatedPepper.PepperId);
+
+        //    if (existingPepper == null)
+        //    {
+        //        throw new ArgumentException("No pepper with the specified name was found in the database.");
+        //    }
+
+        //    if (existingPepper.IsReadOnly)
+        //    {
+        //        throw new InvalidOperationException("That pepper is read-only and cannot be updated in the database.");
+        //    }
+
+        //    var validator = new PepperValidator();
+        //    ValidationResult results = validator.Validate(updatedPepper);
+
+        //    if (!results.IsValid)
+        //    {
+        //        //throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
+        //        throw new ValidationException(string.Join(", ", results.Errors.Select(e => e.ErrorMessage)));
+
+        //    }
+
+        //    updatedPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(updatedPepper.PepperScovilleUnitMaximum);
+        //    await _pepperRepository.UpdatePepperAsync(updatedPepper);
+        //}
     }
 }
 

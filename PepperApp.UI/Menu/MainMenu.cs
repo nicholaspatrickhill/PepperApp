@@ -50,7 +50,6 @@ namespace PepperApp.UI
                     break;
             }
         }
-
       
         private static void ViewAllPeppers(PepperService pepperService)
         {
@@ -66,7 +65,6 @@ namespace PepperApp.UI
         {
             _ = PepperUIOperations.UpdateUserPepper(pepperService);
         }
-
 
         private static void RemoveAPepper(PepperService pepperService)
         {
