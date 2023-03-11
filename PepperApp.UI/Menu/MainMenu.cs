@@ -1,11 +1,5 @@
-﻿using PepperApp.Entities;
-using PepperApp.Repositories;
+﻿using PepperApp.Repositories;
 using PepperApp.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -28,8 +22,9 @@ namespace PepperApp.UI
             {
                 "View all peppers",
                 "Add a pepper",
+                "Update a pepper",
                 "Remove a pepper",
-                "Exit"
+                "Exit",        
             };
 
             Menu mainMenu = new Menu(prompt, options);
@@ -45,27 +40,37 @@ namespace PepperApp.UI
                     AddAPepper(_pepperService);
                     break;
                 case 2:
-                    RemoveAPepper(_pepperService);
+                    UpdateAPepper(_pepperService);
                     break;
                 case 3:
+                    RemoveAPepper(_pepperService);
+                    break;
+                case 4: 
                     Exit();
                     break;
             }
         }
 
+      
         private static void ViewAllPeppers(PepperService pepperService)
         {
-            PepperOperations.ListAllPeppersInDatabase(pepperService);
+            PepperUIOperations.ListAllPeppersInDatabase(pepperService);
         }
 
         private static void AddAPepper(PepperService pepperService)
         {
-            _ = PepperOperations.AddUserPepperName(pepperService);
+            _ = PepperUIOperations.AddUserPepperName(pepperService);
         }
+
+        private static void UpdateAPepper(PepperService pepperService)
+        {
+            _ = PepperUIOperations.UpdateUserPepper(pepperService);
+        }
+
 
         private static void RemoveAPepper(PepperService pepperService)
         {
-            _ = PepperOperations.RemoveUserPepper(pepperService);
+            _ = PepperUIOperations.RemoveUserPepper(pepperService);
         }       
 
         private static void Exit()

@@ -19,6 +19,12 @@ namespace PepperApp.Repositories
             return await _context.Peppers.FirstOrDefaultAsync(p => p.PepperName == pepperName);
         }
 
+        // Gets a pepper by ID
+        public async Task<Pepper?> GetPepperByIdAsync(Guid pepperId)
+        {
+            return await _context.Peppers.FindAsync(pepperId);
+        }
+
         // Adds a pepper to the database
         public async Task AddPepperAsync(Pepper pepper)
         {
@@ -36,7 +42,7 @@ namespace PepperApp.Repositories
                 _context.Peppers.Remove(deletedPepper);
                 await _context.SaveChangesAsync();
             }
-        }      
+        }
 
         // Generates a list of all peppers in the database sorted by name
         public async Task<List<Pepper>> GetAllPeppersAsync()
@@ -44,6 +50,25 @@ namespace PepperApp.Repositories
             var peppers = await _context.Peppers.ToListAsync();
 
             return peppers.OrderBy(p => p.PepperName).ToList();
+        }
+
+        // Updates a pepper in the database
+        public async Task UpdatePepperAsync(Pepper pepperToUpdate)
+        {
+            var existingPepper = await _context.Peppers.SingleOrDefaultAsync(p => p.PepperId == pepperToUpdate.PepperId);
+
+            if (existingPepper == null)
+            {
+                throw new ArgumentException("No pepper with the specified ID was found in the database.");
+            }
+
+            existingPepper.PepperName = pepperToUpdate.PepperName;
+            existingPepper.PepperScovilleUnitMinimum = pepperToUpdate.PepperScovilleUnitMinimum;
+            existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
+            existingPepper.PepperHeatClass = pepperToUpdate.PepperHeatClass;
+
+            _context.Update(existingPepper);
+            await _context.SaveChangesAsync();
         }
 
         public void Dispose()

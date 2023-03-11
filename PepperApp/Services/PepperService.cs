@@ -7,15 +7,19 @@ namespace PepperApp.Services
 {
     public class PepperService : IPepperService
     {
-        private readonly IPepperRepository _pepperRepository;
+        private readonly PepperRepository _pepperRepository;
 
-        public PepperService(IPepperRepository pepperRepository)
+        public PepperService(PepperRepository pepperRepository)
         {
             _pepperRepository = pepperRepository;
         }
 
-        // Validates pepper to be added then calls the add method from the repository
+        public async Task<Pepper?> GetPepperByNameAsync(string pepperName)
+        {
+            return await _pepperRepository.GetPepperByNameAsync(pepperName);
+        }
 
+        // Validates pepper to be added then calls the add method from the repository
         public async Task AddPepperServiceAsync(string? pepperName, int? pepperScovilleUnitMin, int? pepperScovilleUnitMax)
         {
             if (string.IsNullOrEmpty(pepperName))
@@ -81,5 +85,33 @@ namespace PepperApp.Services
 
             await _pepperRepository.RemovePepperAsync(pepperToRemove);
         }
+
+        // Validates the pepper to be updated and then calls the update method from the repository
+        public async Task UpdatePepperServiceAsync(Pepper updatedPepper)
+        {
+            var existingPepper = await _pepperRepository.GetPepperByIdAsync(updatedPepper.PepperId);
+
+            if (existingPepper == null)
+            {
+                throw new ArgumentException("No pepper with the specified name was found in the database.");
+            }
+
+            if (existingPepper.IsReadOnly)
+            {
+                throw new InvalidOperationException("That pepper is read-only and cannot be updated in the database.");
+            }
+
+            var validator = new PepperValidator();
+            ValidationResult results = validator.Validate(updatedPepper);
+
+            if (!results.IsValid)
+            {
+                throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
+            }
+
+            updatedPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(updatedPepper.PepperScovilleUnitMaximum);
+            await _pepperRepository.UpdatePepperAsync(updatedPepper);
+        }
     }
 }
+
