@@ -6,32 +6,30 @@ namespace PepperApp.UI
 {
     public class PepperOperations
     {
-        public static async Task AddUserPepperName(PepperService pepperService, string userInput)
+        public static async Task AddUserPepperName(PepperService pepperService)
         {
-            if (userInput == "1")
+
+            var pepper = new Pepper();
+
+            while (true)
             {
-                var pepper = new Pepper();
+                WriteLine("Please enter the pepper name");
+                string? pepperName = ReadLine();
 
-                while (true)
+                if (string.IsNullOrEmpty(pepperName))
                 {
-                    WriteLine("Please enter the pepper name");
-                    string? pepperName = ReadLine();
-
-                    if (string.IsNullOrEmpty(pepperName))
-                    {
-                        WriteLine("Invalid input. Please try again");
-                    }
-                    else
-                    {
-                        pepper.PepperName = pepperName;
-                        await AddUserPepperScovilleMinimum(pepperService, pepper, pepperName, userInput);
-                        break;
-                    }
+                    WriteLine("Invalid input. Please try again");
+                }
+                else
+                {
+                    pepper.PepperName = pepperName;
+                    await AddUserPepperScovilleMinimum(pepperService, pepper, pepperName);
+                    break;
                 }
             }
         }
 
-        public static async Task AddUserPepperScovilleMinimum(PepperService pepperService, Pepper pepper, string pepperName, string userInput)
+        public static async Task AddUserPepperScovilleMinimum(PepperService pepperService, Pepper pepper, string pepperName)
         {
             while (true)
             {
@@ -41,7 +39,7 @@ namespace PepperApp.UI
                 if (int.TryParse(userShuMinInput, out int shuMinValue))
                 {
                     pepper.PepperScovilleUnitMinimum = shuMinValue;
-                    await AddUserPepperScovilleMaximum(pepperService, pepper, shuMinValue, pepperName, userInput);
+                    await AddUserPepperScovilleMaximum(pepperService, pepper, shuMinValue, pepperName);
                     break;
                 }
                 else
@@ -51,7 +49,7 @@ namespace PepperApp.UI
             }
         }
 
-        public static async Task AddUserPepperScovilleMaximum(PepperService pepperService, Pepper pepper, int shuMinValue, string pepperName, string userInput)
+        public static async Task AddUserPepperScovilleMaximum(PepperService pepperService, Pepper pepper, int shuMinValue, string pepperName)
         {
             while (true)
             {
@@ -75,7 +73,7 @@ namespace PepperApp.UI
 
                         WriteLine("Please try again.");
 
-                        await AddUserPepperName(pepperService, userInput);
+                        await AddUserPepperName(pepperService);
                     }
                 }
                 else
@@ -185,15 +183,16 @@ namespace PepperApp.UI
 
         // Lists all peppers in the database sorted by name
 
-        public static void ListAllPeppersInDatabase(PepperService pepperService, string? userInput)
+        public static void ListAllPeppersInDatabase(PepperService pepperService)
         {
-            if (userInput == "2")
             {
                 var peppers = pepperService.GetAllPeppersServiceAsync().Result;
 
                 peppers.ForEach(p => PrintPepperToConsole(p));
 
+                WriteLine("\nPress enter to return to the main menu.");
                 ReadLine();
+                MainMenu.Start();
             }
         }
 
@@ -217,32 +216,31 @@ namespace PepperApp.UI
 
         // Removes a pepper from the database
 
-        public static async Task RemoveUserPepper(PepperService pepperService, string? userInput)
+        public static async Task RemoveUserPepper(PepperService pepperService)
         {
-            while (userInput == "3")
+
+            WriteLine("Which pepper would you like to remove?");
+
+            var pepperToRemove = new Pepper();
+
+            pepperToRemove.PepperName = ReadLine();
+
+            try
             {
-                WriteLine("Which pepper would you like to remove?");
-
-                var pepperToRemove = new Pepper();
-
-                pepperToRemove.PepperName = ReadLine();
-
-                try
-                {
-                    await pepperService.RemovePepperServiceAsync(pepperToRemove);
-                    WriteLine($"You removed {pepperToRemove.PepperName} from the database.");
-                    ReadLine();
-                    break;
-                }
-                catch (ArgumentException ex)
-                {
-                    WriteLine(ex.Message);
-                }
-                catch (InvalidOperationException ex)
-                {
-                    WriteLine(ex.Message);
-                }
+                await pepperService.RemovePepperServiceAsync(pepperToRemove);
+                WriteLine($"You removed {pepperToRemove.PepperName} from the database.");
+                ReadLine();
+                //break;
             }
+            catch (ArgumentException ex)
+            {
+                WriteLine(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                WriteLine(ex.Message);
+            }
+
         }
 
         //public static async Task RemoveUserPepper(PepperRepository pepperRepository, string? userInput)

@@ -22,8 +22,6 @@ namespace PepperApp.Data
 
             _dbPath = parentDirectory != null ? Path.Combine(parentDirectory.FullName, "pepper.db") : Path.Combine(baseDirectory, "pepper.db");
 
-            Console.WriteLine("Database file path: " + _dbPath);
-
             Database.EnsureCreated();
         }
 
