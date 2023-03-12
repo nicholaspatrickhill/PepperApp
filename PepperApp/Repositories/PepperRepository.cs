@@ -68,7 +68,7 @@ namespace PepperApp.Repositories
             //existingPepper.PepperHeatClass = pepperToUpdate.PepperHeatClass;
 
             _context.Update(existingPepper);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();        
         }
 
         public void Dispose()

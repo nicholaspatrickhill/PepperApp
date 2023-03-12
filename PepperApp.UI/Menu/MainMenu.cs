@@ -53,22 +53,22 @@ namespace PepperApp.UI
       
         private static void ViewAllPeppers(PepperService pepperService)
         {
-            PepperUIOperations.ListAllPeppersInDatabase(pepperService);
+            PepperList.ListAllPeppersInDatabase(pepperService);
         }
 
         private static void AddAPepper(PepperService pepperService)
         {
-            _ = PepperUIOperations.AddUserPepperName(pepperService);
+            _ = PepperAdd.AddNewPepper(pepperService);
         }
 
         private static void UpdateAPepper(PepperService pepperService)
         {
-            _ = PepperUIOperations.UpdateUserPepper(pepperService);
+            _ = PepperUpdate.UpdateAPepper(pepperService);
         }
 
         private static void RemoveAPepper(PepperService pepperService)
         {
-            _ = PepperUIOperations.RemoveUserPepper(pepperService);
+            _ = PepperDelete.RemoveAPepper(pepperService);
         }       
 
         private static void Exit()
@@ -90,5 +90,13 @@ namespace PepperApp.UI
                     break;
             }
         }
-    }
+
+        // Recycles to the main menu when user is finished
+        public static void StartOver()
+        {
+            WriteLine("\nPress enter to return to the main menu.");
+            ReadLine();
+            MainMenu.Start();
+        }
+    } 
 }
