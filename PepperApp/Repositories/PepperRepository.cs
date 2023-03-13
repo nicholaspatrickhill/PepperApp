@@ -74,7 +74,7 @@ namespace PepperApp.Repositories
                 var mildPeppers = await context.Peppers.FromSqlRaw(@"
                     SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 5000;")
                     .ToListAsync();
-                return mildPeppers;
+                return mildPeppers.OrderBy(p => p.PepperName).ToList();
             }
         }
 
@@ -86,7 +86,7 @@ namespace PepperApp.Repositories
                 var mediumPeppers = await context.Peppers.FromSqlRaw(@"
                     SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 15000 AND PepperScovilleUnitMaximum > 5000;")
                     .ToListAsync();
-                return mediumPeppers;
+                return mediumPeppers.OrderBy(p => p.PepperName).ToList(); ;
             }
         }
 
@@ -98,7 +98,7 @@ namespace PepperApp.Repositories
                 var mediumHotPeppers = await context.Peppers.FromSqlRaw(@"
                     SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 100000 AND PepperScovilleUnitMaximum > 15000;")
                     .ToListAsync();
-                return mediumHotPeppers;
+                return mediumHotPeppers.OrderBy(p => p.PepperName).ToList(); ;
             }
         }
 
@@ -110,7 +110,7 @@ namespace PepperApp.Repositories
                 var hotPeppers = await context.Peppers.FromSqlRaw(@"
                     SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 350000 AND PepperScovilleUnitMaximum > 100000;")
                     .ToListAsync();
-                return hotPeppers;
+                return hotPeppers.OrderBy(p => p.PepperName).ToList(); ;
             }
         }
 
@@ -122,7 +122,7 @@ namespace PepperApp.Repositories
                 var superHotPeppers = await context.Peppers.FromSqlRaw(@"
                     SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum > 350000;")
                     .ToListAsync();
-                return superHotPeppers;
+                return superHotPeppers.OrderBy(p => p.PepperName).ToList(); ;
             }
         }
 

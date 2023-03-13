@@ -28,7 +28,6 @@ namespace PepperApp.UI
 
             // pepperToUpdate.PepperName = ReadLine();
 
-
             // Convert input string to Title case
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             pepperToUpdate.PepperName = textInfo.ToTitleCase(pepperNameInput!.ToLower());
@@ -127,7 +126,6 @@ namespace PepperApp.UI
                 WriteLine(ex.Message);
                 MainMenu.StartOver();
             }
-
         }
     }
 }

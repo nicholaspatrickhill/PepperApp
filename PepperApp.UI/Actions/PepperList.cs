@@ -4,7 +4,7 @@ using static System.Console;
 
 namespace PepperApp.UI
 {
-    public class PepperByNameList
+    public class PepperList
     {
         public static void ListAllPeppersInDatabase(PepperService pepperService)
         {
