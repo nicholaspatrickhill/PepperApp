@@ -1,6 +1,7 @@
 ﻿using PepperApp.Entities;
 using PepperApp.Services;
 using Serilog;
+using System.Globalization;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -14,6 +15,7 @@ namespace PepperApp.UI
 
             var pepper = new Pepper();
             int shuMinValue = 0;
+            string properCasePepperName = "";
 
             while (true)
             {
@@ -28,7 +30,11 @@ namespace PepperApp.UI
                 }
                 else
                 {
-                    pepper.PepperName = pepperName;
+                    // Convert input string to title case
+                    TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+                    properCasePepperName = textInfo.ToTitleCase(pepperName.ToLower());
+
+                    pepper.PepperName = properCasePepperName;
                 }
 
                 // Get pepper minimum SHU rating
@@ -61,9 +67,13 @@ namespace PepperApp.UI
 
                         try
                         {
-                            await AddUserPepper(pepperService, pepper, shuMinValue, pepperName, shuMaxValue);
-                            ReadLine();
-                            break;
+                            await pepperService.AddPepperServiceAsync(properCasePepperName, shuMinValue, shuMaxValue);
+                            WriteLine($"You added {pepper.PepperName} to the database");
+                            MainMenu.StartOver();
+
+                            //await AddUserPepper(pepperService, pepper, shuMinValue, properCasePepperName, shuMaxValue);
+                            //ReadLine();
+                            //break;
                         }
                         catch (ArgumentException ex)
                         {
@@ -81,12 +91,12 @@ namespace PepperApp.UI
             }
         }
 
-        private static async Task AddUserPepper(PepperService pepperService, Pepper pepper, int shuMinValue, string? pepperName, int shuMaxValue)
-        {
-            await pepperService.AddPepperServiceAsync(pepperName, shuMinValue, shuMaxValue);
-            WriteLine($"You added {pepper.PepperName} to the database");
-            MainMenu.StartOver();
-        }
+        //private static async Task AddUserPepper(PepperService pepperService, Pepper pepper, int shuMinValue, string? properCasePepperName, int shuMaxValue)
+        //{
+        //    await pepperService.AddPepperServiceAsync(properCasePepperName, shuMinValue, shuMaxValue);
+        //    WriteLine($"You added {pepper.PepperName} to the database");
+        //    MainMenu.StartOver();
+        //}
     }
 }
 
