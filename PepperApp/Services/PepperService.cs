@@ -112,34 +112,31 @@ namespace PepperApp.Services
             await _pepperRepository.UpdatePepperAsync(existingPepper);
         }
 
+        public async Task<List<Pepper>> GetMildPeppersServiceAsync()
+        {
+            return await _pepperRepository.GetMildPeppersAsync();
+        }
 
-        //public async Task UpdatePepperServiceAsync(Pepper updatedPepper)
-        //{
-        //    var existingPepper = await _pepperRepository.GetPepperByIdAsync(updatedPepper.PepperId);
+        public async Task<List<Pepper>> GetMediumPeppersServiceAsync()
+        {
+            return await _pepperRepository.GetMediumPeppersAsync();
+        }
 
-        //    if (existingPepper == null)
-        //    {
-        //        throw new ArgumentException("No pepper with the specified name was found in the database.");
-        //    }
+        public async Task<List<Pepper>> GetMediumHotPeppersServiceAsync()
+        {
+            return await _pepperRepository.GetMediumHotPeppersAsync();
+        }
 
-        //    if (existingPepper.IsReadOnly)
-        //    {
-        //        throw new InvalidOperationException("That pepper is read-only and cannot be updated in the database.");
-        //    }
+        public async Task<List<Pepper>> GetHotPeppersServiceAsync()
+        {
+            return await _pepperRepository.GetHotPeppersAsync();
+        }
 
-        //    var validator = new PepperValidator();
-        //    ValidationResult results = validator.Validate(updatedPepper);
+        public async Task<List<Pepper>> GetSuperHotPeppersServiceAsync()
+        {
+            return await _pepperRepository.GetSuperHotPeppersAsync();
+        }
 
-        //    if (!results.IsValid)
-        //    {
-        //        //throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
-        //        throw new ValidationException(string.Join(", ", results.Errors.Select(e => e.ErrorMessage)));
-
-        //    }
-
-        //    updatedPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(updatedPepper.PepperScovilleUnitMaximum);
-        //    await _pepperRepository.UpdatePepperAsync(updatedPepper);
-        //}
     }
 }
 

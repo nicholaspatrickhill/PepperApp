@@ -21,40 +21,48 @@ namespace PepperApp.UI
             string prompt = "Use the UP and DOWN arrow keys to select an option and then press enter. \n";
             string[] options =
             {
-                "View all peppers",
+                "View peppers sorted by name",
+                "View peppers sorted by heat class",
                 "Add a pepper",
                 "Update a pepper",
                 "Remove a pepper",
-                "Exit",        
+                "Exit",
             };
 
             Menu mainMenu = new Menu(prompt, options);
             int selectedIndex = mainMenu.Run();
 
-            switch(selectedIndex)
+            switch (selectedIndex)
             {
                 case 0:
-                    Clear();
                     ViewAllPeppers(_pepperService);
                     break;
                 case 1:
-                    AddAPepper(_pepperService);
+                    ViewPeppersSortedByHeatClass(_pepperService);
                     break;
                 case 2:
-                    UpdateAPepper(_pepperService);
+                    AddAPepper(_pepperService);
                     break;
                 case 3:
+                    UpdateAPepper(_pepperService);
+                    break;
+                case 4:
                     RemoveAPepper(_pepperService);
                     break;
-                case 4: 
+                case 5:
                     Exit();
                     break;
             }
         }
-      
+
         private static void ViewAllPeppers(PepperService pepperService)
         {
-            PepperList.ListAllPeppersInDatabase(pepperService);
+            PepperByNameList.ListAllPeppersInDatabase(pepperService);
+        }
+
+        private static void ViewPeppersSortedByHeatClass(PepperService pepperService)
+        {
+            PepperByHeatClassList.RunHeatClassMenu();
         }
 
         private static void AddAPepper(PepperService pepperService)

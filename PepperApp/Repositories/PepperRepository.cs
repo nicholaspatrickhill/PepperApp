@@ -62,13 +62,64 @@ namespace PepperApp.Repositories
                 throw new ArgumentException("No pepper with the specified name was found in the database.");
             }
 
-            //existingPepper.PepperName = pepperToUpdate.PepperName;
-            //existingPepper.PepperScovilleUnitMinimum = pepperToUpdate.PepperScovilleUnitMinimum;
-            //existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
-            //existingPepper.PepperHeatClass = pepperToUpdate.PepperHeatClass;
-
             _context.Update(existingPepper);
             await _context.SaveChangesAsync();        
+        }
+
+        // Uses raw sql to query the database to return peppers sorted by heat class
+        public async Task<List<Pepper>> GetMildPeppersAsync()
+        {
+            using (var context = new PepperContext())
+            {
+                var mildPeppers = await context.Peppers.FromSqlRaw(@"
+                    SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 5000;")    
+                    .ToListAsync();
+                return mildPeppers;
+            }
+        }
+
+        public async Task<List<Pepper>> GetMediumPeppersAsync()
+        {
+            using (var context = new PepperContext())
+            {
+                var mediumPeppers = await context.Peppers.FromSqlRaw(@"
+                    SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 15000 AND PepperScovilleUnitMaximum > 5000;")           
+                    .ToListAsync();
+                return mediumPeppers;
+            }
+        }
+
+        public async Task<List<Pepper>> GetMediumHotPeppersAsync()
+        {
+            using (var context = new PepperContext())
+            {
+                var mediumHotPeppers = await context.Peppers.FromSqlRaw(@"
+                    SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 100000 AND PepperScovilleUnitMaximum > 15000;")
+                    .ToListAsync();
+                return mediumHotPeppers;
+            }
+        }
+
+        public async Task<List<Pepper>> GetHotPeppersAsync()
+        {
+            using (var context = new PepperContext())
+            {
+                var hotPeppers = await context.Peppers.FromSqlRaw(@"
+                    SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 350000 AND PepperScovilleUnitMaximum > 100000;")
+                    .ToListAsync();
+                return hotPeppers;
+            }
+        }
+
+        public async Task<List<Pepper>> GetSuperHotPeppersAsync()
+        {
+            using (var context = new PepperContext())
+            {
+                var superHotPeppers = await context.Peppers.FromSqlRaw(@"
+                    SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum > 350000;")
+                    .ToListAsync();
+                return superHotPeppers;
+            }
         }
 
         public void Dispose()

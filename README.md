@@ -12,4 +12,6 @@ The following items from the "Feature List" are implemented:
 - Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
 - Implement a log that records errors, invalid inputs, or other important events and writes them to a text file
 - Make your application asynchronous
+- Query your database using a raw SQL query, not EF
+
 
