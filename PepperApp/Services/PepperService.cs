@@ -17,9 +17,16 @@ namespace PepperApp.Services
         }
 
         // Calls method from the repository to get pepper by name
-        public async Task<Pepper?> GetPepperByNameAsync(string pepperName)
+        public async Task<Pepper?> GetPepperByNameServiceAsync(string pepperName)
         {
-            return await _pepperRepository.GetPepperByNameAsync(pepperName);
+            var result = await _pepperRepository.GetPepperByNameAsync(pepperName);
+
+            if (result == null)
+            {
+                throw new ArgumentException($"No pepper by that name was found in the database.");
+            }
+
+            return result;
         }
 
         // Validates pepper to be added then calls the add method from the repository
@@ -96,7 +103,7 @@ namespace PepperApp.Services
 
             if (existingPepper == null)
             {
-                throw new ArgumentException("No pepper with the specified ID was found in the database.");
+                throw new ArgumentException("No pepper with the specified name was found in the database.");
             }
 
             if (existingPepper.IsReadOnly)

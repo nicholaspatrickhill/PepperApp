@@ -14,11 +14,12 @@ namespace PepperApp.UI
             Clear();
 
             var pepper = new Pepper();
-            int shuMinValue = 0;
+            int shuMinValue;
             string properCasePepperName = "";
 
             while (true)
             {
+                // Get pepper name
                 WriteLine("Please enter the pepper name");
                 string? pepperName = ReadLine();
 
@@ -37,7 +38,7 @@ namespace PepperApp.UI
                     pepper.PepperName = properCasePepperName;
                 }
 
-                // Get pepper minimum SHU rating
+                // Get minimum SHU rating
                 while (true)
                 {
                     WriteLine("Please enter its minimum Scoville Heat Unit rating");

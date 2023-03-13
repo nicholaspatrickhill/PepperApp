@@ -1,0 +1,3 @@
+2023-03-13 18:07:22.947 -04:00 [ERR] Update to read-only pepper was attempted: Cayenne.
+2023-03-13 18:13:48.302 -04:00 [ERR] Invalid input. Pepper name was empty.
+2023-03-13 18:13:58.182 -04:00 [ERR] Invalid input. Pepper name was empty.

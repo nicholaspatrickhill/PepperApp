@@ -23,10 +23,11 @@ namespace PepperApp.UI
             {
                 "View peppers sorted by name",
                 "View peppers sorted by heat class",
+                "View a pepper by name",
                 "Add a pepper",
                 "Update a pepper",
                 "Remove a pepper",
-                "Exit",
+                "Exit"
             };
 
             Menu mainMenu = new Menu(prompt, options);
@@ -41,15 +42,18 @@ namespace PepperApp.UI
                     ViewPeppersSortedByHeatClass(_pepperService);
                     break;
                 case 2:
-                    AddAPepper(_pepperService);
+                    ViewAPepperByName(_pepperService);
                     break;
                 case 3:
-                    UpdateAPepper(_pepperService);
+                    AddAPepper(_pepperService);
                     break;
                 case 4:
-                    RemoveAPepper(_pepperService);
+                    UpdateAPepper(_pepperService);
                     break;
                 case 5:
+                    RemoveAPepper(_pepperService);
+                    break;
+                case 6:
                     Exit();
                     break;
             }
@@ -63,6 +67,11 @@ namespace PepperApp.UI
         private static void ViewPeppersSortedByHeatClass(PepperService pepperService)
         {
             PepperByHeatClassList.RunHeatClassMenu();
+        }
+
+        private static void ViewAPepperByName(PepperService pepperService)
+        {
+            _ = PepperView.ViewAPepper(pepperService);
         }
 
         private static void AddAPepper(PepperService pepperService)
