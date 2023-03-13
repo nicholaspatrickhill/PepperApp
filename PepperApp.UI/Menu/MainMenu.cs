@@ -1,5 +1,6 @@
 ﻿using PepperApp.Repositories;
 using PepperApp.Services;
+using Serilog;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -83,6 +84,7 @@ namespace PepperApp.UI
             {
                 case 0:
                     WriteLine("\nStay cool...");
+                    Log.CloseAndFlush();
                     Environment.Exit(0);
                     break;
                 case 1:

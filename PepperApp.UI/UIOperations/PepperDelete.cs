@@ -1,5 +1,6 @@
 ﻿using PepperApp.Entities;
 using PepperApp.Services;
+using Serilog;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -26,11 +27,13 @@ namespace PepperApp.UI
             catch (ArgumentException ex)
             {
                 WriteLine(ex.Message);
+                Log.Error($"{ex.Message}");
                 MainMenu.StartOver();
             }
             catch (InvalidOperationException ex)
             {
                 WriteLine(ex.Message);
+                Log.Error($"Deletion of read-only pepper was attempted: {pepperToRemove.PepperName}.");
                 MainMenu.StartOver();
             }
         }

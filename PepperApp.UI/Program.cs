@@ -1,6 +1,6 @@
-﻿using PepperApp.Entities;
-using PepperApp.Repositories;
-using PepperApp.Services;
+﻿using Serilog;
+using System;
+using System.Runtime.CompilerServices;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -8,8 +8,9 @@ namespace PepperApp.UI
     internal class Program
     {
         static void Main(string[] args)
-        {
+        {         
             Title = "Pepper!";
+            ErrorLogger.StartLogger();
             MainMenu.Start();
         }
     }

@@ -1,5 +1,6 @@
 ﻿using PepperApp.Entities;
 using PepperApp.Services;
+using Serilog;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -21,7 +22,8 @@ namespace PepperApp.UI
 
                 if (string.IsNullOrEmpty(pepperName))
                 {
-                    WriteLine("Invalid input.");
+                    WriteLine("Invalid input. Pepper name cannot be empty.");
+                    Log.Error("Invalid input. Pepper name was empty.");
                     MainMenu.StartOver();
                 }
                 else
@@ -43,6 +45,7 @@ namespace PepperApp.UI
                     else
                     {
                         WriteLine("Invalid input. Please enter a number.");
+                        Log.Error($"Invalid input. Pepper minimum SHU rating was entered as {userShuMinInput}.");
                     }
                 }
 
@@ -65,14 +68,14 @@ namespace PepperApp.UI
                         catch (ArgumentException ex)
                         {
                             WriteLine(ex.Message);
+                            Log.Error($"{pepper.PepperName}: {ex.Message}");
                             MainMenu.StartOver();
-
-                            //await AddUserPepperName(pepperService);
                         }
                     }
                     else
                     {
                         WriteLine("Invalid input. Please enter a number.");
+                        Log.Error($"Invalid input. Pepper maxium SHU rating was entered as {userShuMaxInput}.");
                     }
                 }
             }

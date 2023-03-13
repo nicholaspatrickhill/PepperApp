@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Validators;
+using Serilog;
 
 namespace PepperApp.Services
 {
@@ -100,7 +101,7 @@ namespace PepperApp.Services
 
             if (existingPepper.IsReadOnly)
             {
-                throw new InvalidOperationException("That pepper is read-only and cannot be updated in the database.");
+                throw new InvalidOperationException("That pepper is read-only and cannot be updated in the database.");                
             }
 
             existingPepper.PepperName = updatedPepper.PepperName;
