@@ -1,4 +1,0 @@
-2023-03-12 21:15:19.117 -04:00 [ERR] Anaheim: A pepper with that name already exists in the database.
-2023-03-12 21:15:29.384 -04:00 [ERR] testpepper: 'Pepper Scoville Unit Maximum' must be greater than or equal to '5000'.
-2023-03-12 21:15:33.959 -04:00 [ERR] Update to read-only pepper was attempted: Anaheim.
-2023-03-12 21:15:38.269 -04:00 [ERR] Deletion of read-only pepper was attempted: Anaheim.
