@@ -101,7 +101,7 @@ namespace PepperApp.Services
 
             if (existingPepper.IsReadOnly)
             {
-                throw new InvalidOperationException("That pepper is read-only and cannot be updated in the database.");                
+                throw new InvalidOperationException("That pepper is read-only and cannot be updated in the database.");
             }
 
             existingPepper.PepperName = updatedPepper.PepperName;
@@ -112,26 +112,31 @@ namespace PepperApp.Services
             await _pepperRepository.UpdatePepperAsync(existingPepper);
         }
 
+        // Calls repository method to get list of all mild peppers in the database
         public async Task<List<Pepper>> GetMildPeppersServiceAsync()
         {
             return await _pepperRepository.GetMildPeppersAsync();
         }
 
+        // Calls repository method to get list of all medium peppers in the database
         public async Task<List<Pepper>> GetMediumPeppersServiceAsync()
         {
             return await _pepperRepository.GetMediumPeppersAsync();
         }
 
+        // Calls repository method to get list of all medium-hot peppers in the database
         public async Task<List<Pepper>> GetMediumHotPeppersServiceAsync()
         {
             return await _pepperRepository.GetMediumHotPeppersAsync();
         }
 
+        // Calls repository method to get list of all hot peppers in the database
         public async Task<List<Pepper>> GetHotPeppersServiceAsync()
         {
             return await _pepperRepository.GetHotPeppersAsync();
         }
 
+        // Calls repository method to get list of all super-hot peppers in the database
         public async Task<List<Pepper>> GetSuperHotPeppersServiceAsync()
         {
             return await _pepperRepository.GetSuperHotPeppersAsync();

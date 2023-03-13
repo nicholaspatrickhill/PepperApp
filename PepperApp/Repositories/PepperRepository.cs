@@ -50,7 +50,7 @@ namespace PepperApp.Repositories
                 _context.Peppers.Remove(deletedPepper);
                 await _context.SaveChangesAsync();
             }
-        } 
+        }
 
         // Updates a pepper in the database
         public async Task UpdatePepperAsync(Pepper pepperToUpdate)
@@ -63,32 +63,34 @@ namespace PepperApp.Repositories
             }
 
             _context.Update(existingPepper);
-            await _context.SaveChangesAsync();        
+            await _context.SaveChangesAsync();
         }
 
-        // Uses raw sql to query the database to return peppers sorted by heat class
+        // Uses raw sql to query the database to return peppers sorted by mild heat class
         public async Task<List<Pepper>> GetMildPeppersAsync()
         {
             using (var context = new PepperContext())
             {
                 var mildPeppers = await context.Peppers.FromSqlRaw(@"
-                    SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 5000;")    
+                    SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 5000;")
                     .ToListAsync();
                 return mildPeppers;
             }
         }
 
+        // Uses raw sql to query the database to return peppers sorted by medium heat class
         public async Task<List<Pepper>> GetMediumPeppersAsync()
         {
             using (var context = new PepperContext())
             {
                 var mediumPeppers = await context.Peppers.FromSqlRaw(@"
-                    SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 15000 AND PepperScovilleUnitMaximum > 5000;")           
+                    SELECT * FROM Peppers WHERE PepperScovilleUnitMaximum <= 15000 AND PepperScovilleUnitMaximum > 5000;")
                     .ToListAsync();
                 return mediumPeppers;
             }
         }
 
+        // Uses raw sql to query the database to return peppers sorted by medium-hot heat class
         public async Task<List<Pepper>> GetMediumHotPeppersAsync()
         {
             using (var context = new PepperContext())
@@ -100,6 +102,7 @@ namespace PepperApp.Repositories
             }
         }
 
+        // Uses raw sql to query the database to return peppers sorted by hot heat class
         public async Task<List<Pepper>> GetHotPeppersAsync()
         {
             using (var context = new PepperContext())
@@ -111,6 +114,7 @@ namespace PepperApp.Repositories
             }
         }
 
+        // Uses raw sql to query the database to return peppers sorted by super-hot heat class
         public async Task<List<Pepper>> GetSuperHotPeppersAsync()
         {
             using (var context = new PepperContext())
