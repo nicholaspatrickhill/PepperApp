@@ -3,8 +3,6 @@ This application was developed to help me store and manage information about hot
 I grow hot peppers and make hot sauce and other pepper products and am constantly seeking out this information from various sources.
 PepperApp helps me quickly recall, update and maintain this data.
 
-The application is built on Entity Framework using a Services/Repository pattern.
-The UI layer could be altered without impacting the database code.
 
 ### FEATURES
 The following items from the "Feature List" are implemented:
