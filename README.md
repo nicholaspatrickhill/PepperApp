@@ -3,7 +3,6 @@ This application was developed to help me store and manage information about hot
 I grow hot peppers and make hot sauce and other pepper products and am constantly seeking out this information from various sources.
 PepperApp helps me quickly recall, update and maintain this data.
 
-
 ### FEATURES
 The following items from the "Feature List" are implemented:
 - Create 3 or more unit tests for your application

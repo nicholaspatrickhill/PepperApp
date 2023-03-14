@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using PepperApp.Data;
+using PepperApp.Data.ServiceExtension;
 using PepperApp.Repositories;
+using PepperApp.Services;
 
 namespace PepperApp.API
 {
@@ -16,6 +18,8 @@ namespace PepperApp.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging();
+
             services.AddControllers();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -30,11 +34,14 @@ namespace PepperApp.API
             // Log the connection string to the console
             Console.WriteLine("Connection string: {0}", connectionString);
 
-            services.AddDbContext<PepperContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("connectionString")));
+            services.AddDIServices(Configuration);
+            services.AddScoped<IPepperRepository, PepperRepository>();
+            services.AddScoped<IPepperService, PepperService>();
 
-            services.AddScoped<IPepperRepository, PepperRepository>();            
+            services.AddDbContext<PepperContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("LibraryConnectionString")));
         }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRouting();

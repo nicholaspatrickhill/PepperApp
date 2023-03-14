@@ -1,4 +1,5 @@
-﻿using PepperApp.Services;
+﻿using PepperApp.Entities;
+using PepperApp.Services;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -15,5 +16,16 @@ namespace PepperApp.UI
 
             MainMenu.StartOver();
         }
+
+        //public static void SavePepperListToFile(PepperService pepperService)
+        //{
+        //    Clear();
+
+        //    var peppers = pepperService.GetAllPeppersServiceAsync().Result.ToString();
+
+        //    File.WriteAllLines("PepperList.txt", peppers);
+
+        //    WriteLine("Your list of peppers has been saved to a text file.");
+        //}
     }
 }
