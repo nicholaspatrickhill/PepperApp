@@ -12,7 +12,7 @@ namespace PepperApp.Data
 
         public DbSet<Pepper> Peppers { get; set; }
 
-        private readonly string _dbPath;
+        private readonly string? _dbPath;
 
         public PepperContext()
         {

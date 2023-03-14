@@ -33,8 +33,7 @@ namespace PepperApp.API
             services.AddDbContext<PepperContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("connectionString")));
 
-            services.AddScoped<IPepperRepository, PepperRepository>();
-            
+            services.AddScoped<IPepperRepository, PepperRepository>();            
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
