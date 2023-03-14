@@ -6,6 +6,10 @@ namespace PepperApp.Data
 {
     public class PepperContext : DbContext
     {
+        public PepperContext(DbContextOptions<PepperContext> options) : base(options)
+        {
+        }
+
         public DbSet<Pepper> Peppers { get; set; }
 
         private readonly string _dbPath;

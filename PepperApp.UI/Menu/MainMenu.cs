@@ -66,7 +66,7 @@ namespace PepperApp.UI
 
         private static void ViewPeppersByHeatClass(PepperService pepperService)
         {
-            PepperByHeatClassList.RunHeatClassMenu();
+            PepperByHeatClassList.DisplayHeatClassMenu();
         }
 
         private static void ViewAPepper(PepperService pepperService)
@@ -87,7 +87,7 @@ namespace PepperApp.UI
         private static void RemoveAPepper(PepperService pepperService)
         {
             _ = PepperDelete.RemoveAPepper(pepperService);
-        }       
+        }
 
         private static void Exit()
         {
@@ -117,5 +117,5 @@ namespace PepperApp.UI
             ReadLine();
             MainMenu.Start();
         }
-    } 
+    }
 }

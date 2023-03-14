@@ -1,9 +1,7 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Validators;
-using Serilog;
 
 namespace PepperApp.Services
 {

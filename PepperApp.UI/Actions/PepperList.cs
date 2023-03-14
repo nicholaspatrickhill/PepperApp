@@ -1,5 +1,4 @@
-﻿using PepperApp.Entities;
-using PepperApp.Services;
+﻿using PepperApp.Services;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -8,7 +7,7 @@ namespace PepperApp.UI
     {
         public static void ListAllPeppersInDatabase(PepperService pepperService)
         {
-            Clear(); 
+            Clear();
 
             var peppers = pepperService.GetAllPeppersServiceAsync().Result;
 

@@ -1,8 +1,8 @@
-﻿using PepperApp.Services;
-using static System.Console;
-using PepperApp.Entities;
+﻿using PepperApp.Entities;
+using PepperApp.Services;
 using Serilog;
 using System.Globalization;
+using static System.Console;
 
 namespace PepperApp.UI
 {
