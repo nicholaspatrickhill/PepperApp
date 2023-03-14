@@ -8,23 +8,12 @@ namespace PepperApp.Services
 {
     public class PepperService : IPepperService
     {
-        private readonly ILogger<PepperService> _logger;
-        private readonly IPepperRepository _pepperRepository;
+        private readonly PepperRepository _pepperRepository;
 
-        public PepperService(ILogger<PepperService> logger, IPepperRepository pepperRepository)
+        public PepperService(PepperRepository pepperRepository)
         {
-            _logger = logger;
             _pepperRepository = pepperRepository;
-
-            _logger.LogInformation("PepperService constructor called.");
         }
-
-        //private readonly PepperRepository _pepperRepository;
-
-        //public PepperService(PepperRepository pepperRepository)
-        //{
-        //    _pepperRepository = pepperRepository;
-        //}
 
         // Calls method from the repository to get pepper by name
         public async Task<Pepper?> GetPepperByNameServiceAsync(string pepperName)
