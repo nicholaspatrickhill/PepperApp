@@ -1,5 +1,4 @@
-﻿using PepperApp.Data;
-using PepperApp.Repositories;
+﻿using PepperApp.Repositories;
 using PepperApp.Services;
 using Serilog;
 using static System.Console;

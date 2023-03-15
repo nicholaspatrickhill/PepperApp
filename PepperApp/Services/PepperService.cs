@@ -1,5 +1,4 @@
 ﻿using FluentValidation.Results;
-using Microsoft.Extensions.Logging;
 using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Validators;
@@ -147,7 +146,6 @@ namespace PepperApp.Services
         {
             return await _pepperRepository.GetSuperHotPeppersAsync();
         }
-
     }
 }
 

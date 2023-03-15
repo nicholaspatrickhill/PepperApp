@@ -1,5 +1,4 @@
-﻿using PepperApp.Data;
-using PepperApp.Repositories;
+﻿using PepperApp.Repositories;
 using PepperApp.Services;
 using static System.Console;
 
@@ -11,7 +10,7 @@ namespace PepperApp.UI
         private static readonly PepperService _pepperService = new PepperService(_pepperRepository);
 
         public static void DisplayHeatClassMenu()
-        { 
+        {
             string prompt = "Use the UP and DOWN arrow keys to select an option and then press enter. \n";
             string[] options =
             {

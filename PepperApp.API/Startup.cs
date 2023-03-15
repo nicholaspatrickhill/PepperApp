@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using PepperApp.Data;
-using PepperApp.Data.ServiceExtension;
 using PepperApp.Repositories;
 using PepperApp.Services;
 
@@ -9,7 +8,7 @@ namespace PepperApp.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration) 
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -18,28 +17,28 @@ namespace PepperApp.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging();
+            services.AddDbContext<PepperContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("LibraryConnectionString")));
 
-            services.AddControllers();
+            // Explicitly registering repository class then creating factory method for creating instance of the interface that uses the repository class 
+            services.AddScoped<PepperRepository>();
+            services.AddScoped<IPepperRepository>(provider => provider.GetService<PepperRepository>()!);
+
+            services.AddScoped<IPepperService, PepperService>();
+
+            services.AddControllers();            
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PepperApp.API", Version = "v1" });
-            });          
+            });
 
             // Retrieve the connection string from the configuration
             string? connectionString = Configuration.GetConnectionString("LibraryConnectionString");
 
             // Log the connection string to the console
             Console.WriteLine("Connection string: {0}", connectionString);
-
-            services.AddDIServices(Configuration);
-            services.AddScoped<IPepperRepository, PepperRepository>();
-            services.AddScoped<IPepperService, PepperService>();
-
-            services.AddDbContext<PepperContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("LibraryConnectionString")));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -1,6 +1,3 @@
-
-using Microsoft.AspNetCore.Hosting;
-
 namespace PepperApp.API
 {
     public class Program
