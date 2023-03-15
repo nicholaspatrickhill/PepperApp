@@ -20,13 +20,13 @@ namespace PepperApp.API
             services.AddDbContext<PepperContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("LibraryConnectionString")));
 
-            // Explicitly registering repository class then creating factory method for creating instance of the interface that uses the repository class 
+            // Explicitly registers repository class then creates factory method for creating instances of the interface that uses the repository class 
             services.AddScoped<PepperRepository>();
             services.AddScoped<IPepperRepository>(provider => provider.GetService<PepperRepository>()!);
 
             services.AddScoped<IPepperService, PepperService>();
 
-            services.AddControllers();            
+            services.AddControllers();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
