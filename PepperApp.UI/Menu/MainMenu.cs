@@ -62,7 +62,6 @@ namespace PepperApp.UI
         private static void ViewAllPeppers(PepperService pepperService)
         {
             PepperList.ListAllPeppersInDatabase(pepperService);
-            //PepperList.SavePepperListToFile(pepperService);
         }
 
         private static void ViewPeppersByHeatClass(PepperService pepperService)

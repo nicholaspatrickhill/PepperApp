@@ -23,10 +23,7 @@ namespace PepperApp.UI
             {
                 WriteLine("Invalid input. Pepper name cannot be empty.");
                 MainMenu.StartOver();
-                //return;
             }
-
-            // pepperToUpdate.PepperName = ReadLine();
 
             // Convert input string to Title case
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;

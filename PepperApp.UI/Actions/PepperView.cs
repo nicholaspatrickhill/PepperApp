@@ -39,7 +39,7 @@ namespace PepperApp.UI
                     if (result != null)
                     {
                         pepperToView = result;
-                        PepperMessage.PrintPepperToConsole(pepperToView);
+                        PepperMessage.PrintPepperDetails(pepperToView);
                         MainMenu.StartOver();
                     }
                 }

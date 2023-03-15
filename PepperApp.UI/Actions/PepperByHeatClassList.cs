@@ -54,7 +54,7 @@ namespace PepperApp.UI
 
             var peppers = pepperService.GetMildPeppersServiceAsync().Result;
 
-            peppers.ForEach(p => PepperMessage.PrintPepperToConsole(p));
+            peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             StartOver();
         }
@@ -65,7 +65,7 @@ namespace PepperApp.UI
 
             var peppers = pepperService.GetMediumPeppersServiceAsync().Result;
 
-            peppers.ForEach(p => PepperMessage.PrintPepperToConsole(p));
+            peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             StartOver();
         }
@@ -76,7 +76,7 @@ namespace PepperApp.UI
 
             var peppers = pepperService.GetMediumHotPeppersServiceAsync().Result;
 
-            peppers.ForEach(p => PepperMessage.PrintPepperToConsole(p));
+            peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             StartOver();
         }
@@ -87,7 +87,7 @@ namespace PepperApp.UI
 
             var peppers = pepperService.GetHotPeppersServiceAsync().Result;
 
-            peppers.ForEach(p => PepperMessage.PrintPepperToConsole(p));
+            peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             StartOver();
         }
@@ -98,7 +98,7 @@ namespace PepperApp.UI
 
             var peppers = pepperService.GetSuperHotPeppersServiceAsync().Result;
 
-            peppers.ForEach(p => PepperMessage.PrintPepperToConsole(p));
+            peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             StartOver();
         }

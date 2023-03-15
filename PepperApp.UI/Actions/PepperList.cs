@@ -11,20 +11,28 @@ namespace PepperApp.UI
 
             var peppers = pepperService.GetAllPeppersServiceAsync().Result;
 
-            peppers.ForEach(p => PepperMessage.PrintPepperToConsole(p));
+            peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             MainMenu.StartOver();
         }
 
-        //public static void SavePepperListToFile(PepperService pepperService)
+        //public static void SaveAllPeppersToTextFile(PepperService pepperService, Pepper pepper)
         //{
+        //    var peppers = pepperService.GetAllPeppersServiceAsync().Result;
+
+        //    var pepperList = new List<string>();
+            
+        //    peppers.ForEach(p =>
+        //    {
+        //        string v = $"The {pepper.PepperName} is a {pepper.PepperHeatClass} pepper with SHU rating of {pepper.PepperScovilleUnitMinimum} - {pepper.PepperScovilleUnitMaximum}";
+        //        pepperList.Add(v);
+        //    });
+
+        //    File.WriteAllLines(@"C:\temp\PepperList.txt", pepperList);
+
         //    Clear();
-
-        //    var peppers = pepperService.GetAllPeppersServiceAsync().Result.ToString();
-
-        //    File.WriteAllLines("PepperList.txt", peppers);
-
-        //    WriteLine("Your list of peppers has been saved to a text file.");
+        //    WriteLine("The list of peppers has been saved to a text file.");
+        //    MainMenu.StartOver();
         //}
     }
 }
