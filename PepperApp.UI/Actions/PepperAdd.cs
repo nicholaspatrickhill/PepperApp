@@ -71,10 +71,6 @@ namespace PepperApp.UI
                             await pepperService.AddPepperServiceAsync(properCasePepperName, shuMinValue, shuMaxValue);
                             WriteLine($"You added {pepper.PepperName} to the database");
                             MainMenu.StartOver();
-
-                            //await AddUserPepper(pepperService, pepper, shuMinValue, properCasePepperName, shuMaxValue);
-                            //ReadLine();
-                            //break;
                         }
                         catch (ArgumentException ex)
                         {
@@ -91,13 +87,6 @@ namespace PepperApp.UI
                 }
             }
         }
-
-        //private static async Task AddUserPepper(PepperService pepperService, Pepper pepper, int shuMinValue, string? properCasePepperName, int shuMaxValue)
-        //{
-        //    await pepperService.AddPepperServiceAsync(properCasePepperName, shuMinValue, shuMaxValue);
-        //    WriteLine($"You added {pepper.PepperName} to the database");
-        //    MainMenu.StartOver();
-        //}
     }
 }
 

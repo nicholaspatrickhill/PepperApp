@@ -146,11 +146,6 @@ namespace PepperApp.Services
         {
             return await _pepperRepository.GetSuperHotPeppersAsync();
         }
-
-        public async Task<Pepper?> GetPepperByIDServiceAsync(Guid pepperID)
-        {
-            return await _pepperRepository.GetPepperByIdAsync(pepperID);
-        }
     }
 }
 
