@@ -24,39 +24,7 @@ namespace PepperApp.Services
             });
 
             _mapper = config.CreateMapper();
-        }     
-
-        // Determines the heat class of a pepper based on its Scoville unit range, returns heat class as a string
-        public static string AssignPepperHeatClass(int PepperScovilleUnitMax)
-        {
-            // scoville ranges sourced from chilipeppermadness.com
-            // mild 0-5000
-            // medium 5001-15000
-            // mediumHot 15001-100000
-            // hot 100001 - 350000
-            // superhot 350001+
-
-            if (PepperScovilleUnitMax <= 5000)
-            {
-                return "mild";
-            }
-            else if (PepperScovilleUnitMax <= 15000)
-            {
-                return "medium";
-            }
-            else if (PepperScovilleUnitMax <= 100000)
-            {
-                return "medium-hot";
-            }
-            else if (PepperScovilleUnitMax <= 350000)
-            {
-                return "hot";
-            }
-            else
-            {
-                return "super-hot";
-            }
-        }
+        }            
 
         // Calls method from the repository to get pepper by name
         public async Task<PepperDto?> GetPepperByNameServiceAsync(string pepperName)
@@ -89,7 +57,7 @@ namespace PepperApp.Services
             }
 
             var pepper = _mapper.Map<Pepper>(pepperDto);
-            pepper.PepperHeatClass = AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
+            pepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
             await _pepperRepository.AddPepperAsync(pepper);
         }
 
@@ -145,7 +113,7 @@ namespace PepperApp.Services
             existingPepper.PepperName = updatedPepperDto.PepperName;
             existingPepper.PepperScovilleUnitMinimum = updatedPepperDto.PepperScovilleUnitMinimum;
             existingPepper.PepperScovilleUnitMaximum = updatedPepperDto.PepperScovilleUnitMaximum;
-            existingPepper.PepperHeatClass = AssignPepperHeatClass(updatedPepperDto.PepperScovilleUnitMaximum);
+            existingPepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(updatedPepperDto.PepperScovilleUnitMaximum);
 
             var pepper = _mapper.Map<Pepper>(updatedPepperDto);
 
