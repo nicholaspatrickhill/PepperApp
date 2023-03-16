@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation.Results;
+using PepperApp.Dto;
 using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Validators;

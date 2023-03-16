@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using PepperApp.Entities;
+using PepperApp.Dto;
 
 namespace PepperApp.Validators
 {

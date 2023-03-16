@@ -21,7 +21,7 @@ namespace PepperApp.UI
         //    var peppers = pepperService.GetAllPeppersServiceAsync().Result;
 
         //    var pepperList = new List<string>();
-            
+
         //    peppers.ForEach(p =>
         //    {
         //        string v = $"The {pepper.PepperName} is a {pepper.PepperHeatClass} pepper with SHU rating of {pepper.PepperScovilleUnitMinimum} - {pepper.PepperScovilleUnitMaximum}";

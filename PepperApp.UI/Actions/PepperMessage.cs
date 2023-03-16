@@ -1,5 +1,4 @@
-﻿using PepperApp.Entities;
-using PepperApp.Services;
+﻿using PepperApp.Dto;
 using static System.Console;
 
 namespace PepperApp.UI

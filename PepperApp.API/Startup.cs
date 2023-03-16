@@ -3,7 +3,6 @@ using Microsoft.OpenApi.Models;
 using PepperApp.Data;
 using PepperApp.Repositories;
 using PepperApp.Services;
-using AutoMapper;
 
 namespace PepperApp.API
 {

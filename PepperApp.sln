@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PepperApp.API", "PepperApp.API\PepperApp.API.csproj", "{12445219-64ED-41AC-B4B3-D04427D6D032}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PepperApp.API", "PepperApp.API\PepperApp.API.csproj", "{12445219-64ED-41AC-B4B3-D04427D6D032}"
 	ProjectSection(ProjectDependencies) = postProject
 		{9E558D08-8D5F-4080-801E-2845B6097F51} = {9E558D08-8D5F-4080-801E-2845B6097F51}
 	EndProjectSection

@@ -1,4 +1,4 @@
-﻿using PepperApp.Entities;
+﻿using PepperApp.Dto;
 
 namespace PepperApp.Services
 {
@@ -13,6 +13,6 @@ namespace PepperApp.Services
         Task<PepperDto?> GetPepperByNameServiceAsync(string pepperName);
         Task<List<PepperDto>> GetSuperHotPeppersServiceAsync();
         Task RemovePepperServiceAsync(PepperDto pepperToRemove);
-        Task UpdatePepperServiceAsync(PepperDto updatedPepperDTO);
+        Task UpdatePepperServiceAsync(PepperDto updatedPepperDto);
     }
 }

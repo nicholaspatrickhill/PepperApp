@@ -1,6 +1,5 @@
-﻿using Azure.Identity;
-using Microsoft.AspNetCore.Mvc;
-using PepperApp.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
+using PepperApp.Dto;
 using PepperApp.Services;
 
 namespace PepperApp.Controllers
@@ -74,7 +73,7 @@ namespace PepperApp.Controllers
         {
             await _pepperService.AddPepperServiceAsync(pepperDto);
             return Ok();
-        }     
+        }
 
         [HttpPut("{pepperName}")]
         public async Task<IActionResult> UpdatePepper(string pepperName, [FromBody] PepperDto updatedPepperDto)
