@@ -29,6 +29,7 @@ namespace PepperApp.UI
                 "Add a pepper",
                 "Update a pepper",
                 "Remove a pepper",
+                "About this app",
                 "Exit"
             };
 
@@ -56,6 +57,9 @@ namespace PepperApp.UI
                     RemoveAPepper(_pepperService);
                     break;
                 case 6:
+                    AboutThisApp();
+                    break;
+                case 7:
                     Exit();
                     break;
             }
@@ -89,6 +93,11 @@ namespace PepperApp.UI
         private static void RemoveAPepper(PepperService pepperService)
         {
             _ = PepperDelete.RemoveAPepper(pepperService);
+        }
+
+        private static void AboutThisApp()
+        {
+            AppInfo.PrintAboutThisApp();
         }
 
         private static void Exit()

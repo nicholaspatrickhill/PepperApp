@@ -1,4 +1,5 @@
-﻿using static System.Console;
+﻿using PepperApp.Services;
+using static System.Console;
 
 namespace PepperApp.UI
 {
@@ -7,7 +8,7 @@ namespace PepperApp.UI
         static void Main(string[] args)
         {
             Title = "Pepper!";
-            ErrorLogger.StartLogger();
+            ErrorLoggerService.StartLogger();
             MainMenu.Start();
         }
     }
