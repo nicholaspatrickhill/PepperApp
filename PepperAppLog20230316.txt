@@ -1,0 +1,3 @@
+2023-03-16 17:48:26.833 -04:00 [ERR] Invalid input. Pepper name was empty.
+2023-03-16 17:49:23.871 -04:00 [ERR] No pepper with the specified name was found in the database.
+2023-03-16 17:57:07.588 -04:00 [ERR] Testpepper: 'Pepper Scoville Unit Maximum' must be greater than or equal to '5000'.

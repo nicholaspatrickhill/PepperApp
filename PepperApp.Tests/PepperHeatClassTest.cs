@@ -1,4 +1,5 @@
-﻿using PepperApp.Entities;
+﻿using PepperApp.DataTransferObject;
+using PepperApp.Services;
 
 namespace PepperApp.Test
 {
@@ -18,14 +19,14 @@ namespace PepperApp.Test
         {
             TestContext?.WriteLine("Validates that PepperHeatClass returns as mild.");
 
-            Pepper pep = new()
+            PepperDto pep = new()
             {
                 PepperName = "SomeMildPepper",
                 PepperScovilleUnitMinimum = 0,
                 PepperScovilleUnitMaximum = 5000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "mild";
 
@@ -40,14 +41,14 @@ namespace PepperApp.Test
         {
             TestContext?.WriteLine("Validates that PepperHeatClass returns as medium.");
 
-            Pepper pep = new()
+            PepperDto pep = new()
             {
                 PepperName = "SomeMediumPepper",
                 PepperScovilleUnitMinimum = 5001,
                 PepperScovilleUnitMaximum = 15000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "medium";
 
@@ -62,14 +63,14 @@ namespace PepperApp.Test
         {
             TestContext?.WriteLine("Validates that PepperHeatClass returns as medium.");
 
-            Pepper pep = new()
+            PepperDto pep = new()
             {
                 PepperName = "SomeMediumHotPepper",
                 PepperScovilleUnitMinimum = 15001,
                 PepperScovilleUnitMaximum = 100000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "medium-hot";
 
@@ -84,14 +85,14 @@ namespace PepperApp.Test
         {
             TestContext?.WriteLine("Validates that PepperHeatClass returns as hot.");
 
-            Pepper pep = new()
+            PepperDto pep = new()
             {
                 PepperName = "SomeHotPepper",
                 PepperScovilleUnitMinimum = 100001,
                 PepperScovilleUnitMaximum = 350000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "hot";
 
@@ -106,14 +107,14 @@ namespace PepperApp.Test
         {
             TestContext?.WriteLine("Validates that PepperHeatClass returns as super-hot.");
 
-            Pepper pep = new()
+            PepperDto pep = new()
             {
                 PepperName = "SomeSuperHotPepper",
                 PepperScovilleUnitMinimum = 350001,
                 PepperScovilleUnitMaximum = 1000000
             };
 
-            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "super-hot";
 

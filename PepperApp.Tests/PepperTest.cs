@@ -1,4 +1,4 @@
-﻿using PepperApp.Entities;
+﻿using PepperApp.DataTransferObject;
 
 namespace PepperApp.Test
 {
@@ -11,7 +11,7 @@ namespace PepperApp.Test
         {
             TestContext?.WriteLine("Validating that values passed are written to console as expected.");
 
-            Pepper pep = new()
+            PepperDto pep = new()
             {
                 PepperName = "SomePepper",
                 PepperScovilleUnitMinimum = 1000,
@@ -31,14 +31,14 @@ namespace PepperApp.Test
         {
             TestContext?.WriteLine("Validating that object added is a type of Pepper.");
 
-            Pepper pep = new()
+            PepperDto pep = new()
             {
                 PepperName = "SomePepper",
                 PepperScovilleUnitMinimum = 1000,
                 PepperScovilleUnitMaximum = 5000
             };
 
-            Assert.IsInstanceOfType(pep, typeof(Pepper));
+            Assert.IsInstanceOfType(pep, typeof(PepperDto));
         }
     }
 }
