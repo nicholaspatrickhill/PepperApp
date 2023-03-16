@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using PepperApp.Dto;
+using PepperApp.DataTransferObject;
 
 namespace PepperApp.Validators
 {

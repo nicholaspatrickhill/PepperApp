@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PepperApp.Dto;
+using PepperApp.DataTransferObject;
 using PepperApp.Services;
 
 namespace PepperApp.Controllers

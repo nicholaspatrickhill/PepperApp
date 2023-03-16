@@ -1,4 +1,4 @@
-﻿using PepperApp.Dto;
+﻿using PepperApp.DataTransferObject;
 
 namespace PepperApp.Services
 {
