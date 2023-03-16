@@ -1,4 +1,5 @@
-﻿using PepperApp.Repositories;
+﻿using AutoMapper;
+using PepperApp.Repositories;
 using PepperApp.Services;
 using Serilog;
 using static System.Console;
@@ -7,8 +8,9 @@ namespace PepperApp.UI
 {
     public class MainMenu
     {
+        private static readonly IMapper? _mapper;
         private static readonly PepperRepository _pepperRepository = new PepperRepository();
-        private static readonly PepperService _pepperService = new PepperService(_pepperRepository);
+        private static readonly PepperService _pepperService = new PepperService(_pepperRepository, _mapper!);
 
         public static void Start()
         {

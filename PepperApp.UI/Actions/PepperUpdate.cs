@@ -15,7 +15,7 @@ namespace PepperApp.UI
 
             WriteLine("Which pepper would you like to update?");
 
-            var pepperToUpdate = new Pepper();
+            var pepperToUpdate = new PepperDto();
 
             string? pepperNameInput = ReadLine();
 

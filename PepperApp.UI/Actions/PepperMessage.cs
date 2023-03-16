@@ -7,9 +7,9 @@ namespace PepperApp.UI
     public class PepperMessage
     {
         // Console message that displays information about a pepper in the database
-        public static void PrintPepperDetails(Pepper pepper)
+        public static void PrintPepperDetails(PepperDto pepperDto)
         {
-            WriteLine($"The {pepper.PepperName} is a {pepper.PepperHeatClass} pepper with SHU rating of {pepper.PepperScovilleUnitMinimum} - {pepper.PepperScovilleUnitMaximum}");
+            WriteLine($"The {pepperDto.PepperName} is a {pepperDto.PepperHeatClass} pepper with SHU rating of {pepperDto.PepperScovilleUnitMinimum} - {pepperDto.PepperScovilleUnitMaximum}");
         }
     }
 }

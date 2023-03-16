@@ -4,15 +4,15 @@ namespace PepperApp.Services
 {
     public interface IPepperService
     {
-        Task AddPepperServiceAsync(string? pepperName, int? pepperScovilleUnitMin, int? pepperScovilleUnitMax);
-        Task<List<Pepper>> GetAllPeppersServiceAsync();
-        Task<List<Pepper>> GetHotPeppersServiceAsync();
-        Task<List<Pepper>> GetMediumHotPeppersServiceAsync();
-        Task<List<Pepper>> GetMediumPeppersServiceAsync();
-        Task<List<Pepper>> GetMildPeppersServiceAsync();
-        Task<Pepper?> GetPepperByNameServiceAsync(string pepperName);
-        Task<List<Pepper>> GetSuperHotPeppersServiceAsync();
-        Task RemovePepperServiceAsync(Pepper pepperToRemove);
-        Task UpdatePepperServiceAsync(Pepper updatedPepper);
+        Task AddPepperServiceAsync(PepperDto pepperDto);
+        Task<List<PepperDto>> GetAllPeppersServiceAsync();
+        Task<List<PepperDto>> GetHotPeppersServiceAsync();
+        Task<List<PepperDto>> GetMediumHotPeppersServiceAsync();
+        Task<List<PepperDto>> GetMediumPeppersServiceAsync();
+        Task<List<PepperDto>> GetMildPeppersServiceAsync();
+        Task<PepperDto?> GetPepperByNameServiceAsync(string pepperName);
+        Task<List<PepperDto>> GetSuperHotPeppersServiceAsync();
+        Task RemovePepperServiceAsync(PepperDto pepperToRemove);
+        Task UpdatePepperServiceAsync(PepperDto updatedPepperDTO);
     }
 }

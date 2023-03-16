@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Azure.Identity;
+using Microsoft.AspNetCore.Mvc;
 using PepperApp.Entities;
 using PepperApp.Services;
 
 namespace PepperApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PepperController : ControllerBase
     {
         private readonly IPepperService _pepperService;
@@ -15,74 +16,80 @@ namespace PepperApp.Controllers
             _pepperService = pepperService;
         }
 
-        [HttpGet("{pepperName}")]
-        public async Task<ActionResult<Pepper>> GetPepperByName(string pepperName)
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllPeppers()
         {
-            var result = await _pepperService.GetPepperByNameServiceAsync(pepperName);
-            return Ok(result);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AddPepper([FromBody] Pepper pepperToAdd)
-        {
-            await _pepperService.AddPepperServiceAsync(pepperToAdd.PepperName, pepperToAdd.PepperScovilleUnitMinimum, pepperToAdd.PepperScovilleUnitMaximum);
-            return Ok();
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<List<Pepper>>> GetAllPeppers()
-        {
-            var result = await _pepperService.GetAllPeppersServiceAsync();
-            return Ok(result);
-        }
-
-        [HttpDelete]
-        public async Task<IActionResult> RemovePepper([FromBody] Pepper pepperToRemove)
-        {
-            await _pepperService.RemovePepperServiceAsync(pepperToRemove);
-            return Ok();
-        }
-
-        [HttpPut]
-        public async Task<IActionResult> UpdatePepper([FromBody] Pepper updatedPepper)
-        {
-            await _pepperService.UpdatePepperServiceAsync(updatedPepper);
-            return Ok();
+            var peppers = await _pepperService.GetAllPeppersServiceAsync();
+            return Ok(peppers);
         }
 
         [HttpGet("mild")]
-        public async Task<ActionResult<List<Pepper>>> GetMildPeppers()
+        public async Task<IActionResult> GetMildPeppers()
         {
-            var result = await _pepperService.GetMildPeppersServiceAsync();
-            return Ok(result);
+            var peppers = await _pepperService.GetMildPeppersServiceAsync();
+            return Ok(peppers);
         }
 
         [HttpGet("medium")]
-        public async Task<ActionResult<List<Pepper>>> GetMediumPeppers()
+        public async Task<IActionResult> GetMediumPeppers()
         {
-            var result = await _pepperService.GetMediumPeppersServiceAsync();
-            return Ok(result);
+            var peppers = await _pepperService.GetMediumPeppersServiceAsync();
+            return Ok(peppers);
         }
 
-        [HttpGet("medium-hot")]
-        public async Task<ActionResult<List<Pepper>>> GetMediumHotPeppers()
+        [HttpGet("mediumhot")]
+        public async Task<IActionResult> GetMediumHotPeppers()
         {
-            var result = await _pepperService.GetMediumHotPeppersServiceAsync();
-            return Ok(result);
+            var peppers = await _pepperService.GetMediumHotPeppersServiceAsync();
+            return Ok(peppers);
         }
 
         [HttpGet("hot")]
-        public async Task<ActionResult<List<Pepper>>> GetHotPeppers()
+        public async Task<IActionResult> GetHotPeppers()
         {
-            var result = await _pepperService.GetHotPeppersServiceAsync();
-            return Ok(result);
+            var peppers = await _pepperService.GetHotPeppersServiceAsync();
+            return Ok(peppers);
         }
 
-        [HttpGet("super-hot")]
-        public async Task<ActionResult<List<Pepper>>> GetSuperHotPeppers()
+        [HttpGet("superhot")]
+        public async Task<IActionResult> GetSuperHotPeppers()
         {
-            var result = await _pepperService.GetSuperHotPeppersServiceAsync();
-            return Ok(result);
+            var peppers = await _pepperService.GetSuperHotPeppersServiceAsync();
+            return Ok(peppers);
+        }
+
+        [HttpGet("{pepperName}")]
+        public async Task<IActionResult> GetPepperByName(string pepperName)
+        {
+            var pepper = await _pepperService.GetPepperByNameServiceAsync(pepperName);
+            if (pepper == null)
+            {
+                return NotFound();
+            }
+            return Ok(pepper);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddPepper([FromBody] PepperDto pepperDto)
+        {
+            await _pepperService.AddPepperServiceAsync(pepperDto);
+            return Ok();
+        }     
+
+        [HttpPut("{pepperName}")]
+        public async Task<IActionResult> UpdatePepper(string pepperName, [FromBody] PepperDto updatedPepperDto)
+        {
+            await _pepperService.UpdatePepperServiceAsync(updatedPepperDto);
+            return Ok();
+        }
+
+        [HttpDelete("{pepperName}")]
+        public async Task<IActionResult> RemovePepper(string pepperName)
+        {
+            var pepperToRemove = await _pepperService.GetPepperByNameServiceAsync(pepperName);
+
+            await _pepperService.RemovePepperServiceAsync(pepperToRemove!);
+            return Ok();
         }
     }
 }

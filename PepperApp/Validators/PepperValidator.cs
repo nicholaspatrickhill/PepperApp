@@ -3,7 +3,7 @@ using PepperApp.Entities;
 
 namespace PepperApp.Validators
 {
-    public class PepperValidator : AbstractValidator<Pepper>
+    public class PepperValidator : AbstractValidator<PepperDto>
     {
         public PepperValidator()
         {

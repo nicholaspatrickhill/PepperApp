@@ -13,7 +13,7 @@ namespace PepperApp.UI
         {
             Clear();
 
-            var pepper = new Pepper();
+            var pepper = new PepperDto();
             int shuMinValue;
             string properCasePepperName = "";
 
@@ -68,7 +68,7 @@ namespace PepperApp.UI
 
                         try
                         {
-                            await pepperService.AddPepperServiceAsync(properCasePepperName, shuMinValue, shuMaxValue);
+                            await pepperService.AddPepperServiceAsync(pepper);
                             WriteLine($"You added {pepper.PepperName} to the database");
                             MainMenu.StartOver();
                         }

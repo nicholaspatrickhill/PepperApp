@@ -3,6 +3,7 @@ using Microsoft.OpenApi.Models;
 using PepperApp.Data;
 using PepperApp.Repositories;
 using PepperApp.Services;
+using AutoMapper;
 
 namespace PepperApp.API
 {
@@ -28,6 +29,8 @@ namespace PepperApp.API
             //services.AddScoped<IPepperRepository>(provider => provider.GetService<PepperRepository>()!);
 
             services.AddScoped<IPepperService, PepperService>();
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
 

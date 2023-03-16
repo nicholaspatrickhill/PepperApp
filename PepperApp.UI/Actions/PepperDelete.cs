@@ -28,7 +28,7 @@ namespace PepperApp.UI
                 TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
                 string properCasePepperName = textInfo.ToTitleCase(pepperName.ToLower());
 
-                var pepperToRemove = new Pepper
+                var pepperToRemove = new PepperDto
                 {
                     PepperName = properCasePepperName
                 };
