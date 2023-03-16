@@ -19,7 +19,6 @@ namespace PepperApp.UI
             if (string.IsNullOrEmpty(pepperName))
             {
                 WriteLine("Invalid input. Pepper name cannot be empty.");
-                Log.Error("Invalid input. Pepper name was empty.");
                 MainMenu.StartOver();
             }
             else
@@ -42,13 +41,11 @@ namespace PepperApp.UI
                 catch (ArgumentException ex)
                 {
                     WriteLine(ex.Message);
-                    Log.Error($"{ex.Message}");
                     MainMenu.StartOver();
                 }
                 catch (InvalidOperationException ex)
                 {
                     WriteLine(ex.Message);
-                    Log.Error($"Deletion of read-only pepper was attempted: {pepperToRemove.PepperName}.");
                     MainMenu.StartOver();
                 }
             }

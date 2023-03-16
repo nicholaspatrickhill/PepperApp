@@ -8,7 +8,7 @@ namespace PepperApp.UI
         static void Main(string[] args)
         {
             Title = "Pepper!";
-            ErrorLoggerService.StartLogger();
+            LoggerService.StartLogger();
             MainMenu.Start();
         }
     }

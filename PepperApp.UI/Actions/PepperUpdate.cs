@@ -36,13 +36,11 @@ namespace PepperApp.UI
                 if (existingPepper == null)
                 {
                     WriteLine($"The pepper '{pepperToUpdate.PepperName}' does not exist in the database.");
-                    Log.Error($"{pepperToUpdate.PepperName} was not in the database.");
                     MainMenu.StartOver();
                 }
                 if (existingPepper!.IsReadOnly)
                 {
                     WriteLine($"That pepper is read-only and cannot be updated.");
-                    Log.Error($"Update to read-only pepper was attempted: {existingPepper.PepperName}.");
                     MainMenu.StartOver();
                 }
 
@@ -82,7 +80,6 @@ namespace PepperApp.UI
                     else
                     {
                         WriteLine("Invalid input. Please enter a number.");
-                        Log.Error($"Invalid input. Pepper minimum SHU rating was entered as {userShuMinInput}.");
                     }
                 }
 
@@ -105,7 +102,6 @@ namespace PepperApp.UI
                     else
                     {
                         WriteLine("Invalid input. Please enter a number.");
-                        Log.Error($"Invalid input. Pepper maximum SHU rating was entered as {userShuMaxInput}.");
                     }
                 }
 

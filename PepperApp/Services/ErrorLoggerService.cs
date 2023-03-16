@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PepperApp.Services
 {
-    public class ErrorLoggerService
+    public class LoggerService
     {
         public static void StartLogger()
         {
@@ -24,7 +24,7 @@ namespace PepperApp.Services
             Log.Logger = new LoggerConfiguration()
              .MinimumLevel.Debug()
              .WriteTo.File(logPath,
-                rollingInterval: RollingInterval.Day,
+                rollingInterval: RollingInterval.Month,
                 outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
 
              .CreateLogger();

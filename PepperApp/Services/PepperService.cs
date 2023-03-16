@@ -4,6 +4,7 @@ using PepperApp.DataTransferObject;
 using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Validators;
+using Serilog;
 
 namespace PepperApp.Services
 {
@@ -33,7 +34,8 @@ namespace PepperApp.Services
 
             if (result == null)
             {
-                throw new ArgumentException($"No pepper by that name was found in the database.");
+                Log.Error($"No pepper with the specified name was found in the database.");
+                throw new ArgumentException($"No pepper by that name was found in the database.");              
             }
 
             return _mapper.Map<PepperDto>(result);
@@ -45,6 +47,7 @@ namespace PepperApp.Services
             var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperDto.PepperName!);
             if (existingPepper?.PepperName != null)
             {
+                Log.Error($"Creation failed. A pepper with that name already exists in the database: {pepperDto.PepperName}");
                 throw new ArgumentException("A pepper with that name already exists in the database.");
             }
 
@@ -53,9 +56,11 @@ namespace PepperApp.Services
 
             if (!results.IsValid)
             {
+                Log.Error($"Creation failed. Validation Error: {string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
                 throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
             }
 
+            Log.Information($"Pepper was added to the database: {pepperDto.PepperName}");
             var pepper = _mapper.Map<Pepper>(pepperDto);
             pepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
             await _pepperRepository.AddPepperAsync(pepper);
@@ -75,14 +80,17 @@ namespace PepperApp.Services
 
             if (existingPepper == null)
             {
+                Log.Error($"Removal failed. No pepper with the specified name was found in the database.");
                 throw new ArgumentException("No pepper with the specified name was found in the database.");
             }
 
             if (existingPepper.IsReadOnly)
             {
+                Log.Error($"Removal failed. That pepper is read-only and cannot be removed from the database: {existingPepper.PepperName}");
                 throw new InvalidOperationException("That pepper is read-only and cannot be removed from the database.");
             }
 
+            Log.Information($"Pepper was removed from the database: {pepperToRemove.PepperName}");
             var pepper = _mapper.Map<Pepper>(pepperToRemove);
             await _pepperRepository.RemovePepperAsync(pepper);
         }
@@ -90,15 +98,19 @@ namespace PepperApp.Services
         // Validates the pepper to be updated and then calls the update method from the repository
         public async Task UpdatePepperServiceAsync(PepperDto updatedPepperDto)
         {
-            var existingPepper = await _pepperRepository.GetPepperByIdAsync(updatedPepperDto.PepperId);
+            //var existingPepper = await _pepperRepository.GetPepperByIdAsync(updatedPepperDto.PepperId);
+
+            var existingPepper = await _pepperRepository.GetPepperByNameAsync(updatedPepperDto.PepperName!);
 
             if (existingPepper == null)
             {
+                Log.Error($"Update failed. No pepper with the specified name was found in the database.");
                 throw new ArgumentException("No pepper with the specified name was found in the database.");
             }
 
             if (existingPepper.IsReadOnly)
             {
+                Log.Error($"Updated failed. That pepper is read-only and cannot be updated: {existingPepper.PepperName}");
                 throw new InvalidOperationException("That pepper is read-only and cannot be updated in the database.");
             }
 
@@ -107,6 +119,7 @@ namespace PepperApp.Services
 
             if (!results.IsValid)
             {
+                Log.Error($"Update failed. Validation Error: {string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
                 throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
             }
 
@@ -114,6 +127,8 @@ namespace PepperApp.Services
             existingPepper.PepperScovilleUnitMinimum = updatedPepperDto.PepperScovilleUnitMinimum;
             existingPepper.PepperScovilleUnitMaximum = updatedPepperDto.PepperScovilleUnitMaximum;
             existingPepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(updatedPepperDto.PepperScovilleUnitMaximum);
+
+            Log.Information($"Pepper was updated: {updatedPepperDto.PepperName}");
 
             var pepper = _mapper.Map<Pepper>(updatedPepperDto);
 

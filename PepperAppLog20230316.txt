@@ -1,2 +1,0 @@
-2023-03-16 18:37:25.034 -04:00 [ERR] Invalid input. Pepper name was empty.
-2023-03-16 18:37:30.830 -04:00 [ERR] Deletion of read-only pepper was attempted: Cayenne.
