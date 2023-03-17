@@ -1,15 +1,11 @@
-﻿using AutoMapper;
-using PepperApp.Repositories;
-using PepperApp.Services;
+﻿using PepperApp.Services;
 using static System.Console;
 
 namespace PepperApp.UI
 {
     public class PepperByHeatClassList
     {
-        private static readonly IMapper? _mapper;
-        private static readonly PepperRepository _pepperRepository = new PepperRepository();
-        private static readonly PepperService _pepperService = new PepperService(_pepperRepository, _mapper!);
+        private static readonly PepperService _pepperService = new PepperService();
 
         public static void DisplayHeatClassMenu()
         {

@@ -13,11 +13,23 @@ namespace PepperApp.Services
         private readonly PepperRepository _pepperRepository;
         private readonly IMapper _mapper;
 
-        public PepperService(PepperRepository pepperRepository, IMapper mapper)
-        {
-            _pepperRepository = pepperRepository;
-            _mapper = mapper;
+        //public PepperService(PepperRepository pepperRepository, IMapper mapper)
+        //{
+        //    _pepperRepository = pepperRepository;
+        //    _mapper = mapper;
 
+        //    var config = new MapperConfiguration(cfg =>
+        //    {
+        //        cfg.CreateMap<Pepper, PepperDto>();
+        //        cfg.CreateMap<PepperDto, Pepper>();
+        //    });
+
+        //    _mapper = config.CreateMapper();
+        //}
+        //
+
+        public PepperService()
+        {
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Pepper, PepperDto>();
@@ -25,7 +37,8 @@ namespace PepperApp.Services
             });
 
             _mapper = config.CreateMapper();
-        }            
+            _pepperRepository = new PepperRepository();
+        }
 
         // Calls method from the repository to get pepper by name
         public async Task<PepperDto?> GetPepperByNameServiceAsync(string pepperName)
