@@ -56,7 +56,7 @@ namespace PepperApp.UI
 
             var peppers = await pepperService.GetMildPeppersServiceAsync();
 
-            peppers.ForEach(p => WriteLine(PepperMessage.PrintPepperDetails(p)));
+            peppers.ForEach(p => WriteLine(PepperDetails.PepperDetailsString(p)));
 
             StartOver();
         }
@@ -67,7 +67,7 @@ namespace PepperApp.UI
 
             var peppers = await pepperService.GetMediumPeppersServiceAsync();
 
-            peppers.ForEach(p => WriteLine(PepperMessage.PrintPepperDetails(p)));
+            peppers.ForEach(p => WriteLine(PepperDetails.PepperDetailsString(p)));
 
             StartOver();
         }
@@ -78,7 +78,7 @@ namespace PepperApp.UI
 
             var peppers = await pepperService.GetMediumHotPeppersServiceAsync();
 
-            peppers.ForEach(p => WriteLine(PepperMessage.PrintPepperDetails(p)));
+            peppers.ForEach(p => WriteLine(PepperDetails.PepperDetailsString(p)));
 
             StartOver();
         }
@@ -89,7 +89,7 @@ namespace PepperApp.UI
 
             var peppers = await pepperService.GetHotPeppersServiceAsync();
 
-            peppers.ForEach(p => WriteLine(PepperMessage.PrintPepperDetails(p)));
+            peppers.ForEach(p => WriteLine(PepperDetails.PepperDetailsString(p)));
 
             StartOver();
         }
@@ -100,7 +100,7 @@ namespace PepperApp.UI
 
             var peppers = await pepperService.GetSuperHotPeppersServiceAsync();
 
-            peppers.ForEach(p => WriteLine(PepperMessage.PrintPepperDetails(p)));
+            peppers.ForEach(p => WriteLine(PepperDetails.PepperDetailsString(p)));
 
             StartOver();
         }

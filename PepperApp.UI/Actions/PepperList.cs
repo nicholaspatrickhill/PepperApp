@@ -12,19 +12,28 @@ namespace PepperApp.UI
 
             var peppers = await pepperService.GetAllPeppersServiceAsync();
 
-            //peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
-            peppers.ForEach(p => WriteLine(PepperMessage.PrintPepperDetails(p)));
+            peppers.ForEach(p => WriteLine(PepperDetails.PepperDetailsString(p)));
 
             MainMenu.StartOver();
         }
 
-        public static async Task SaveAllPeppersToTextFile(PepperService pepperService, string filePath)
+        public static async Task SaveAllPeppersToTextFile(PepperService pepperService)
         {
             var peppers = await pepperService.GetAllPeppersServiceAsync();
 
+            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            var parentDirectory = new DirectoryInfo(baseDirectory);
+
+            while (parentDirectory != null && parentDirectory.Name != "PepperApp")
+            {
+                parentDirectory = Directory.GetParent(parentDirectory.FullName);
+            }
+
+            var filePath = Path.Combine(parentDirectory?.FullName!, "PepperAppList.txt");
+
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                peppers.ForEach((p) => writer.WriteLine(PepperMessage.PrintPepperDetails((p))));
+                peppers.ForEach((p) => writer.WriteLine(PepperDetails.PepperDetailsString((p))));
             }           
 
             Clear();

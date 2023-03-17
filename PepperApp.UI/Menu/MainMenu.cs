@@ -29,6 +29,7 @@ namespace PepperApp.UI
                 "Add a pepper",
                 "Update a pepper",
                 "Remove a pepper",
+                "Save list of peppers to a text file",
                 "About this app",
                 "Exit"
             };
@@ -57,9 +58,12 @@ namespace PepperApp.UI
                     RemoveAPepper(_pepperService);
                     break;
                 case 6:
-                    AboutThisApp();
+                    SaveListOfPeppersToATextFile(_pepperService);
                     break;
                 case 7:
+                    AboutThisApp();
+                    break;           
+                case 8:
                     Exit();
                     break;
             }
@@ -93,6 +97,11 @@ namespace PepperApp.UI
         private static void RemoveAPepper(PepperService pepperService)
         {
             _ = PepperDelete.RemoveAPepper(pepperService);
+        }
+
+        private static void SaveListOfPeppersToATextFile(PepperService pepperService)
+        {
+            _ = PepperList.SaveAllPeppersToTextFile(pepperService);
         }
 
         private static void AboutThisApp()
