@@ -13,21 +13,6 @@ namespace PepperApp.Services
         private readonly PepperRepository _pepperRepository;
         private readonly IMapper _mapper;
 
-        //public PepperService(PepperRepository pepperRepository, IMapper mapper)
-        //{
-        //    _pepperRepository = pepperRepository;
-        //    _mapper = mapper;
-
-        //    var config = new MapperConfiguration(cfg =>
-        //    {
-        //        cfg.CreateMap<Pepper, PepperDto>();
-        //        cfg.CreateMap<PepperDto, Pepper>();
-        //    });
-
-        //    _mapper = config.CreateMapper();
-        //}
-        //
-
         public PepperService()
         {
             var config = new MapperConfiguration(cfg =>
@@ -48,7 +33,7 @@ namespace PepperApp.Services
             if (result == null)
             {
                 Log.Error($"No pepper with the specified name was found in the database.");
-                throw new ArgumentException($"No pepper by that name was found in the database.");              
+                throw new ArgumentException($"Pepper was unable to be retrieved from the database: No pepper by that name was found in the database.");              
             }
 
             return _mapper.Map<PepperDto>(result);

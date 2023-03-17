@@ -5,3 +5,5 @@
 2023-03-17 16:30:27.880 -04:00 [ERR] Update failed. That pepper is read-only and cannot be updated: Cayenne
 2023-03-17 16:30:32.286 -04:00 [ERR] Removal failed. That pepper is read-only and cannot be removed from the database: Jalapeno
 2023-03-17 16:30:35.740 -04:00 [INF] Pepper was removed from the database: Testpepper2
+2023-03-17 16:33:29.112 -04:00 [ERR] View failed due to invalid input. Pepper name cannot be empty.
+2023-03-17 16:33:33.771 -04:00 [ERR] No pepper with the specified name was found in the database.
