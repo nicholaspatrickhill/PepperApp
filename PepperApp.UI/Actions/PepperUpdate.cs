@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Query;
 using PepperApp.DataTransferObject;
 using PepperApp.Services;
+using Serilog;
 using System.Globalization;
 using static System.Console;
 
@@ -41,6 +42,7 @@ namespace PepperApp.UI
                 if (existingPepper!.IsReadOnly)
                 {
                     WriteLine($"That pepper is read-only and cannot be updated.");
+                    Log.Error($"Update failed. That pepper is read-only and cannot be updated: {pepperToUpdate.PepperName}");
                     MainMenu.StartOver();
                 }
 

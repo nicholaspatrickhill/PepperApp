@@ -45,7 +45,6 @@ namespace PepperApp.UI
                 catch (ArgumentException ex)
                 {
                     WriteLine(ex.Message);
-
                     MainMenu.StartOver();
                 }
             }
