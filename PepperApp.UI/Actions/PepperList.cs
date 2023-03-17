@@ -1,4 +1,5 @@
-﻿using PepperApp.Services;
+﻿using PepperApp.DataTransferObject;
+using PepperApp.Services;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -11,28 +12,24 @@ namespace PepperApp.UI
 
             var peppers = await pepperService.GetAllPeppersServiceAsync();
 
-            peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
+            //peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
+            peppers.ForEach(p => WriteLine(PepperMessage.PrintPepperDetails(p)));
 
             MainMenu.StartOver();
         }
 
-        //public static void SaveAllPeppersToTextFile(PepperService pepperService, Pepper pepper)
-        //{
-        //    var peppers = pepperService.GetAllPeppersServiceAsync().Result;
+        public static async Task SaveAllPeppersToTextFile(PepperService pepperService, string filePath)
+        {
+            var peppers = await pepperService.GetAllPeppersServiceAsync();
 
-        //    var pepperList = new List<string>();
+            using (StreamWriter writer = new StreamWriter(filePath))
+            {
+                peppers.ForEach((p) => writer.WriteLine(PepperMessage.PrintPepperDetails((p))));
+            }           
 
-        //    peppers.ForEach(p =>
-        //    {
-        //        string v = $"The {pepper.PepperName} is a {pepper.PepperHeatClass} pepper with SHU rating of {pepper.PepperScovilleUnitMinimum} - {pepper.PepperScovilleUnitMaximum}";
-        //        pepperList.Add(v);
-        //    });
-
-        //    File.WriteAllLines(@"C:\temp\PepperList.txt", pepperList);
-
-        //    Clear();
-        //    WriteLine("The list of peppers has been saved to a text file.");
-        //    MainMenu.StartOver();
-        //}
+            Clear();
+            WriteLine("The list of peppers has been saved to a text file.");
+            MainMenu.StartOver();
+        }
     }
 }
