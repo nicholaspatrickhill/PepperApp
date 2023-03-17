@@ -19,6 +19,7 @@ namespace PepperApp.UI
             if (string.IsNullOrEmpty(pepperName))
             {
                 WriteLine("Invalid input. Pepper name cannot be empty.");
+                Log.Error("View failed due to invalid input. Pepper name cannot be empty.");
                 MainMenu.StartOver();
             }
             else

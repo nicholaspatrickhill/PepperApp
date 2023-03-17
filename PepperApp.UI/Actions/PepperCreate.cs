@@ -26,6 +26,7 @@ namespace PepperApp.UI
                 if (string.IsNullOrEmpty(pepperName))
                 {
                     WriteLine("Invalid input. Pepper name cannot be empty.");
+                    Log.Error("Creation failed: Input was invalid. Pepper name cannot be empty.");
                     MainMenu.StartOver();
                 }
                 else
@@ -51,6 +52,7 @@ namespace PepperApp.UI
                     else
                     {
                         WriteLine("Invalid input. Please enter a number.");
+                        Log.Error("Creation error: Invalid input. Minimum Scoville Heat Unit rating was not a number");
                     }
                 }
 
@@ -79,6 +81,7 @@ namespace PepperApp.UI
                     else
                     {
                         WriteLine("Invalid input. Please enter a number.");
+                        Log.Error("Creation error: Invalid input. Minimum Scoville Heat Unit rating was not a number");
                     }
                 }
             }

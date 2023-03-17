@@ -23,6 +23,7 @@ namespace PepperApp.UI
             if (string.IsNullOrEmpty(pepperNameInput))
             {
                 WriteLine("Invalid input. Pepper name cannot be empty.");
+                Log.Error("Update failed due to invalid input. Pepper name cannot be empty.");
                 MainMenu.StartOver();
             }
 
@@ -37,6 +38,7 @@ namespace PepperApp.UI
                 if (existingPepper == null)
                 {
                     WriteLine($"The pepper '{pepperToUpdate.PepperName}' does not exist in the database.");
+                    Log.Error($"Update failed. No pepper with the specified name exists in the database.");
                     MainMenu.StartOver();
                 }
                 if (existingPepper!.IsReadOnly)
@@ -82,6 +84,7 @@ namespace PepperApp.UI
                     else
                     {
                         WriteLine("Invalid input. Please enter a number.");
+                        Log.Error("Update error: Invalid input. Minimum Scoville Heat Unit rating was not a number");
                     }
                 }
 
@@ -104,6 +107,7 @@ namespace PepperApp.UI
                     else
                     {
                         WriteLine("Invalid input. Please enter a number.");
+                        Log.Error("Update error: Invalid input. Maximum Scoville Heat Unit rating was not a number");
                     }
                 }
 
