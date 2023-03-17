@@ -6,10 +6,10 @@ using static System.Console;
 
 namespace PepperApp.UI
 {
-    public class PepperAdd
+    public class PepperCreate
     {
         // Takes user input to add the new pepper to the database
-        public static async Task AddNewPepper(PepperService pepperService)
+        public static async Task CreateNewPepper(PepperService pepperService)
         {
             Clear();
 
@@ -66,7 +66,7 @@ namespace PepperApp.UI
 
                         try
                         {
-                            await pepperService.AddPepperServiceAsync(pepper);
+                            await pepperService.CreatePepperServiceAsync(pepper);
                             WriteLine($"You added {pepper.PepperName} to the database");
                             MainMenu.StartOver();
                         }

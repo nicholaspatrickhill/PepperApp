@@ -1,6 +1,6 @@
-2023-03-16 19:37:40.546 -04:00 [INF] Pepper was updated: Testpepper
-2023-03-16 19:38:06.904 -04:00 [ERR] No pepper with the specified name was found in the database.
-2023-03-16 19:38:48.305 -04:00 [ERR] Removal failed. That pepper is read-only and cannot be removed from the database: Cayenne
-2023-03-16 19:41:42.611 -04:00 [ERR] No pepper with the specified name was found in the database.
-2023-03-16 19:42:37.476 -04:00 [ERR] Removal failed. That pepper is read-only and cannot be removed from the database: Cayenne
-2023-03-16 19:42:43.618 -04:00 [ERR] No pepper with the specified name was found in the database.
+2023-03-16 20:39:37.219 -04:00 [ERR] No pepper with the specified name was found in the database.
+2023-03-16 20:39:44.467 -04:00 [ERR] Removal failed. That pepper is read-only and cannot be removed from the database: Cayenne
+2023-03-16 20:40:09.129 -04:00 [ERR] No pepper with the specified name was found in the database.
+2023-03-16 20:46:09.396 -04:00 [ERR] Creation failed. Validation Error: 'Pepper Scoville Unit Maximum' must be greater than or equal to '24000'.
+2023-03-16 20:46:20.002 -04:00 [INF] Pepper was added to the database: Testpepper
+2023-03-16 20:46:26.281 -04:00 [INF] Pepper was removed from the database: Testpepper

@@ -71,14 +71,14 @@ namespace PepperApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPepper([FromBody] PepperDto pepperDto)
         {
-            await _pepperService.AddPepperServiceAsync(pepperDto);
+            await _pepperService.CreatePepperServiceAsync(pepperDto);
             return Ok();
         }
 
         [HttpPut("{pepperName}")]
-        public async Task<IActionResult> UpdatePepper(string pepperName, [FromBody] PepperDto updatedPepperDto)
+        public async Task<IActionResult> UpdatePepper(string pepperName, [FromBody] PepperDto pepperToUpdate)
         {
-            await _pepperService.UpdatePepperServiceAsync(updatedPepperDto);
+            await _pepperService.UpdatePepperServiceAsync(pepperToUpdate);
             return Ok();
         }
 

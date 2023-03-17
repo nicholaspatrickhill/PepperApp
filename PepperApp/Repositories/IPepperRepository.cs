@@ -4,7 +4,7 @@ namespace PepperApp.Repositories
 {
     public interface IPepperRepository
     {
-        Task AddPepperAsync(Pepper pepper);
+        Task CreatePepperAsync(Pepper pepper);
         void Dispose();
         Task<List<Pepper>> GetAllPeppersAsync();
         Task<List<Pepper>> GetHotPeppersAsync();

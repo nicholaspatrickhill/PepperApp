@@ -34,7 +34,7 @@ namespace PepperApp.Repositories
         }
 
         // Adds a pepper to the database
-        public async Task AddPepperAsync(Pepper pepper)
+        public async Task CreatePepperAsync(Pepper pepper)
         {
             await _context.Peppers.AddAsync(pepper);
             await _context.SaveChangesAsync();

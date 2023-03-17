@@ -42,7 +42,7 @@ namespace PepperApp.Services
         }
 
         // Validates pepper to be added then calls the add method from the repository
-        public async Task AddPepperServiceAsync(PepperDto pepperDto)
+        public async Task CreatePepperServiceAsync(PepperDto pepperDto)
         {
             var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperDto.PepperName!);
             if (existingPepper?.PepperName != null)
@@ -63,7 +63,7 @@ namespace PepperApp.Services
             Log.Information($"Pepper was added to the database: {pepperDto.PepperName}");
             var pepper = _mapper.Map<Pepper>(pepperDto);
             pepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
-            await _pepperRepository.AddPepperAsync(pepper);
+            await _pepperRepository.CreatePepperAsync(pepper);
         }
 
         // Calls repository method to get list of all peppers in the database
@@ -96,11 +96,9 @@ namespace PepperApp.Services
         }
 
         // Validates the pepper to be updated and then calls the update method from the repository
-        public async Task UpdatePepperServiceAsync(PepperDto updatedPepperDto)
+        public async Task UpdatePepperServiceAsync(PepperDto pepperToUpdate)
         {
-            //var existingPepper = await _pepperRepository.GetPepperByIdAsync(updatedPepperDto.PepperId);
-
-            var existingPepper = await _pepperRepository.GetPepperByNameAsync(updatedPepperDto.PepperName!);
+            var existingPepper = await _pepperRepository.GetPepperByIdAsync(pepperToUpdate.PepperId);
 
             if (existingPepper == null)
             {
@@ -115,7 +113,7 @@ namespace PepperApp.Services
             }
 
             var validator = new PepperValidator();
-            ValidationResult results = validator.Validate(updatedPepperDto);
+            ValidationResult results = validator.Validate(pepperToUpdate);
 
             if (!results.IsValid)
             {
@@ -123,14 +121,14 @@ namespace PepperApp.Services
                 throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
             }
 
-            existingPepper.PepperName = updatedPepperDto.PepperName;
-            existingPepper.PepperScovilleUnitMinimum = updatedPepperDto.PepperScovilleUnitMinimum;
-            existingPepper.PepperScovilleUnitMaximum = updatedPepperDto.PepperScovilleUnitMaximum;
-            existingPepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(updatedPepperDto.PepperScovilleUnitMaximum);
+            existingPepper.PepperName = pepperToUpdate.PepperName;
+            existingPepper.PepperScovilleUnitMinimum = pepperToUpdate.PepperScovilleUnitMinimum;
+            existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
+            existingPepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pepperToUpdate.PepperScovilleUnitMaximum);
 
-            Log.Information($"Pepper was updated: {updatedPepperDto.PepperName}");
+            Log.Information($"Pepper was updated: {pepperToUpdate}");
 
-            var pepper = _mapper.Map<Pepper>(updatedPepperDto);
+            var pepper = _mapper.Map<Pepper>(pepperToUpdate);
 
             await _pepperRepository.UpdatePepperAsync(pepper);
         }

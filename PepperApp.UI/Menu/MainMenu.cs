@@ -82,7 +82,7 @@ namespace PepperApp.UI
 
         private static void AddAPepper(PepperService pepperService)
         {
-            _ = PepperAdd.AddNewPepper(pepperService);
+            _ = PepperCreate.CreateNewPepper(pepperService);
         }
 
         private static void UpdateAPepper(PepperService pepperService)
