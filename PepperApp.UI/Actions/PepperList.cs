@@ -1,5 +1,4 @@
-﻿using PepperApp.DataTransferObject;
-using PepperApp.Services;
+﻿using PepperApp.Services;
 using static System.Console;
 
 namespace PepperApp.UI
@@ -34,7 +33,7 @@ namespace PepperApp.UI
             using (StreamWriter writer = new StreamWriter(filePath))
             {
                 peppers.ForEach((p) => writer.WriteLine(PepperDetails.PepperDetailsString((p))));
-            }           
+            }
 
             Clear();
             WriteLine("The list of peppers has been saved to a text file.");

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Query;
-using PepperApp.DataTransferObject;
+﻿using PepperApp.DataTransferObject;
 using PepperApp.Services;
 using Serilog;
 using System.Globalization;
@@ -37,14 +36,14 @@ namespace PepperApp.UI
 
                 if (existingPepper == null)
                 {
-                    WriteLine($"The pepper '{pepperToUpdate.PepperName}' does not exist in the database.");
+                    WriteLine($"No pepper with the specified name was found in the database.");
                     Log.Error($"Update failed. No pepper with the specified name exists in the database.");
                     MainMenu.StartOver();
                 }
                 if (existingPepper!.IsReadOnly)
                 {
                     WriteLine($"That pepper is read-only and cannot be updated.");
-                    Log.Error($"Update failed. That pepper is read-only and cannot be updated: {pepperToUpdate.PepperName}");
+                    Log.Error($"Update failed. That pepper is read-only and cannot be updated: {existingPepper.PepperName}");
                     MainMenu.StartOver();
                 }
 

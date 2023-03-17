@@ -33,7 +33,7 @@ namespace PepperApp.Services
             if (result == null)
             {
                 Log.Error($"No pepper with the specified name was found in the database.");
-                throw new ArgumentException($"Pepper was unable to be retrieved from the database: No pepper by that name was found in the database.");              
+                throw new ArgumentException($"Pepper was unable to be retrieved from the database: No pepper by that name was found in the database.");
             }
 
             return _mapper.Map<PepperDto>(result);

@@ -58,7 +58,7 @@ namespace PepperApp.UI
                     break;
                 case 7:
                     AboutThisApp();
-                    break;           
+                    break;
                 case 8:
                     Exit();
                     break;
