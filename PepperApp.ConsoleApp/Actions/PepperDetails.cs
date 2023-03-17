@@ -1,6 +1,6 @@
 ﻿using PepperApp.DataTransferObject;
 
-namespace PepperApp.UI
+namespace PepperApp.ConsoleApp
 {
     public class PepperDetails
     {

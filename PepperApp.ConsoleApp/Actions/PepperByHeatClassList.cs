@@ -1,7 +1,7 @@
 ﻿using PepperApp.Services;
 using static System.Console;
 
-namespace PepperApp.UI
+namespace PepperApp.ConsoleApp
 {
     public class PepperByHeatClassList
     {

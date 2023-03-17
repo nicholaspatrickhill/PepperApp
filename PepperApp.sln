@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PepperApp", "PepperApp\PepperApp.csproj", "{9E558D08-8D5F-4080-801E-2845B6097F51}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PepperApp.UI", "PepperApp.UI\PepperApp.UI.csproj", "{755C7141-4714-4F1F-AB3C-D9342B72C191}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PepperApp.ConsoleApp", "PepperApp.ConsoleApp\PepperApp.ConsoleApp.csproj", "{755C7141-4714-4F1F-AB3C-D9342B72C191}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PepperApp.Tests", "PepperApp.Tests\PepperApp.Tests.csproj", "{878B2E43-7022-487C-A0E8-DC6AC6C2FD73}"
 EndProject

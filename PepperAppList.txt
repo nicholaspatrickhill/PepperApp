@@ -9,4 +9,5 @@ The Jalapeno is a medium pepper with SHU rating of 2500 - 8000
 The Poblano is a mild pepper with SHU rating of 1000 - 2000
 The Scotch Bonnet is a hot pepper with SHU rating of 100000 - 350000
 The Serrano is a medium-hot pepper with SHU rating of 10000 - 23000
+The Testpepper2 is a medium pepper with SHU rating of 5000 - 8000
 The Thai Chili is a medium-hot pepper with SHU rating of 50000 - 100000

@@ -4,7 +4,7 @@ using Serilog;
 using System.Globalization;
 using static System.Console;
 
-namespace PepperApp.UI
+namespace PepperApp.ConsoleApp
 {
     public class PepperView
     {

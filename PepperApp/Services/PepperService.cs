@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using FluentValidation.Results;
 using PepperApp.DataTransferObject;
 using PepperApp.Entities;
@@ -124,7 +125,7 @@ namespace PepperApp.Services
             existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
             existingPepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pepperToUpdate.PepperScovilleUnitMaximum);
 
-            Log.Information($"Pepper was updated: {pepperToUpdate}");
+            Log.Information($"Pepper was updated: {pepperToUpdate.PepperName}");
 
             var pepper = _mapper.Map<Pepper>(pepperToUpdate);
 
