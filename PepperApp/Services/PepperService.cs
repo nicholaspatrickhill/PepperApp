@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using FluentValidation.Results;
 using PepperApp.DataTransferObject;
 using PepperApp.Entities;
