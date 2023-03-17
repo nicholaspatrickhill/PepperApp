@@ -5,11 +5,11 @@ namespace PepperApp.UI
 {
     public class PepperList
     {
-        public static void ListAllPeppersInDatabase(PepperService pepperService)
+        public static async Task ListAllPeppersInDatabase(PepperService pepperService)
         {
             Clear();
 
-            var peppers = pepperService.GetAllPeppersServiceAsync().Result;
+            var peppers = await pepperService.GetAllPeppersServiceAsync();
 
             peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 

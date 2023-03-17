@@ -50,55 +50,55 @@ namespace PepperApp.UI
             }
         }
 
-        public static void Mild(PepperService pepperService)
+        public static async Task Mild(PepperService pepperService)
         {
             Clear();
 
-            var peppers = pepperService.GetMildPeppersServiceAsync().Result;
+            var peppers = await pepperService.GetMildPeppersServiceAsync();
 
             peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             StartOver();
         }
 
-        private static void Medium(PepperService pepperService)
+        private static async Task Medium(PepperService pepperService)
         {
             Clear();
 
-            var peppers = pepperService.GetMediumPeppersServiceAsync().Result;
+            var peppers = await pepperService.GetMediumPeppersServiceAsync();
 
             peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             StartOver();
         }
 
-        private static void MediumHot(PepperService pepperService)
+        private static async Task MediumHot(PepperService pepperService)
         {
             Clear();
 
-            var peppers = pepperService.GetMediumHotPeppersServiceAsync().Result;
+            var peppers = await pepperService.GetMediumHotPeppersServiceAsync();
 
             peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             StartOver();
         }
 
-        private static void Hot(PepperService pepperService)
+        private static async Task Hot(PepperService pepperService)
         {
             Clear();
 
-            var peppers = pepperService.GetHotPeppersServiceAsync().Result;
+            var peppers = await pepperService.GetHotPeppersServiceAsync();
 
             peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
             StartOver();
         }
 
-        private static void SuperHot(PepperService pepperService)
+        private static async Task SuperHot(PepperService pepperService)
         {
             Clear();
 
-            var peppers = pepperService.GetSuperHotPeppersServiceAsync().Result;
+            var peppers = await pepperService.GetSuperHotPeppersServiceAsync();
 
             peppers.ForEach(p => PepperMessage.PrintPepperDetails(p));
 
