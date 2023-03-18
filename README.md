@@ -25,3 +25,6 @@ CRUD operations are provided for the entities that are managed by the repository
 The services/repository pattern afforded me the opportunity to create two, independent applications.
 One is a CRUD API with a Swagger UI that allows the user to interact with the database over the web.
 The second is a Console application that performs the same functions based on user input.
+
+### DEPENDENCIES
+PepperApp uses several libraries. 

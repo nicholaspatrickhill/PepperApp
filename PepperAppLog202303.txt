@@ -1,0 +1,6 @@
+2023-03-17 21:36:07.046 -04:00 [INF] Pepper was added to the database: Testpepper
+2023-03-17 21:36:14.051 -04:00 [ERR] No pepper with the specified name was found in the database.
+2023-03-17 21:36:25.703 -04:00 [ERR] Creation failed. A pepper with that name already exists in the database: Testpepper
+2023-03-17 21:36:39.760 -04:00 [ERR] Update failed. Validation Error: 'Pepper Scoville Unit Maximum' must be greater than or equal to '500'.
+2023-03-17 21:36:49.495 -04:00 [INF] Pepper was updated: Testpepper2
+2023-03-17 21:36:53.989 -04:00 [INF] Pepper was removed from the database: Testpepper2
