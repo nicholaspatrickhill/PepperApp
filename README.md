@@ -27,4 +27,6 @@ One is a CRUD API with a Swagger UI that allows the user to interact with the da
 The second is a Console application that performs the same functions based on user input.
 
 ### DEPENDENCIES
-PepperApp uses several libraries. 
+PepperApp uses several libraries including AutoMapper, Serilog, FluentValidation and Entity Framework Core.
+Package references are in the project files.
+Please restore the packages through NuGet (if it wasn't set to do so automatically) or through dotnet CLI by running dotnet build and dotnet run.
