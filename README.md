@@ -1,5 +1,5 @@
 **PepperApp** is my capstone project for Code Kentucky's Software Development Course 2.
-This application was developed to help me manage information about hot peppers and their Scoville Heat Unit ratings.
+PepperApp was developed to help me manage information about hot peppers and their Scoville Heat Unit ratings.
 I grow hot peppers and make hot sauce and other pepper products and am constantly seeking out this information from various sources.
 PepperApp helps me quickly recall, update and maintain this data.
 
@@ -15,13 +15,13 @@ The following items from the Feature List are implemented:
 - Query your database using a raw SQL query, not EF
 
 ### NOTES
-
 PepperApp uses Entity Framework to manage connections to a sqlite database.
 The database is seeded at creation by a dictionary containing several, protected (read-me) entries.
-Seperation of concerns is handled in a Services/Repository pattern.
+Seperation of concerns is handled bu utilizing a Services/Repository pattern and a Data Transfer Object (DTO).
 The services handle logic and validation while the repository handles data storage and retrieval.
-CRUD operations are provided for the entities they manage.
+The DTO decouples the data model from the other layers of the projects and the unit tests.
+CRUD operations are provided for the entities that are managed by the repository.
 
-The abstraction afforded by the services/repository pattern allowed me to create two, independent projects.
+The services/repository pattern afforded me the opportunity to create two, independent applications.
 One is a CRUD API with a Swagger UI that allows the user to interact with the database over the web.
-The second is a Console application that performs the same functions based on user input to the console.
+The second is a Console application that performs the same functions based on user input.
