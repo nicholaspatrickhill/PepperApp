@@ -1,0 +1,2 @@
+2023-03-17 23:44:24.318 -04:00 [INF] Pepper was added to the database: Testpepper
+2023-03-17 23:44:29.851 -04:00 [INF] Pepper was removed from the database: Testpepper

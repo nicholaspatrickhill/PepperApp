@@ -3,7 +3,6 @@ PepperApp was developed to help me manage information about hot peppers and thei
 I grow hot peppers and make hot sauce and other pepper products and am constantly seeking out this information from various sources.
 PepperApp helps me quickly recall, update and maintain this data.
 
-
 ### FEATURES
 The following items from the Feature List are implemented:
 - Create 3 or more unit tests for your application
@@ -28,5 +27,5 @@ The second is a Console application that performs the same functions based on us
 
 ### DEPENDENCIES
 PepperApp uses several libraries including AutoMapper, Serilog, FluentValidation and Entity Framework Core.
-Package references are in the project files.
+The package references are in the corresponding project files.
 Please restore the packages through NuGet (if it wasn't set to do so automatically) or through dotnet CLI by running dotnet build and dotnet run.
