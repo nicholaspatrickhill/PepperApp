@@ -41,3 +41,12 @@ To use PepperApp, follow these steps:
 2. Restore the NuGet packages.
 3. Run the application using either the Swagger UI or the Console Application.
 4. Use the API endpoints or the Console Application to perform CRUD operations on the database.
+
+### RUNNING UNIT TESTS
+To run the unit tests for PepperApp, follow these steps:
+
+Open the solution in Visual Studio.
+Build the solution.
+Open the Test Explorer window (Test > Windows > Test Explorer).
+Click the "Run All" button to run all the tests.
+Review the results in the Test Explorer window.
