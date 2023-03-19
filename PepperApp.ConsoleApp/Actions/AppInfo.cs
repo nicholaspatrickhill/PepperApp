@@ -8,21 +8,10 @@ namespace PepperApp.ConsoleApp
         {
             Clear();
 
-            WriteLine(@$"PepperApp was created by Nick Hill as a capstone project for Code Kentucky's Software Development Course 2.
-This application was developed to help manage information about hot peppers and their Scoville Heat Unit ratings.
-PepperApp helps quickly recall, update and maintain this data.
+            WriteLine(@$"**PepperApp** was created in 2023 by Nick Hill as a capstone project for Code Kentucky's Software Development Course 2.
+The application helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
 
-PepperApp uses Entity Framework to manage connections to a sqlite database.
-The database is seeded at creation by a dictionary containing several, protected (read-me) entries.
-Seperation of concerns is handled bu utilizing a Services/Repository pattern and a Data Transfer Object (DTO).
-The services handle logic and validation while the repository handles data storage and retrieval.
-The DTO decouples the data model from the other layers of the projects and the unit tests.
-CRUD operations are provided for the entities that are managed by the repository.
-
-The services/repository pattern afforded me the opportunity to create two, independent applications.
-One is a CRUD API with a Swagger UI that allows the user to interact with the database over the web.
-The second is a Console application that performs the same functions based on user input.
-
+### FEATURES
 The following items from the Feature List are implemented:
 - Create 3 or more unit tests for your application
 - Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
@@ -31,6 +20,16 @@ The following items from the Feature List are implemented:
 - Make your application a CRUD API
 - Make your application asynchronous
 - Query your database using a raw SQL query, not EF
+
+### ARCHITECTURE
+PepperApp uses Entity Framework to manage connections to a sqlite database.
+The database is seeded at creation by a dictionary containing several, protected (read-me) entries.
+The Services/Repository pattern and the Data Transfer Object (DTO) are employed to seperate concerns.
+These abstractions limit exposure to the database, which makes the code more secure and easier to maintain.
+The services handle logic and validation while the repository addresses data storage and retrieval.
+The DTO decouples the data model from the other layers of the project, making it easier to test.
+
+The use of these patterns also allows for two, independent applications: a CRUD API and a Console Application.
 
 nicholaspatrickhill@gmail.com
 https://github.com/nicholaspatrickhill/PepperApp

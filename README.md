@@ -1,7 +1,5 @@
-**PepperApp** is my capstone project for Code Kentucky's Software Development Course 2.
-PepperApp was developed to help me manage information about hot peppers and their Scoville Heat Unit ratings.
-I grow hot peppers and make hot sauce and other pepper products and am constantly seeking out this information from various sources.
-PepperApp helps me quickly recall, update and maintain this data.
+**PepperApp** was created by Nick Hill in 2023 as a capstone project for Code Kentucky's Software Development Course 2.
+The application helps useers manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
 
 ### FEATURES
 The following items from the Feature List are implemented:
@@ -13,19 +11,33 @@ The following items from the Feature List are implemented:
 - Make your application asynchronous
 - Query your database using a raw SQL query, not EF
 
-### NOTES
+### ARCHITECTURE
 PepperApp uses Entity Framework to manage connections to a sqlite database.
 The database is seeded at creation by a dictionary containing several, protected (read-me) entries.
-Seperation of concerns is handled bu utilizing a Services/Repository pattern and a Data Transfer Object (DTO).
-The services handle logic and validation while the repository handles data storage and retrieval.
-The DTO decouples the data model from the other layers of the projects and the unit tests.
-CRUD operations are provided for the entities that are managed by the repository.
+The Services/Repository pattern and the Data Transfer Object (DTO) are employed to seperate concerns.
+These abstractions limit exposure to the database, which makes the code more secure and easier to maintain.
+The services handle logic and validation while the repository addresses data storage and retrieval.
+The DTO decouples the data model from the other layers of the project, making it easier to test.
 
-The services/repository pattern afforded me the opportunity to create two, independent applications.
-One is a CRUD API with a Swagger UI that allows the user to interact with the database over the web.
-The second is a Console application that performs the same functions based on user input.
+The use of these patterns also allows for two, independent applications: a CRUD API and a Console Application.
+
+### NOTES
+- Implements a CRUD API with a Swagger UI for interacting with the database through a web browser.
+- Includes a console application for performing CRUD operations based on user input to the console.
+- Uses asynchronous methods throughout.
+- Uses raw sql queries to call the lists sorted by heat class from the database.
+- Implements a logging system that records errors, invalid input and other important events and writes them to a text file.
+- Includes unit tests for the pepper entities and their heat class assignments.
 
 ### DEPENDENCIES
 PepperApp uses several libraries including AutoMapper, Serilog, FluentValidation and Entity Framework Core.
 The package references are in the corresponding project files.
-Please restore the packages through NuGet (if it wasn't set to do so automatically) or through dotnet CLI by running dotnet build and dotnet run.
+Please restore the packages through NuGet or through dotnet CLI by running dotnet build and dotnet run.
+
+### USAGE
+To use PepperApp, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Restore the NuGet packages.
+3. Run the application using either the Swagger UI or the Console Application.
+4. Use the API endpoints or the Console Application to perform CRUD operations on the database.
