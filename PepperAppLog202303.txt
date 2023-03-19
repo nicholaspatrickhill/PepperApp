@@ -1,4 +1,0 @@
-2023-03-19 17:25:00.283 -04:00 [INF] Pepper was added to the database: Testpepper
-2023-03-19 17:25:15.392 -04:00 [ERR] Update failed. Validation Error: 'Pepper Scoville Unit Maximum' must be greater than or equal to '8000'.
-2023-03-19 17:25:26.953 -04:00 [INF] Pepper was updated: Testpepper
-2023-03-19 17:25:31.885 -04:00 [INF] Pepper was removed from the database: Testpepper
