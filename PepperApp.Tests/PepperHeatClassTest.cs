@@ -1,5 +1,4 @@
-﻿using PepperApp.DataTransferObject;
-using PepperApp.Services;
+﻿using PepperApp.Services;
 
 namespace PepperApp.Test
 {
