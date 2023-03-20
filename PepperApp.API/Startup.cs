@@ -31,6 +31,8 @@ namespace PepperApp.API
 
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddSingleton<LoggerService>();
+
             services.AddControllers();
 
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -53,6 +55,8 @@ namespace PepperApp.API
             {
                 endpoints.MapControllers();
             });
+
+            LoggerService.StartLogger();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
