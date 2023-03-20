@@ -23,7 +23,7 @@ The following items from the Feature List are implemented:
 - Query your database using a raw SQL query, not EF.
 
 ### DEPENDENCIES
-PepperApp uses several libraries including AutoMapper, Serilog, FluentValidation and Entity Framework Core.
+PepperApp uses several libraries including AutoMapper, Serilog, FluentValidation, Swashbuckle and Entity Framework Core.
 The package references are in the corresponding project files.
 Please restore the packages through NuGet or through dotnet CLI by running dotnet build and dotnet run.
 
