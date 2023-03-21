@@ -2,6 +2,6 @@
 {
     public interface IReadOnlyPepper
     {
-        bool IsReadOnly { get; }
+        // bool IsReadOnly { get; }
     }
 }

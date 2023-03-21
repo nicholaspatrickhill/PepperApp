@@ -12,6 +12,17 @@ The use of these patterns also facilitates the creation of two, independent appl
 - A CRUD API with a Swagger UI that allows users to interact with the database through a web browser.
 - A console application that enables users to perform CRUD operations on the database based on input received from the console.
 
+### SOLID PRINCIPLES
+SOLID principles are followed throughout this project. 
+- Single Responsibility Principle: The PepperRepository is responsible only for managing persistence of the objects to the data store.
+- Open/Closed Principle: The PepperService class is open for extension but closed for modification, as the methods exposed in the interface can be implemented to support additional functionalities.
+
+- Interface Segregation Principle: The IPepper interface contains only the necessary members that are relevant to the Pepper class and the Pepper class implements only the members of IPepper that are applicable to it.
+
+- Dependency Inversion Principle: 
+
+
+
 ### FEATURES
 The following items from the Feature List are implemented:
 - Create 3 or more unit tests for your application.

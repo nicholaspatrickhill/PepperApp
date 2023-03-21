@@ -60,6 +60,7 @@ namespace PepperApp.Services
             Log.Information($"Pepper was added to the database: {pepperDto.PepperName}");
             var pepper = _mapper.Map<Pepper>(pepperDto);
             pepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
+            pepper.IsReadOnly = false;
             await _pepperRepository.CreatePepperAsync(pepper);
         }
 
