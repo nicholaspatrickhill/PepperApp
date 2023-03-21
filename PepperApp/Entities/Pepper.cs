@@ -1,6 +1,6 @@
 ﻿namespace PepperApp.Entities
 {
-    public class Pepper : IPepper, IReadOnlyPepper
+    public class Pepper : IPepper
     {
         public Guid PepperId { get; set; }
         public string? PepperName { get; set; }
