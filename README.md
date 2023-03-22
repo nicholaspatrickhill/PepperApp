@@ -29,7 +29,6 @@ Please restore the packages through NuGet or through dotnet CLI by running dotne
 
 ### USAGE
 To use PepperApp, follow these steps:
-
 1. Clone the repository to your local machine.
 2. Restore the NuGet packages.
 3. Run the application using either the Swagger UI or the Console Application.
