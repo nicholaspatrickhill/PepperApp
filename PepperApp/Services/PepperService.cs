@@ -123,6 +123,7 @@ namespace PepperApp.Services
             existingPepper.PepperScovilleUnitMinimum = pepperToUpdate.PepperScovilleUnitMinimum;
             existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
             existingPepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pepperToUpdate.PepperScovilleUnitMaximum);
+            pepperToUpdate.IsReadOnly = false;
 
             Log.Information($"Pepper was updated: {pepperToUpdate.PepperName}");
 
