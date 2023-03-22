@@ -8,7 +8,7 @@ These abstractions limit exposure to the database, which makes the code more sec
 The services handle logic and validation while the repository addresses data storage and retrieval.
 The DTO decouples the data model from the other layers of the project.
 
-The use of these patterns also facilitates the creation of two, independent applications that can interact with the data: 
+The use of these patterns facilitates the creation of two, independent applications that can interact with the data: 
 - A CRUD API with a Swagger UI that allows users to interact with the database through a web browser.
 - A console application that enables users to perform CRUD operations on the database based on input received from the console.
 
