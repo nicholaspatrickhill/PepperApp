@@ -1,4 +1,4 @@
-**PepperApp** was created by Nick Hill in 2023 as a capstone project for Code Kentucky's Software Development Course 2.
+**PepperApp** was created in 2023 as a capstone project for Code Kentucky's Software Development Course 2.
 The application helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
 
 ### ARCHITECTURE
