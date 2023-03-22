@@ -30,7 +30,6 @@ The following items from the Feature List are implemented:
 - Make your application asynchronous.
 - Query your database using a raw SQL query, not EF.
 
-nicholaspatrickhill@gmail.com
 https://github.com/nicholaspatrickhill/PepperApp
 https://www.linkedin.com/in/nicholaspatrickhill/");
 
