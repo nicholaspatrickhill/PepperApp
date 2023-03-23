@@ -40,16 +40,16 @@ To use PepperApp, follow these steps:
 
 ### API ENDPOINTS
 The folloiwing endpoints are available in the PepperApp API:
-*/api/pepper/all*	- GET: Get all peppers
-*/api/pepper/mild* - GET: Get all mild peppers
-*/api/pepper/medium* - GET: Get all medium peppers
-*/api/pepper/mediumhot* - GET: Get all medium-hot peppers
-*/api/pepper/hot* - GET: Get all hot peppers
-*/api/pepper/superhot* - GET: Get all super hot peppers
-*/api/pepper/{pepperName}* - GET: Get a pepper by name
-*/api/pepper**	- POST: Add a new pepper
-*/api/pepper/{pepperName}* - PUT:	Update a pepper by name
-*/api/pepper/{pepperName}* - DELETE:	Remove a pepper by name
+*/api/pepper/all*	- GET: Get all peppers  
+*/api/pepper/mild* - GET: Get all mild peppers  
+*/api/pepper/medium* - GET: Get all medium peppers  
+*/api/pepper/mediumhot* - GET: Get all medium-hot peppers  
+*/api/pepper/hot* - GET: Get all hot peppers  
+*/api/pepper/superhot* - GET: Get all super hot peppers  
+*/api/pepper/{pepperName}* - GET: Get a pepper by name  
+*/api/pepper**	- POST: Add a new pepper  
+*/api/pepper/{pepperName}* - PUT: Update a pepper by name  
+*/api/pepper/{pepperName}* - DELETE: Remove a pepper by name
 
 ### FUTURE UPDATES
 In a future update, I plan to build a web application that consumes the PepperApp API.
