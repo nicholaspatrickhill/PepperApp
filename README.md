@@ -1,6 +1,10 @@
 **PepperApp** was created in 2023 as a capstone project for Code Kentucky's Software Development Course 2.
 The application helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
 
+### DESCRIPTION
+PepperApp is a userful tool for anyone interestred in hot peppers and their heat levels. 
+With this application, users can easily store and update information about their favorite peppers, as well as discover new varieties to try.
+
 ### ARCHITECTURE
 PepperApp uses Entity Framework to manage connections to a sqlite database.
 The Services/Repository pattern and a Data Transfer Object (DTO) are employed to seperate concerns.
@@ -33,3 +37,20 @@ To use PepperApp, follow these steps:
 2. Restore the NuGet packages.
 3. Run the application using either the Swagger UI or the Console Application.
 4. Use the API endpoints or the Console Application to perform CRUD operations on the database.
+
+### API ENDPOINTS
+The folloiwing endpoints are available in the PepperApp API:
+*/api/pepper/all*	- GET: Get all peppers
+*/api/pepper/mild* - GET: Get all mild peppers
+*/api/pepper/medium* - GET: Get all medium peppers
+*/api/pepper/mediumhot* - GET: Get all medium-hot peppers
+*/api/pepper/hot* - GET: Get all hot peppers
+*/api/pepper/superhot* - GET: Get all super hot peppers
+*/api/pepper/{pepperName}* - GET: Get a pepper by name
+*/api/pepper**	- POST: Add a new pepper
+*/api/pepper/{pepperName}* - PUT:	Update a pepper by name
+*/api/pepper/{pepperName}* - DELETE:	Remove a pepper by name
+
+### FUTURE UPDATES
+In a future update, I plan to build a web application that consumes the PepperApp API.
+This will provide users with a more user-friendly interface for managing pepper data, and allow for additional features such as search and filtering.
