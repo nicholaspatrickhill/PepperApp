@@ -47,26 +47,27 @@ When finished, users may terminate the application by selecting exit and pressin
 
 ### API ENDPOINTS
 The folloiwing endpoints are available in the PepperApp API:  
-- **'/api/pepper/all'**	(GET)
-	Get all peppers in the database.
-- **'/api/pepper/mild'** (GET)
-	Get all mild peppers from the database.
-- **'/api/pepper/medium'** (GET)
-	Get all medium peppers from the database.
-- **'/api/pepper/mediumhot'** (GET)
-	Get all medium-hot peppers from the database.
-- **'/api/pepper/hot'** (GET)
-	Get all hot peppers from the database.
-- **'/api/pepper/superhot'** (GET)
-	Get all super-hot peppers from the database.
-- **'/api/pepper/{pepperName}'** (GET)
-	Get a single pepper from the database by name.
-- **'/api/pepper'**	(POST)
-	Create a new pepper entry in the database.
-- **'/api/pepper/{pepperName}'** (PUT) 
-	Update a pepper entry from the database by name.
-- **'/api/pepper/{pepperName}'** (DELETE)
-	Remove a pepper entry from the database by name.
+- **'/api/pepper/all'**	(GET) - Get all peppers in the database.
+- **'/api/pepper/mild'** (GET) - Get all mild peppers from the database.
+- **'/api/pepper/medium'** (GET) - Get all medium peppers from the database.
+- **'/api/pepper/mediumhot'** (GET) - Get all medium-hot peppers from the database.
+- **'/api/pepper/hot'** (GET) - Get all hot peppers from the database.
+- **'/api/pepper/superhot'** (GET) - Get all super-hot peppers from the database.
+- **'/api/pepper/{pepperName}'** (GET) - Get a single pepper from the database by name.
+- **'/api/pepper'**	(POST) - Create a new pepper entry in the database.
+- **'/api/pepper/{pepperName}'** (PUT) - Update a pepper entry from the database by name.
+- **'/api/pepper/{pepperName}'** (DELETE) - Remove a pepper entry from the database by name.
+
+### UNIT TESTS
+To run the unit tests for PepperApp, follow these steps:
+1. In the Test Explorer window, review a list of all available tests.
+2. Click the "Run All" button to execute the tests.
+3. Review the results of the tests.
+
+The unit tests cover the following areas of the application:
+-'PepperHeatClassTest': Validates the functionality of the AssignPepperHeatClass algorithm, which assigns the appropriate Heat Class to entries in the database.
+-'PrintPepperToConsoleTest': Validates that the values of a PepperDTO are being printed to the console correctly.
+-'IsInstanceOfTypeTest': Validates that objects added are of the expected type.
 
 ### FUTURE UPDATES
 - Build a web applicaton that consumes the PepperApp API.
