@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using PepperApp.Data;
+using PepperApp.Logger;
 using PepperApp.Repositories;
 using PepperApp.Services;
 
@@ -31,7 +32,7 @@ namespace PepperApp.API
 
             services.AddAutoMapper(typeof(Startup));
 
-            services.AddSingleton<LoggerService>();
+            services.AddSingleton<PepperAppLogger>();
 
             services.AddControllers();
 
@@ -56,7 +57,7 @@ namespace PepperApp.API
                 endpoints.MapControllers();
             });
 
-            LoggerService.StartLogger();
+            Logger.PepperAppLogger.StartLogger();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

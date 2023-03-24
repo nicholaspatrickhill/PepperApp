@@ -1,4 +1,4 @@
-﻿using PepperApp.Services;
+﻿using PepperApp.Logger;
 using static System.Console;
 
 namespace PepperApp.ConsoleApp
@@ -8,7 +8,7 @@ namespace PepperApp.ConsoleApp
         static void Main(string[] args)
         {
             Title = "Pepper!";
-            LoggerService.StartLogger();
+            PepperAppLogger.StartLogger();
             MainMenu.Start();
         }
     }

@@ -1,4 +1,5 @@
-﻿using PepperApp.Services;
+﻿using PepperApp.DataTransferObject;
+using PepperApp.Services;
 
 namespace PepperApp.Test
 {
@@ -25,7 +26,7 @@ namespace PepperApp.Test
                 PepperScovilleUnitMaximum = 5000
             };
 
-            pep.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "mild";
 
@@ -47,7 +48,7 @@ namespace PepperApp.Test
                 PepperScovilleUnitMaximum = 15000
             };
 
-            pep.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "medium";
 
@@ -69,7 +70,7 @@ namespace PepperApp.Test
                 PepperScovilleUnitMaximum = 100000
             };
 
-            pep.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "medium-hot";
 
@@ -91,7 +92,7 @@ namespace PepperApp.Test
                 PepperScovilleUnitMaximum = 350000
             };
 
-            pep.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "hot";
 
@@ -113,7 +114,7 @@ namespace PepperApp.Test
                 PepperScovilleUnitMaximum = 1000000
             };
 
-            pep.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
+            pep.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pep.PepperScovilleUnitMaximum);
 
             string expected = "super-hot";
 

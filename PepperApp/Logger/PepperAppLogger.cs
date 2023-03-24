@@ -1,8 +1,8 @@
 ﻿using Serilog;
 
-namespace PepperApp.Services
+namespace PepperApp.Logger
 {
-    public class LoggerService
+    public class PepperAppLogger
     {
         public static void StartLogger()
         {

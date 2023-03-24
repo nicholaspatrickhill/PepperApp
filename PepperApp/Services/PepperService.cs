@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation.Results;
+using PepperApp.DataTransferObject;
 using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Validators;
@@ -59,7 +60,7 @@ namespace PepperApp.Services
 
             Log.Information($"Pepper was added to the database: {pepperDto.PepperName}");
             var pepper = _mapper.Map<Pepper>(pepperDto);
-            pepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
+            pepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
             pepper.IsReadOnly = false;
             await _pepperRepository.CreatePepperAsync(pepper);
         }
@@ -122,7 +123,7 @@ namespace PepperApp.Services
             existingPepper.PepperName = pepperToUpdate.PepperName;
             existingPepper.PepperScovilleUnitMinimum = pepperToUpdate.PepperScovilleUnitMinimum;
             existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
-            existingPepper.PepperHeatClass = PepperHeatClassService.AssignPepperHeatClass(pepperToUpdate.PepperScovilleUnitMaximum);
+            existingPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepperToUpdate.PepperScovilleUnitMaximum);
             pepperToUpdate.IsReadOnly = false;
 
             Log.Information($"Pepper was updated: {pepperToUpdate.PepperName}");

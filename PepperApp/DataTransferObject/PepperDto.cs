@@ -1,4 +1,4 @@
-﻿namespace PepperApp.Services
+﻿namespace PepperApp.DataTransferObject
 {
     public class PepperDto
     {

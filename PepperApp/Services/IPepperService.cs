@@ -1,4 +1,6 @@
-﻿namespace PepperApp.Services
+﻿using PepperApp.DataTransferObject;
+
+namespace PepperApp.Services
 {
     public interface IPepperService
     {

@@ -1,6 +1,6 @@
 ﻿namespace PepperApp.Services
 {
-    public class PepperHeatClassService
+    public class PepperHeatClass
     {
         // Determines the heat class of a pepper based on its Scoville unit range, returns heat class as a string
         public static string AssignPepperHeatClass(int PepperScovilleUnitMax)
