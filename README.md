@@ -48,26 +48,25 @@ When finished, users may terminate the application by selecting exit and pressin
 ### API ENDPOINTS
 The folloiwing endpoints are available in the PepperApp API:  
 - **'/api/pepper/all'**	(GET)
-    - Expected Response: A JSON array of all peppers in the database.
-- **'/api/pepper/mild'** (GET): Get all mild peppers from the database.  
-- **'/api/pepper/medium'** (GET): Get all medium peppers from the database.
-- **'/api/pepper/mediumhot'** (GET): Get all medium-hot peppers from the database.
-- **'/api/pepper/hot'** (GET): Get all hot peppers from the database.
-- **'/api/pepper/superhot'** (GET): Get all super hot peppers from the database.
-- **'/api/pepper/{pepperName}'** (GET): Get a single pepper from the database by name.
-- **'/api/pepper'**	(POST): Add a new pepper to the database.
-- **'/api/pepper/{pepperName}'** (PUT): Update a pepper entry from the database by name.
-- **'/api/pepper/{pepperName}'** (DELETE): Remove a pepper entry from the database by name.
-
-Example JSON response body: 
- {
-    "pepperId": "3c5678ec-665c-41aa-bedc-f0ce69fcfaa8",
-    "pepperName": "Habanero",
-    "pepperHeatClass": "hot",
-    "pepperScovilleUnitMinimum": 100000,
-    "pepperScovilleUnitMaximum": 350000,
-    "isReadOnly": true
-  }
+	- Get all peppers in the database.
+- **'/api/pepper/mild'** (GET)
+	- Get all mild peppers from the database.
+- **'/api/pepper/medium'** (GET)
+	- Get all medium peppers from the database.
+- **'/api/pepper/mediumhot'** (GET)
+	- Get all medium-hot peppers from the database.
+- **'/api/pepper/hot'** (GET)
+	- Get all hot peppers from the database.
+- **'/api/pepper/superhot'** (GET)
+	- Get all super-hot peppers from the database.
+- **'/api/pepper/{pepperName}'** (GET)
+	- Get a single pepper from the database by name.
+- **'/api/pepper'**	(POST)
+	- Create a new pepper entry in the database.
+- **'/api/pepper/{pepperName}'** (PUT) 
+	- Update a pepper entry from the database by name.
+- **'/api/pepper/{pepperName}'** (DELETE)
+	- Remove a pepper entry from the database by name.
 
 The API Endpoints depend on the Services class in the main project.
 
