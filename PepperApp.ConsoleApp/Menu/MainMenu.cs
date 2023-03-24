@@ -72,7 +72,7 @@ namespace PepperApp.ConsoleApp
 
         private static void ViewPeppersByHeatClass(PepperService pepperService)
         {
-            PepperByHeatClassList.DisplayHeatClassMenu();
+            PepperHeatClassMenu.DisplayHeatClassMenu();
         }
 
         private static void ViewAPepper(PepperService pepperService)
@@ -126,7 +126,7 @@ namespace PepperApp.ConsoleApp
             }
         }
 
-        // Recycles to the main menu when user is finished
+        // Recycles to the main menu when user is finished with a task
         public static void StartOver()
         {
             WriteLine("\nPress enter to return to the main menu.");

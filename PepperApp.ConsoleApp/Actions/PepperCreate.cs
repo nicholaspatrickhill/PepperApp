@@ -8,7 +8,6 @@ namespace PepperApp.ConsoleApp
 {
     public class PepperCreate
     {
-        // Takes user input to add the new pepper to the database
         public static async Task CreateNewPepper(PepperService pepperService)
         {
             Clear();

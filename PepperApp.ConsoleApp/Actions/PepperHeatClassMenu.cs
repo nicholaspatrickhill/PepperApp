@@ -3,7 +3,7 @@ using static System.Console;
 
 namespace PepperApp.ConsoleApp
 {
-    public class PepperByHeatClassList
+    public class PepperHeatClassMenu
     {
         private static readonly PepperService _pepperService = new PepperService();
 
@@ -106,7 +106,7 @@ namespace PepperApp.ConsoleApp
             MainMenu.Start();
         }
 
-        // Recycles to the Heat Class menu when user is finished
+        // Recycles to the Heat Class menu when user is finished with a task
         private static void StartOver()
         {
             WriteLine("\nPress enter to return to the menu.");

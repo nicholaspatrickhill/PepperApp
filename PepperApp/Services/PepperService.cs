@@ -65,7 +65,7 @@ namespace PepperApp.Services
             await _pepperRepository.CreatePepperAsync(pepper);
         }
 
-        // Calls repository method to get list of all peppers in the database
+        // Calls repository method to get a list of all peppers in the database
         public async Task<List<PepperDto>> GetAllPeppersServiceAsync()
         {
             var peppers = await _pepperRepository.GetAllPeppersAsync();
@@ -133,35 +133,35 @@ namespace PepperApp.Services
             await _pepperRepository.UpdatePepperAsync(pepper);
         }
 
-        // Calls repository method to get list of all mild peppers in the database
+        // Calls repository method to get a list of all mild peppers in the database
         public async Task<List<PepperDto>> GetMildPeppersServiceAsync()
         {
             var mildPeppers = await _pepperRepository.GetMildPeppersAsync();
             return _mapper.Map<List<PepperDto>>(mildPeppers);
         }
 
-        // Calls repository method to get list of all medium peppers in the database
+        // Calls repository method to get a list of all medium peppers in the database
         public async Task<List<PepperDto>> GetMediumPeppersServiceAsync()
         {
             var mediumPeppers = await _pepperRepository.GetMediumPeppersAsync();
             return _mapper.Map<List<PepperDto>>(mediumPeppers);
         }
 
-        // Calls repository method to get list of all medium-hot peppers in the database
+        // Calls repository method to get a list of all medium-hot peppers in the database
         public async Task<List<PepperDto>> GetMediumHotPeppersServiceAsync()
         {
             var mediumHotPeppers = await _pepperRepository.GetMediumHotPeppersAsync();
             return _mapper.Map<List<PepperDto>>(mediumHotPeppers);
         }
 
-        // Calls repository method to get list of all hot peppers in the database
+        // Calls repository method to get a list of all hot peppers in the database
         public async Task<List<PepperDto>> GetHotPeppersServiceAsync()
         {
             var hotPeppers = await _pepperRepository.GetHotPeppersAsync();
             return _mapper.Map<List<PepperDto>>(hotPeppers); ;
         }
 
-        // Calls repository method to get list of all super-hot peppers in the database
+        // Calls repository method to get a list of all super-hot peppers in the database
         public async Task<List<PepperDto>> GetSuperHotPeppersServiceAsync()
         {
             var superHotPeppers = await _pepperRepository.GetSuperHotPeppersAsync();

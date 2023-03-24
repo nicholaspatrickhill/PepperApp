@@ -25,9 +25,6 @@ namespace PepperApp.API
             services.AddScoped<PepperRepository>();
             services.AddScoped<IPepperRepository, PepperRepository>();
 
-            // factory method for creating instances of the interface that uses the repository class
-            //services.AddScoped<IPepperRepository>(provider => provider.GetService<PepperRepository>()!);
-
             services.AddScoped<IPepperService, PepperService>();
 
             services.AddAutoMapper(typeof(Startup));

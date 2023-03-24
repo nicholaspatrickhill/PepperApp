@@ -2,7 +2,7 @@
 {
     public class PepperHeatClass
     {
-        // Determines the heat class of a pepper based on its Scoville unit range, returns heat class as a string
+        // Determines the heat class of a pepper based on its Scoville unit range and returns its heat class as a string
         public static string AssignPepperHeatClass(int PepperScovilleUnitMax)
         {
             // scoville ranges sourced from chilipeppermadness.com

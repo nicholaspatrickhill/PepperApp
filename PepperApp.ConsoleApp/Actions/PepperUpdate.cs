@@ -8,7 +8,6 @@ namespace PepperApp.ConsoleApp
 {
     public class PepperUpdate
     {
-        // Takes user input to update a pepper in the database
         public static async Task UpdateAPepper(PepperService pepperService)
         {
             Clear();
@@ -26,7 +25,7 @@ namespace PepperApp.ConsoleApp
                 MainMenu.StartOver();
             }
 
-            // Convert input string to Title case
+            // Convert input string to title case
             TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
             pepperToUpdate.PepperName = textInfo.ToTitleCase(pepperNameInput!.ToLower());
 

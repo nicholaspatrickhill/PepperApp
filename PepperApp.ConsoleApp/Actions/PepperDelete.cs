@@ -8,7 +8,6 @@ namespace PepperApp.ConsoleApp
 {
     public class PepperDelete
     {
-        // Take user input to remove a pepper from the database
         public static async Task RemoveAPepper(PepperService pepperService)
         {
             Clear();
