@@ -38,18 +38,38 @@ To use PepperApp, follow these steps:
 3. Run the application using either the Swagger UI or the Console Application.
 4. Use the API endpoints or the Console Application to perform CRUD operations on the database.
 
+### CONSOLE APPLICATION
+The console application is designed around a main menu that is navigable by using the UP and DOWN arrow keys.
+Users are given options to view all peppers in the database; view only peppers within a selected heat class; view a single pepper by name; add, update or remove pepper entries; or to save a list of all of the peppers in the database to a text file.
+These actions depend on the Services class in the main project.
+The console application guides users through these functions and receives input from the keyboard to update the database accordingly.
+When finished, users may terminate the application by selecting exit and pressing enter.
+
 ### API ENDPOINTS
 The folloiwing endpoints are available in the PepperApp API:  
-- **'/api/pepper/all'**	(GET): Get all peppers  
-- **'/api/pepper/mild'** (GET): Get all mild peppers  
-- **'/api/pepper/medium'** (GET): Get all medium peppers  
-- **'/api/pepper/mediumhot'** (GET): Get all medium-hot peppers  
-- **'/api/pepper/hot'** (GET): Get all hot peppers  
-- **'/api/pepper/superhot'** (GET): Get all super hot peppers  
-- **'/api/pepper/{pepperName}'** (GET): Get a pepper by name  
-- **'/api/pepper'**	(POST): Add a new pepper  
-- **'/api/pepper/{pepperName}'** (PUT): Update a pepper by name  
-- **'/api/pepper/{pepperName}'** (DELETE): Remove a pepper by name
+- **'/api/pepper/all'**	(GET)
+    - Expected Response: A JSON array of all peppers in the database.
+- **'/api/pepper/mild'** (GET): Get all mild peppers from the database.  
+- **'/api/pepper/medium'** (GET): Get all medium peppers from the database.
+- **'/api/pepper/mediumhot'** (GET): Get all medium-hot peppers from the database.
+- **'/api/pepper/hot'** (GET): Get all hot peppers from the database.
+- **'/api/pepper/superhot'** (GET): Get all super hot peppers from the database.
+- **'/api/pepper/{pepperName}'** (GET): Get a single pepper from the database by name.
+- **'/api/pepper'**	(POST): Add a new pepper to the database.
+- **'/api/pepper/{pepperName}'** (PUT): Update a pepper entry from the database by name.
+- **'/api/pepper/{pepperName}'** (DELETE): Remove a pepper entry from the database by name.
+
+Example JSON response body: 
+ {
+    "pepperId": "3c5678ec-665c-41aa-bedc-f0ce69fcfaa8",
+    "pepperName": "Habanero",
+    "pepperHeatClass": "hot",
+    "pepperScovilleUnitMinimum": 100000,
+    "pepperScovilleUnitMaximum": 350000,
+    "isReadOnly": true
+  }
+
+The API Endpoints depend on the Services class in the main project.
 
 ### FUTURE UPDATES
 - Build a web applicaton that consumes the PepperApp API.
