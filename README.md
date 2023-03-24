@@ -28,14 +28,16 @@ The following items from the Feature List are implemented:
 ### DEPENDENCIES
 PepperApp uses several libraries including AutoMapper, Serilog, FluentValidation, Swashbuckle and Entity Framework Core.
 The package references are in the corresponding project files.
-Please restore the packages through NuGet or through dotnet CLI by running dotnet build and dotnet run.
+Please restore the packages by right-clicking the solution in the Solution Explorer and selecting 'Restore NuGet Packages' from the context menu.
 
 ### USAGE
 To use PepperApp, follow these steps:
 1. Clone the repository to your local machine.
 2. Restore the NuGet packages.
-3. Run the application using either the Swagger UI or the Console Application.
-4. Use the API endpoints or the Console Application to perform CRUD operations on the database.
+3. To use the API with Swagger UI, right-click the PepperApp.API project in the Solution Explorer and select "Set as StartUp Project" from the context menu.
+4. To use the console application, right-click the PepperApp.ConsoleApp project in the Solution Explorer and select "Set as StartUp Project" from the context menu.
+5. Build and run the project after the proper startup project has been set.
+6. Use the API endpoints or the Console Application to perform CRUD operations on the database.
 
 ### CONSOLE APPLICATION
 The console application is designed around a main menu that is navigable by using the UP and DOWN arrow keys.
