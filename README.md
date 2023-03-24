@@ -39,18 +39,20 @@ To use PepperApp, follow these steps:
 4. Use the API endpoints or the Console Application to perform CRUD operations on the database.
 
 ### API ENDPOINTS
-The folloiwing endpoints are available in the PepperApp API:
-*/api/pepper/all*	- GET: Get all peppers  
-*/api/pepper/mild* - GET: Get all mild peppers  
-*/api/pepper/medium* - GET: Get all medium peppers  
-*/api/pepper/mediumhot* - GET: Get all medium-hot peppers  
-*/api/pepper/hot* - GET: Get all hot peppers  
-*/api/pepper/superhot* - GET: Get all super hot peppers  
-*/api/pepper/{pepperName}* - GET: Get a pepper by name  
-*/api/pepper**	- POST: Add a new pepper  
-*/api/pepper/{pepperName}* - PUT: Update a pepper by name  
-*/api/pepper/{pepperName}* - DELETE: Remove a pepper by name
+The folloiwing endpoints are available in the PepperApp API:  
+- **'/api/pepper/all'**	(GET): Get all peppers  
+- **'/api/pepper/mild'** (GET): Get all mild peppers  
+- **'/api/pepper/medium'** (GET): Get all medium peppers  
+- **'/api/pepper/mediumhot'** (GET): Get all medium-hot peppers  
+- **'/api/pepper/hot'** (GET): Get all hot peppers  
+- **'/api/pepper/superhot'** (GET): Get all super hot peppers  
+- **'/api/pepper/{pepperName}'** (GET): Get a pepper by name  
+- **'/api/pepper'**	(POST): Add a new pepper  
+- **'/api/pepper/{pepperName}'** (PUT): Update a pepper by name  
+- **'/api/pepper/{pepperName}'** (DELETE): Remove a pepper by name
 
 ### FUTURE UPDATES
-In a future update, I plan to build a web application that consumes the PepperApp API.
-This will provide users with a more user-friendly interface for managing pepper data, and allow for additional features such as search and filtering.
+- Build a web applicaton that consumes the PepperApp API.
+- Expand the database schema to include additional information about the peppers, such as their species, flavor profile or growing conditions.
+- Implement additional search functionality to find peppers by other classifications.
+- Add additional unit tests.
