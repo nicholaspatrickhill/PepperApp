@@ -1,9 +1,8 @@
-**PepperApp** was created in 2023 as a capstone project for Code Kentucky's Software Development Course 2.
-The application helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
+**PepperApp** was created in 2023 as my capstone project for Code Kentucky's Software Development Course 2.
 
 ### DESCRIPTION
-PepperApp is a userful tool for anyone interestred in hot peppers and their heat levels. 
-With this application, users can easily store and update information about their favorite peppers, as well as discover new varieties to try.
+PepperApp is a tool that helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
+Hot pepper enthusiasts and hot sauce artisans may find it useful for storing and updating information about their favorite peppers or for discovering new varities to try in their recipes.
 
 ### ARCHITECTURE
 PepperApp uses Entity Framework to manage connections to a sqlite database.
