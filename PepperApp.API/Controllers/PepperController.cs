@@ -71,24 +71,45 @@ namespace PepperApp.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPepper([FromBody] PepperDto pepperDto)
         {
-            await _pepperService.CreatePepperServiceAsync(pepperDto);
-            return Ok();
+            try
+            {
+                await _pepperService.CreatePepperServiceAsync(pepperDto);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPut("{pepperName}")]
         public async Task<IActionResult> UpdatePepper(string pepperName, [FromBody] PepperDto pepperToUpdate)
         {
-            await _pepperService.UpdatePepperServiceAsync(pepperToUpdate);
-            return Ok();
+            try
+            {
+                await _pepperService.UpdatePepperServiceAsync(pepperToUpdate);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{pepperName}")]
         public async Task<IActionResult> RemovePepper(string pepperName)
         {
-            var pepperToRemove = await _pepperService.GetPepperByNameServiceAsync(pepperName);
+            try
+            {
+                var pepperToRemove = await _pepperService.GetPepperByNameServiceAsync(pepperName);
 
-            await _pepperService.RemovePepperServiceAsync(pepperToRemove!);
-            return Ok();
+                await _pepperService.RemovePepperServiceAsync(pepperToRemove!);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

@@ -59,9 +59,11 @@ namespace PepperApp.Services
             }
 
             Log.Information($"Pepper was added to the database: {pepperDto.PepperName}");
+
             var pepper = _mapper.Map<Pepper>(pepperDto);
             pepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
             pepper.IsReadOnly = false;
+
             await _pepperRepository.CreatePepperAsync(pepper);
         }
 
@@ -124,7 +126,7 @@ namespace PepperApp.Services
             existingPepper.PepperScovilleUnitMinimum = pepperToUpdate.PepperScovilleUnitMinimum;
             existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
             existingPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepperToUpdate.PepperScovilleUnitMaximum);
-            pepperToUpdate.IsReadOnly = false;
+            existingPepper.IsReadOnly = false;
 
             Log.Information($"Pepper was updated: {pepperToUpdate.PepperName}");
 

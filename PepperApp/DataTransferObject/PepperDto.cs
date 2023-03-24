@@ -1,4 +1,6 @@
-﻿namespace PepperApp.DataTransferObject
+﻿using System.Text.Json.Serialization;
+
+namespace PepperApp.DataTransferObject
 {
     public class PepperDto
     {
