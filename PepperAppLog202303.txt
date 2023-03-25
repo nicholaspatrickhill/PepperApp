@@ -1,7 +1,0 @@
-2023-03-24 22:57:04.001 -04:00 [INF] Pepper was added to the database: test
-2023-03-24 22:57:25.332 -04:00 [INF] Pepper was updated: test2
-2023-03-24 22:57:41.952 -04:00 [INF] Pepper was removed from the database: test2
-2023-03-24 23:03:02.956 -04:00 [ERR] No pepper with the specified name was found in the database.
-2023-03-24 23:03:26.126 -04:00 [INF] Pepper was added to the database: testpepper
-2023-03-24 23:04:09.336 -04:00 [INF] Pepper was updated: testpepper
-2023-03-24 23:04:35.425 -04:00 [INF] Pepper was removed from the database: testpepper

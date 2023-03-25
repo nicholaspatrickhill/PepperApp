@@ -5,6 +5,7 @@ using PepperApp.Entities;
 using PepperApp.Repositories;
 using PepperApp.Validators;
 using Serilog;
+using System.Globalization;
 
 namespace PepperApp.Services
 {
@@ -28,6 +29,9 @@ namespace PepperApp.Services
         // Calls method from the repository to get pepper by name
         public async Task<PepperDto?> GetPepperByNameServiceAsync(string pepperName)
         {
+            // Convert the input string to title case
+            pepperName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pepperName.ToLower());
+
             var result = await _pepperRepository.GetPepperByNameAsync(pepperName);
 
             if (result == null)
@@ -42,6 +46,7 @@ namespace PepperApp.Services
         // Validates pepper to be added then calls the add method from the repository
         public async Task CreatePepperServiceAsync(PepperDto pepperDto)
         {
+            var pepperName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pepperDto.PepperName!.ToLower());
             var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperDto.PepperName!);
             if (existingPepper?.PepperName != null)
             {
@@ -61,23 +66,18 @@ namespace PepperApp.Services
             Log.Information($"Pepper was added to the database: {pepperDto.PepperName}");
 
             var pepper = _mapper.Map<Pepper>(pepperDto);
+            pepper.PepperName = pepperName;
             pepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepper.PepperScovilleUnitMaximum);
             pepper.IsReadOnly = false;
 
             await _pepperRepository.CreatePepperAsync(pepper);
         }
 
-        // Calls repository method to get a list of all peppers in the database
-        public async Task<List<PepperDto>> GetAllPeppersServiceAsync()
-        {
-            var peppers = await _pepperRepository.GetAllPeppersAsync();
-            return _mapper.Map<List<PepperDto>>(peppers);
-        }
-
         // Validates the pepper to be removed and then calls the removal method from the repository
         public async Task RemovePepperServiceAsync(PepperDto pepperToRemove)
         {
-            var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperToRemove.PepperName!);
+            //var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperToRemove.PepperName!);
+            var existingPepper = await _pepperRepository.GetPepperByNameAsync(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pepperToRemove.PepperName!.ToLower()));
 
             if (existingPepper == null)
             {
@@ -99,6 +99,8 @@ namespace PepperApp.Services
         // Validates the pepper to be updated and then calls the update method from the repository
         public async Task UpdatePepperServiceAsync(PepperDto pepperDto)
         {
+            pepperDto.PepperName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pepperDto.PepperName!.ToLower());
+
             var existingPepper = await _pepperRepository.GetPepperByIdAsync(pepperDto.PepperId);
 
             if (existingPepper == null)
@@ -122,7 +124,8 @@ namespace PepperApp.Services
                 throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
             }
 
-            existingPepper.PepperName = pepperDto.PepperName;
+            //existingPepper.PepperName = pepperDto.PepperName;
+            existingPepper.PepperName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pepperDto.PepperName.ToLower());
             existingPepper.PepperScovilleUnitMinimum = pepperDto.PepperScovilleUnitMinimum;
             existingPepper.PepperScovilleUnitMaximum = pepperDto.PepperScovilleUnitMaximum;
             existingPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepperDto.PepperScovilleUnitMaximum);
@@ -133,6 +136,13 @@ namespace PepperApp.Services
             var pepper = _mapper.Map<Pepper>(pepperDto);
 
             await _pepperRepository.UpdatePepperAsync(pepper);
+        }
+
+        // Calls repository method to get a list of all peppers in the database
+        public async Task<List<PepperDto>> GetAllPeppersServiceAsync()
+        {
+            var peppers = await _pepperRepository.GetAllPeppersAsync();
+            return _mapper.Map<List<PepperDto>>(peppers);
         }
 
         // Calls repository method to get a list of all mild peppers in the database
