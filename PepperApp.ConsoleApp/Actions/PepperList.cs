@@ -26,8 +26,10 @@ namespace PepperApp.ConsoleApp
                 var appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 var pepperAppFolder = Path.Combine(appDataFolder, "PepperApp");
 
-                // Create the folder if it doesn't exist
-                Directory.CreateDirectory(pepperAppFolder);
+                if (!Directory.Exists(pepperAppFolder))
+                {
+                    Directory.CreateDirectory(pepperAppFolder);
+                }
 
                 filePath = Path.Combine(pepperAppFolder, "PepperAppList.txt");
             }
@@ -36,8 +38,10 @@ namespace PepperApp.ConsoleApp
                 var homeFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                 var pepperAppFolder = Path.Combine(homeFolder, "Library", "Application Support", "PepperApp");
 
-                // Create the folder if it doesn't exist
-                Directory.CreateDirectory(pepperAppFolder);
+                if (!Directory.Exists(pepperAppFolder))
+                {
+                    Directory.CreateDirectory(pepperAppFolder);
+                }
 
                 filePath = Path.Combine(pepperAppFolder, "PepperAppList.txt");
             }
@@ -48,7 +52,10 @@ namespace PepperApp.ConsoleApp
 
             using (StreamWriter writer = new StreamWriter(filePath))
             {
-                peppers.ForEach((p) => writer.WriteLine(PepperDetails.PepperDetailsString((p))));
+                foreach (var pepper in peppers)
+                {
+                    writer.WriteLine(PepperDetails.PepperDetailsString(pepper));
+                }
             }
 
             Clear();

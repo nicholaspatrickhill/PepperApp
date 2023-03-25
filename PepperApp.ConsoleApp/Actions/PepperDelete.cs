@@ -1,7 +1,5 @@
-﻿using PepperApp.DataTransferObject;
-using PepperApp.Services;
+﻿using PepperApp.Services;
 using Serilog;
-using System.Diagnostics;
 using static System.Console;
 
 namespace PepperApp.ConsoleApp
@@ -19,13 +17,13 @@ namespace PepperApp.ConsoleApp
             if (string.IsNullOrEmpty(pepperName))
             {
                 WriteLine("Invalid input. Pepper name cannot be empty.");
-                Log.Error("Removal failed do to invalid input. Pepper name cannot be empty.");
+                Log.Error("Removal failed due to invalid input. Pepper name cannot be empty.");
                 MainMenu.StartOver();
             }
             else
             {
                 try
-                {                                  
+                {
                     var existingPepper = await pepperService.GetPepperByNameServiceAsync(pepperName);
 
                     await pepperService.RemovePepperServiceAsync(existingPepper!);

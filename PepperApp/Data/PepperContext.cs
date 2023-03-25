@@ -19,12 +19,22 @@ namespace PepperApp.Data
             if (OperatingSystem.IsWindows())
             {
                 var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                _dbPath = Path.Combine(appDataPath, "PepperApp", "pepper.db");
+                var dbDirectory = Path.Combine(appDataPath, "PepperApp");
+                if (!Directory.Exists(dbDirectory))
+                {
+                    Directory.CreateDirectory(dbDirectory);
+                }
+                _dbPath = Path.Combine(dbDirectory, "pepper.db");
             }
             else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
             {
                 var homePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-                _dbPath = Path.Combine(homePath, ".local", "share", "PepperApp", "pepper.db");
+                var dbDirectory = Path.Combine(homePath, ".local", "share", "PepperApp");
+                if (!Directory.Exists(dbDirectory))
+                {
+                    Directory.CreateDirectory(dbDirectory);
+                }
+                _dbPath = Path.Combine(dbDirectory, "pepper.db");
             }
             else
             {
