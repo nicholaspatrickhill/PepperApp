@@ -97,9 +97,9 @@ namespace PepperApp.Services
         }
 
         // Validates the pepper to be updated and then calls the update method from the repository
-        public async Task UpdatePepperServiceAsync(PepperDto pepperToUpdate)
+        public async Task UpdatePepperServiceAsync(PepperDto pepperDto)
         {
-            var existingPepper = await _pepperRepository.GetPepperByIdAsync(pepperToUpdate.PepperId);
+            var existingPepper = await _pepperRepository.GetPepperByIdAsync(pepperDto.PepperId);
 
             if (existingPepper == null)
             {
@@ -114,7 +114,7 @@ namespace PepperApp.Services
             }
 
             var validator = new PepperValidator();
-            ValidationResult results = validator.Validate(pepperToUpdate);
+            ValidationResult results = validator.Validate(pepperDto);
 
             if (!results.IsValid)
             {
@@ -122,15 +122,15 @@ namespace PepperApp.Services
                 throw new ArgumentException($"{string.Join(", ", results.Errors.Select(e => e.ErrorMessage))}");
             }
 
-            existingPepper.PepperName = pepperToUpdate.PepperName;
-            existingPepper.PepperScovilleUnitMinimum = pepperToUpdate.PepperScovilleUnitMinimum;
-            existingPepper.PepperScovilleUnitMaximum = pepperToUpdate.PepperScovilleUnitMaximum;
-            existingPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepperToUpdate.PepperScovilleUnitMaximum);
+            existingPepper.PepperName = pepperDto.PepperName;
+            existingPepper.PepperScovilleUnitMinimum = pepperDto.PepperScovilleUnitMinimum;
+            existingPepper.PepperScovilleUnitMaximum = pepperDto.PepperScovilleUnitMaximum;
+            existingPepper.PepperHeatClass = PepperHeatClass.AssignPepperHeatClass(pepperDto.PepperScovilleUnitMaximum);
             existingPepper.IsReadOnly = false;
 
-            Log.Information($"Pepper was updated: {pepperToUpdate.PepperName}");
+            Log.Information($"Pepper was updated: {pepperDto.PepperName}");
 
-            var pepper = _mapper.Map<Pepper>(pepperToUpdate);
+            var pepper = _mapper.Map<Pepper>(pepperDto);
 
             await _pepperRepository.UpdatePepperAsync(pepper);
         }

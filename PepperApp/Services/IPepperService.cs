@@ -13,6 +13,6 @@ namespace PepperApp.Services
         Task<PepperDto?> GetPepperByNameServiceAsync(string pepperName);
         Task<List<PepperDto>> GetSuperHotPeppersServiceAsync();
         Task RemovePepperServiceAsync(PepperDto pepperToRemove);
-        Task UpdatePepperServiceAsync(PepperDto pepperToUpdate);
+        Task UpdatePepperServiceAsync(PepperDto pepperDto);
     }
 }

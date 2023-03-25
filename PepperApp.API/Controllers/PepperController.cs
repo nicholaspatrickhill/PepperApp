@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PepperApp.DataTransferObject;
-using PepperApp.Entities;
 using PepperApp.Services;
 
 namespace PepperApp.Controllers
@@ -20,61 +19,123 @@ namespace PepperApp.Controllers
         public async Task<IActionResult> GetAllPeppers()
         {
             var peppers = await _pepperService.GetAllPeppersServiceAsync();
-            return Ok(peppers);
+            var pepperResponses = peppers.Select(p => new PepperResponse
+            {
+                PepperName = p.PepperName,
+                PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
+            });
+            return Ok(pepperResponses);
         }
 
         [HttpGet("mild")]
         public async Task<IActionResult> GetMildPeppers()
         {
             var peppers = await _pepperService.GetMildPeppersServiceAsync();
-            return Ok(peppers);
+            var mildPepperResponses = peppers.Select(p => new PepperResponse
+            {
+                PepperName = p.PepperName,
+                PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
+
+            });
+
+            return Ok(mildPepperResponses);
         }
 
         [HttpGet("medium")]
         public async Task<IActionResult> GetMediumPeppers()
         {
             var peppers = await _pepperService.GetMediumPeppersServiceAsync();
-            return Ok(peppers);
+            var mediumPepperResponses = peppers.Select(p => new PepperResponse
+            {
+                PepperName = p.PepperName,
+                PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
+
+            });
+
+            return Ok(mediumPepperResponses);
         }
 
         [HttpGet("mediumhot")]
         public async Task<IActionResult> GetMediumHotPeppers()
         {
             var peppers = await _pepperService.GetMediumHotPeppersServiceAsync();
-            return Ok(peppers);
+            var mediumHotPepperResponses = peppers.Select(p => new PepperResponse
+            {
+                PepperName = p.PepperName,
+                PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
+
+            });
+
+            return Ok(mediumHotPepperResponses);
         }
 
         [HttpGet("hot")]
         public async Task<IActionResult> GetHotPeppers()
         {
             var peppers = await _pepperService.GetHotPeppersServiceAsync();
-            return Ok(peppers);
+            var hotPepperResponses = peppers.Select(p => new PepperResponse
+            {
+                PepperName = p.PepperName,
+                PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
+
+            });
+
+            return Ok(hotPepperResponses);
         }
 
         [HttpGet("superhot")]
         public async Task<IActionResult> GetSuperHotPeppers()
         {
             var peppers = await _pepperService.GetSuperHotPeppersServiceAsync();
-            return Ok(peppers);
+            var hotPepperResponses = peppers.Select(p => new PepperResponse
+            {
+                PepperName = p.PepperName,
+                PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
+
+            });
+
+            return Ok(hotPepperResponses);
         }
 
         [HttpGet("{pepperName}")]
         public async Task<IActionResult> GetPepperByName(string pepperName)
         {
             var pepper = await _pepperService.GetPepperByNameServiceAsync(pepperName);
+            var pepperResponse = new PepperResponse
+            {
+                PepperName = pepper!.PepperName,
+                PepperScovilleUnitMinimum = pepper.PepperScovilleUnitMinimum,
+                PepperScovilleUnitMaximum = pepper.PepperScovilleUnitMaximum
+            };
+
             if (pepper == null)
             {
                 return NotFound();
             }
-            return Ok(pepper);
+
+            return Ok(pepperResponse);
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPepper([FromBody] PepperDto pepperDto)
+        public async Task<IActionResult> AddPepper([FromBody] PepperRequest pepperRequest)
         {
             try
             {
-                await _pepperService.CreatePepperServiceAsync(pepperDto); 
+                var pepperDto = new PepperDto
+                {
+                    PepperName = pepperRequest.PepperName,
+                    PepperScovilleUnitMinimum = pepperRequest.PepperScovilleUnitMinimum,
+                    PepperScovilleUnitMaximum = pepperRequest.PepperScovilleUnitMaximum,
+                    IsReadOnly = false
+                };
+
+                await _pepperService.CreatePepperServiceAsync(pepperDto);
                 return Ok();
             }
             catch (Exception ex)
@@ -84,23 +145,27 @@ namespace PepperApp.Controllers
         }
 
         [HttpPut("{pepperName}")]
-        public async Task<IActionResult> UpdatePepper(string pepperName, [FromBody] PepperDto pepperToUpdate)
+        public async Task<IActionResult> UpdatePepper(string pepperName, [FromBody] PepperRequest pepperRequest)
         {
             try
             {
-                var existingPepper = await _pepperService.GetPepperByNameServiceAsync(pepperName);
-                if (existingPepper!.IsReadOnly)
+                var pepperToUpdate = await _pepperService.GetPepperByNameServiceAsync(pepperName);
+
+                if (pepperToUpdate!.IsReadOnly)
                 {
                     return BadRequest("That pepper is read-only and cannot be updated.");
                 }
 
-                await _pepperService.UpdatePepperServiceAsync(pepperToUpdate!);
+                pepperToUpdate.PepperName = pepperRequest.PepperName;
+                pepperToUpdate.PepperScovilleUnitMinimum = pepperRequest.PepperScovilleUnitMinimum;
+                pepperToUpdate.PepperScovilleUnitMaximum = pepperRequest.PepperScovilleUnitMaximum;
 
+                await _pepperService.UpdatePepperServiceAsync(pepperToUpdate);
                 return Ok();
-            } 
+            }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message); 
+                return BadRequest(ex.Message);
             }
         }
 

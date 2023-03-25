@@ -54,7 +54,7 @@ namespace PepperApp.API
                 endpoints.MapControllers();
             });
 
-            Logger.PepperAppLogger.StartLogger();
+            PepperAppLogger.StartLogger();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
