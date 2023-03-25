@@ -16,15 +16,21 @@ namespace PepperApp.Data
 
         public PepperContext()
         {
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            var parentDirectory = Directory.GetParent(baseDirectory);
-
-            while (parentDirectory != null && parentDirectory.Name != "PepperApp")
+            if (OperatingSystem.IsWindows())
             {
-                parentDirectory = Directory.GetParent(parentDirectory.FullName);
+                var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                _dbPath = Path.Combine(appDataPath, "PepperApp", "pepper.db");
             }
-
-            _dbPath = parentDirectory != null ? Path.Combine(parentDirectory.FullName, "pepper.db") : Path.Combine(baseDirectory, "pepper.db");
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
+            {
+                var homePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                _dbPath = Path.Combine(homePath, ".local", "share", "PepperApp", "pepper.db");
+            }
+            else
+            {
+                // Unsupported operating system
+                throw new PlatformNotSupportedException();
+            }
 
             Database.EnsureCreated();
         }

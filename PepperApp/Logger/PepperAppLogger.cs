@@ -6,15 +6,21 @@ namespace PepperApp.Logger
     {
         public static void StartLogger()
         {
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            var parentDirectory = new DirectoryInfo(baseDirectory);
-
-            while (parentDirectory != null && parentDirectory.Name != "PepperApp")
+            string logPath;
+            if (OperatingSystem.IsWindows())
             {
-                parentDirectory = Directory.GetParent(parentDirectory.FullName);
+                var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                logPath = Path.Combine(appDataPath, "PepperApp", "PepperAppLog.txt");
             }
-
-            var logPath = Path.Combine(parentDirectory?.FullName!, "PepperAppLog.txt");
+            else if (OperatingSystem.IsMacOS())
+            {
+                var libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                logPath = Path.Combine(libraryPath, "Application Support", "PepperApp", "PepperAppLog.txt");
+            }
+            else
+            {
+                throw new PlatformNotSupportedException("The current operating system is not supported.");
+            }
 
             Log.Logger = new LoggerConfiguration()
              .MinimumLevel.Debug()

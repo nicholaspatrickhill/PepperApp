@@ -20,15 +20,31 @@ namespace PepperApp.ConsoleApp
         {
             var peppers = await pepperService.GetAllPeppersServiceAsync();
 
-            var baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
-            var parentDirectory = new DirectoryInfo(baseDirectory);
-
-            while (parentDirectory != null && parentDirectory.Name != "PepperApp")
+            string filePath;
+            if (OperatingSystem.IsWindows())
             {
-                parentDirectory = Directory.GetParent(parentDirectory.FullName);
-            }
+                var appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                var pepperAppFolder = Path.Combine(appDataFolder, "PepperApp");
 
-            var filePath = Path.Combine(parentDirectory?.FullName!, "PepperAppList.txt");
+                // Create the folder if it doesn't exist
+                Directory.CreateDirectory(pepperAppFolder);
+
+                filePath = Path.Combine(pepperAppFolder, "PepperAppList.txt");
+            }
+            else if (OperatingSystem.IsMacOS())
+            {
+                var homeFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                var pepperAppFolder = Path.Combine(homeFolder, "Library", "Application Support", "PepperApp");
+
+                // Create the folder if it doesn't exist
+                Directory.CreateDirectory(pepperAppFolder);
+
+                filePath = Path.Combine(pepperAppFolder, "PepperAppList.txt");
+            }
+            else
+            {
+                throw new NotSupportedException("The current operating system is not supported.");
+            }
 
             using (StreamWriter writer = new StreamWriter(filePath))
             {
