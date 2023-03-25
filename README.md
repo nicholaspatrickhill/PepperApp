@@ -57,17 +57,17 @@ The folloiwing endpoints are available in the PepperApp API:
 	Description: Get all medium peppers from the database.  
 - **'/api/pepper/mediumhot'** (GET)  
 	Description: Get all medium-hot peppers from the database.
-- **'/api/pepper/hot'** (GET)
+- **'/api/pepper/hot'** (GET)  
 	Description: Get all hot peppers from the database.
-- **'/api/pepper/superhot'** (GET)
+- **'/api/pepper/superhot'** (GET)  
 	Description: Get all super-hot peppers from the database.
-- **'/api/pepper/{pepperName}'** (GET)
+- **'/api/pepper/{pepperName}'** (GET)  
 	Description: Get a single pepper from the database by name.
-- **'/api/pepper'**	(POST)
+- **'/api/pepper'**	(POST)  
 	Description: Create a new pepper entry in the database.
-- **'/api/pepper/{pepperName}'** (PUT)
+- **'/api/pepper/{pepperName}'** (PUT)  
 	Description: Update a pepper entry from the database by name.
-- **'/api/pepper/{pepperName}'** (DELETE)
+- **'/api/pepper/{pepperName}'** (DELETE)  
 	Description: Remove a pepper entry from the database by name.
 
 ### UNIT TESTS
