@@ -49,25 +49,24 @@ When finished, users may terminate the application by selecting exit and pressin
 
 ### API ENDPOINTS
 The folloiwing endpoints are available in the PepperApp API:  
-- **'/api/pepper/all'**	
-	Method: GET 
-	Description: Get all peppers in the database.
-	Example response:
-	[
-	    {
-            "pepperName": "Habanero",
-            "pepperScovilleUnitMinimum": 100000,
-            "pepperScovilleUnitMaximum": 350000,
-            "pepperHeatClass": "hot"
-        },
-        {
-            "pepperName": "Jalapeno",
-            "pepperScovilleUnitMinimum": 2500,
-            "pepperScovilleUnitMaximum": 8000,
-            "pepperHeatClass": "medium"
-        }
-    }
-		
+- **'/api/pepper/all'**  
+	Method: GET  
+	Description: Get all peppers in the database.  
+	Example response:  
+	[  
+	    {  
+            "pepperName": "Habanero",  
+            "pepperScovilleUnitMinimum": 100000,  
+            "pepperScovilleUnitMaximum": 350000,  
+            "pepperHeatClass": "hot"  
+        },  
+        {  
+            "pepperName": "Jalapeno",  
+            "pepperScovilleUnitMinimum": 2500,  
+            "pepperScovilleUnitMaximum": 8000,  
+            "pepperHeatClass": "medium"  
+        }  
+    }  		
 
 - **'/api/pepper/mild'** (GET) - Get all mild peppers from the database.
 - **'/api/pepper/medium'** (GET) - Get all medium peppers from the database.
