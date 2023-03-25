@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PepperApp.DataTransferObject;
+using PepperApp.Entities;
 using PepperApp.Services;
 
 namespace PepperApp.Controllers
@@ -73,7 +74,7 @@ namespace PepperApp.Controllers
         {
             try
             {
-                await _pepperService.CreatePepperServiceAsync(pepperDto);
+                await _pepperService.CreatePepperServiceAsync(pepperDto); 
                 return Ok();
             }
             catch (Exception ex)
@@ -87,12 +88,19 @@ namespace PepperApp.Controllers
         {
             try
             {
-                await _pepperService.UpdatePepperServiceAsync(pepperToUpdate);
+                var existingPepper = await _pepperService.GetPepperByNameServiceAsync(pepperName);
+                if (existingPepper!.IsReadOnly)
+                {
+                    return BadRequest("That pepper is read-only and cannot be updated.");
+                }
+
+                await _pepperService.UpdatePepperServiceAsync(pepperToUpdate!);
+
                 return Ok();
-            }
+            } 
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(ex.Message); 
             }
         }
 
