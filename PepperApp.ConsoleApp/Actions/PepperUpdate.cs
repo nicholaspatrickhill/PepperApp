@@ -1,7 +1,6 @@
 ﻿using PepperApp.DataTransferObject;
 using PepperApp.Services;
 using Serilog;
-using System.Globalization;
 using static System.Console;
 
 namespace PepperApp.ConsoleApp
@@ -25,9 +24,8 @@ namespace PepperApp.ConsoleApp
                 MainMenu.StartOver();
             }
 
-            // Convert input string to title case
-            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
-            pepperToUpdate.PepperName = textInfo.ToTitleCase(pepperNameInput!.ToLower());
+
+            pepperToUpdate.PepperName = pepperNameInput!.ToLower();
 
             try
             {
@@ -54,13 +52,7 @@ namespace PepperApp.ConsoleApp
                 string? newName = ReadLine();
                 if (!string.IsNullOrEmpty(newName))
                 {
-                    string? properCaseNewPepperName;
-
-                    // Convert input string to Title case
-                    TextInfo textInfo2 = new CultureInfo("en-US", false).TextInfo;
-                    properCaseNewPepperName = textInfo2.ToTitleCase(newName.ToLower());
-
-                    existingPepper.PepperName = properCaseNewPepperName;
+                    existingPepper.PepperName = newName;
                 }
 
                 // Get new minimum SHU rating

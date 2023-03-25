@@ -1,7 +1,6 @@
 ﻿using PepperApp.DataTransferObject;
 using PepperApp.Services;
 using Serilog;
-using System.Globalization;
 using static System.Console;
 
 namespace PepperApp.ConsoleApp
@@ -14,7 +13,6 @@ namespace PepperApp.ConsoleApp
 
             var pepper = new PepperDto();
             int shuMinValue;
-            string properCasePepperName = "";
 
             while (true)
             {
@@ -30,11 +28,7 @@ namespace PepperApp.ConsoleApp
                 }
                 else
                 {
-                    // Convert input string to title case
-                    TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
-                    properCasePepperName = textInfo.ToTitleCase(pepperName.ToLower());
-
-                    pepper.PepperName = properCasePepperName;
+                    pepper.PepperName = pepperName;
                 }
 
                 // Get minimum SHU rating

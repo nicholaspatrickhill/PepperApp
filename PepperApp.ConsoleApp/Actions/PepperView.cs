@@ -1,7 +1,6 @@
 ﻿using PepperApp.DataTransferObject;
 using PepperApp.Services;
 using Serilog;
-using System.Globalization;
 using static System.Console;
 
 namespace PepperApp.ConsoleApp
@@ -24,13 +23,9 @@ namespace PepperApp.ConsoleApp
             }
             else
             {
-                // Convert input string to title case
-                TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
-                string properCasePepperName = textInfo.ToTitleCase(pepperName.ToLower());
-
                 var pepperToView = new PepperDto
                 {
-                    PepperName = properCasePepperName
+                    PepperName = pepperName
                 };
 
                 try

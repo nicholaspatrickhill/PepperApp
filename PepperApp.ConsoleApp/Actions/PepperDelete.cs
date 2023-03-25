@@ -1,7 +1,7 @@
 ﻿using PepperApp.DataTransferObject;
 using PepperApp.Services;
 using Serilog;
-using System.Globalization;
+using System.Diagnostics;
 using static System.Console;
 
 namespace PepperApp.ConsoleApp
@@ -13,7 +13,8 @@ namespace PepperApp.ConsoleApp
             Clear();
 
             WriteLine("Which pepper would you like to remove?");
-            string? pepperName = ReadLine();
+
+            var pepperName = ReadLine();
 
             if (string.IsNullOrEmpty(pepperName))
             {
@@ -23,19 +24,12 @@ namespace PepperApp.ConsoleApp
             }
             else
             {
-                // Convert input string to title case
-                TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
-                string properCasePepperName = textInfo.ToTitleCase(pepperName.ToLower());
-
-                var pepperToRemove = new PepperDto
-                {
-                    PepperName = properCasePepperName
-                };
-
                 try
-                {
-                    await pepperService.RemovePepperServiceAsync(pepperToRemove);
-                    WriteLine($"You removed {pepperToRemove.PepperName} from the database.");
+                {                                  
+                    var existingPepper = await pepperService.GetPepperByNameServiceAsync(pepperName);
+
+                    await pepperService.RemovePepperServiceAsync(existingPepper!);
+                    WriteLine($"You removed {pepperName} from the database.");
                     MainMenu.StartOver();
                 }
                 catch (ArgumentException ex)

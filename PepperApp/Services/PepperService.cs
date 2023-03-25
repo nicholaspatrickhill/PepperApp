@@ -76,7 +76,6 @@ namespace PepperApp.Services
         // Validates the pepper to be removed and then calls the removal method from the repository
         public async Task RemovePepperServiceAsync(PepperDto pepperToRemove)
         {
-            //var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperToRemove.PepperName!);
             var existingPepper = await _pepperRepository.GetPepperByNameAsync(CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pepperToRemove.PepperName!.ToLower()));
 
             if (existingPepper == null)
