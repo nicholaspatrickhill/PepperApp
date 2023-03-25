@@ -49,34 +49,26 @@ When finished, users may terminate the application by selecting exit and pressin
 
 ### API ENDPOINTS
 The folloiwing endpoints are available in the PepperApp API:  
-- **'/api/pepper/all'**  
-	Method: GET  
-	Description: Get all peppers in the database.  
-	Example response:  
-	[  
-	    {  
-            "pepperName": "Habanero",  
-            "pepperScovilleUnitMinimum": 100000,  
-            "pepperScovilleUnitMaximum": 350000,  
-            "pepperHeatClass": "hot"  
-        },  
-        {  
-            "pepperName": "Jalapeno",  
-            "pepperScovilleUnitMinimum": 2500,  
-            "pepperScovilleUnitMaximum": 8000,  
-            "pepperHeatClass": "medium"  
-        }  
-    }  		
-
-- **'/api/pepper/mild'** (GET) - Get all mild peppers from the database.
-- **'/api/pepper/medium'** (GET) - Get all medium peppers from the database.
-- **'/api/pepper/mediumhot'** (GET) - Get all medium-hot peppers from the database.
-- **'/api/pepper/hot'** (GET) - Get all hot peppers from the database.
-- **'/api/pepper/superhot'** (GET) - Get all super-hot peppers from the database.
-- **'/api/pepper/{pepperName}'** (GET) - Get a single pepper from the database by name.
-- **'/api/pepper'**	(POST) - Create a new pepper entry in the database.
-- **'/api/pepper/{pepperName}'** (PUT) - Update a pepper entry from the database by name.
-- **'/api/pepper/{pepperName}'** (DELETE) - Remove a pepper entry from the database by name.
+- **'/api/pepper/all'**  (GET)  
+	Description: Get all peppers in the database.    		
+- **'/api/pepper/mild'** (GET)  
+	Description: Get all mild peppers from the database.  
+- **'/api/pepper/medium'** (GET)  
+	Description: Get all medium peppers from the database.  
+- **'/api/pepper/mediumhot'** (GET)  
+	Description: Get all medium-hot peppers from the database.
+- **'/api/pepper/hot'** (GET)
+	Description: Get all hot peppers from the database.
+- **'/api/pepper/superhot'** (GET)
+	Description: Get all super-hot peppers from the database.
+- **'/api/pepper/{pepperName}'** (GET)
+	Description: Get a single pepper from the database by name.
+- **'/api/pepper'**	(POST)
+	Description: Create a new pepper entry in the database.
+- **'/api/pepper/{pepperName}'** (PUT)
+	Description: Update a pepper entry from the database by name.
+- **'/api/pepper/{pepperName}'** (DELETE)
+	Description: Remove a pepper entry from the database by name.
 
 ### UNIT TESTS
 To run the unit tests for PepperApp, follow these steps:
