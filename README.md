@@ -9,7 +9,7 @@ PepperApp uses Entity Framework to manage connections to a SQLite database.
 The Services/Repository pattern and Data Transfer Objects (DTO) are employed to separate concerns.
 These abstractions limit exposure to the database, which makes the code more secure and easier to maintain.
 The services handle logic and validation while the repository addresses data storage and retrieval.
-The DTO's decouple the data model from the other layers of the project.
+The DTO's decouple the data model from other layers by exposing only necessary properties, providing a simplified view of the data required by end users and other classes in the projects.
 
 The use of these patterns facilitates the creation of two, independent applications that can interact with the data: 
 - A CRUD API with a Swagger UI that allows users to interact with the database through a web browser.

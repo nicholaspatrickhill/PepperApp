@@ -107,21 +107,28 @@ namespace PepperApp.Controllers
         [HttpGet("{pepperName}")]
         public async Task<IActionResult> GetPepperByName(string pepperName)
         {
-            var pepper = await _pepperService.GetPepperByNameServiceAsync(pepperName);
-            var pepperResponse = new PepperResponseDto
+            try
             {
-                PepperName = pepper!.PepperName,
-                PepperScovilleUnitMinimum = pepper.PepperScovilleUnitMinimum,
-                PepperScovilleUnitMaximum = pepper.PepperScovilleUnitMaximum,
-                PepperHeatClass = pepper.PepperHeatClass
-            };
+                var pepper = await _pepperService.GetPepperByNameServiceAsync(pepperName);
+                var pepperResponse = new PepperResponseDto
+                {
+                    PepperName = pepper!.PepperName,
+                    PepperScovilleUnitMinimum = pepper.PepperScovilleUnitMinimum,
+                    PepperScovilleUnitMaximum = pepper.PepperScovilleUnitMaximum,
+                    PepperHeatClass = pepper.PepperHeatClass
+                };
 
-            if (pepper == null)
-            {
-                return NotFound();
+                if (pepper == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(pepperResponse);
             }
-
-            return Ok(pepperResponse);
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpPost]
