@@ -12,7 +12,7 @@ namespace PepperApp.Logger
                 var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 logPath = Path.Combine(appDataPath, "PepperApp", "PepperAppLog.txt");
             }
-            else if (OperatingSystem.IsMacOS())
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())          
             {
                 var libraryPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
                 logPath = Path.Combine(libraryPath, "Application Support", "PepperApp", "PepperAppLog.txt");

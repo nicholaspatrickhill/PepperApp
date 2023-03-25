@@ -33,7 +33,7 @@ namespace PepperApp.ConsoleApp
 
                 filePath = Path.Combine(pepperAppFolder, "PepperAppList.txt");
             }
-            else if (OperatingSystem.IsMacOS())
+            else if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
             {
                 var homeFolder = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                 var pepperAppFolder = Path.Combine(homeFolder, "Library", "Application Support", "PepperApp");
