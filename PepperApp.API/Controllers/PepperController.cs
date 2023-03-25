@@ -23,7 +23,8 @@ namespace PepperApp.Controllers
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
-                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum,
+                PepperHeatClass = p.PepperHeatClass
             });
             return Ok(pepperResponses);
         }
@@ -36,8 +37,8 @@ namespace PepperApp.Controllers
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
-                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
-
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum,
+                PepperHeatClass = p.PepperHeatClass
             });
 
             return Ok(mildPepperResponses);
@@ -51,8 +52,8 @@ namespace PepperApp.Controllers
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
-                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
-
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum,
+                PepperHeatClass = p.PepperHeatClass
             });
 
             return Ok(mediumPepperResponses);
@@ -66,8 +67,8 @@ namespace PepperApp.Controllers
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
-                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
-
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum,
+                PepperHeatClass = p.PepperHeatClass
             });
 
             return Ok(mediumHotPepperResponses);
@@ -81,8 +82,8 @@ namespace PepperApp.Controllers
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
-                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
-
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum,
+                PepperHeatClass = p.PepperHeatClass
             });
 
             return Ok(hotPepperResponses);
@@ -96,8 +97,8 @@ namespace PepperApp.Controllers
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
-                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum
-
+                PepperScovilleUnitMaximum = p.PepperScovilleUnitMaximum,
+                PepperHeatClass = p.PepperHeatClass
             });
 
             return Ok(hotPepperResponses);
@@ -111,7 +112,8 @@ namespace PepperApp.Controllers
             {
                 PepperName = pepper!.PepperName,
                 PepperScovilleUnitMinimum = pepper.PepperScovilleUnitMinimum,
-                PepperScovilleUnitMaximum = pepper.PepperScovilleUnitMaximum
+                PepperScovilleUnitMaximum = pepper.PepperScovilleUnitMaximum,
+                PepperHeatClass = pepper.PepperHeatClass
             };
 
             if (pepper == null)

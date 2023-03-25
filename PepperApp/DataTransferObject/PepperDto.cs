@@ -25,5 +25,7 @@ namespace PepperApp.DataTransferObject
         public string? PepperName { get; set; }
         public int PepperScovilleUnitMinimum { get; set; }
         public int PepperScovilleUnitMaximum { get; set; }
+
+        public string? PepperHeatClass { get; set; }
     }
 }
