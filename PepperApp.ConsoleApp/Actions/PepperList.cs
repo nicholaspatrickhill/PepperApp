@@ -59,7 +59,7 @@ namespace PepperApp.ConsoleApp
             }
 
             Clear();
-            WriteLine("The list of peppers has been saved to a text file.");
+            WriteLine($"The list of peppers has been saved to a text file at {filePath}.");
             MainMenu.StartOver();
         }
     }
