@@ -19,7 +19,7 @@ namespace PepperApp.Controllers
         public async Task<IActionResult> GetAllPeppers()
         {
             var peppers = await _pepperService.GetAllPeppersServiceAsync();
-            var pepperResponses = peppers.Select(p => new PepperResponse
+            var pepperResponses = peppers.Select(p => new PepperResponseDto
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
@@ -33,7 +33,7 @@ namespace PepperApp.Controllers
         public async Task<IActionResult> GetMildPeppers()
         {
             var peppers = await _pepperService.GetMildPeppersServiceAsync();
-            var mildPepperResponses = peppers.Select(p => new PepperResponse
+            var mildPepperResponses = peppers.Select(p => new PepperResponseDto
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
@@ -48,7 +48,7 @@ namespace PepperApp.Controllers
         public async Task<IActionResult> GetMediumPeppers()
         {
             var peppers = await _pepperService.GetMediumPeppersServiceAsync();
-            var mediumPepperResponses = peppers.Select(p => new PepperResponse
+            var mediumPepperResponses = peppers.Select(p => new PepperResponseDto
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
@@ -63,7 +63,7 @@ namespace PepperApp.Controllers
         public async Task<IActionResult> GetMediumHotPeppers()
         {
             var peppers = await _pepperService.GetMediumHotPeppersServiceAsync();
-            var mediumHotPepperResponses = peppers.Select(p => new PepperResponse
+            var mediumHotPepperResponses = peppers.Select(p => new PepperResponseDto
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
@@ -78,7 +78,7 @@ namespace PepperApp.Controllers
         public async Task<IActionResult> GetHotPeppers()
         {
             var peppers = await _pepperService.GetHotPeppersServiceAsync();
-            var hotPepperResponses = peppers.Select(p => new PepperResponse
+            var hotPepperResponses = peppers.Select(p => new PepperResponseDto
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
@@ -93,7 +93,7 @@ namespace PepperApp.Controllers
         public async Task<IActionResult> GetSuperHotPeppers()
         {
             var peppers = await _pepperService.GetSuperHotPeppersServiceAsync();
-            var hotPepperResponses = peppers.Select(p => new PepperResponse
+            var hotPepperResponses = peppers.Select(p => new PepperResponseDto
             {
                 PepperName = p.PepperName,
                 PepperScovilleUnitMinimum = p.PepperScovilleUnitMinimum,
@@ -108,7 +108,7 @@ namespace PepperApp.Controllers
         public async Task<IActionResult> GetPepperByName(string pepperName)
         {
             var pepper = await _pepperService.GetPepperByNameServiceAsync(pepperName);
-            var pepperResponse = new PepperResponse
+            var pepperResponse = new PepperResponseDto
             {
                 PepperName = pepper!.PepperName,
                 PepperScovilleUnitMinimum = pepper.PepperScovilleUnitMinimum,
@@ -125,7 +125,7 @@ namespace PepperApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddPepper([FromBody] PepperRequest pepperRequest)
+        public async Task<IActionResult> AddPepper([FromBody] PepperRequestDto pepperRequest)
         {
             try
             {
@@ -147,7 +147,7 @@ namespace PepperApp.Controllers
         }
 
         [HttpPut("{pepperName}")]
-        public async Task<IActionResult> UpdatePepper(string pepperName, [FromBody] PepperRequest pepperRequest)
+        public async Task<IActionResult> UpdatePepper(string pepperName, [FromBody] PepperRequestDto pepperRequest)
         {
             try
             {

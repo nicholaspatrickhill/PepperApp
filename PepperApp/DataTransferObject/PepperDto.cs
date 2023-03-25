@@ -12,7 +12,7 @@ namespace PepperApp.DataTransferObject
         public bool IsReadOnly { get; set; }
     }
 
-    public class PepperRequest
+    public class PepperRequestDto
     {
         [JsonIgnore] public Guid PepperId { get; set; }
         public string? PepperName { get; set; }
@@ -20,7 +20,7 @@ namespace PepperApp.DataTransferObject
         public int PepperScovilleUnitMaximum { get; set; }
     }
 
-    public class PepperResponse
+    public class PepperResponseDto
     {
         public string? PepperName { get; set; }
         public int PepperScovilleUnitMinimum { get; set; }

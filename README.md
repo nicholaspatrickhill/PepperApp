@@ -5,11 +5,11 @@ PepperApp helps users manage information about hot peppers and their Scoville He
 Hot pepper enthusiasts and hot sauce artisans may find it useful for storing and updating information about their favorite peppers or for discovering new varities to try in their recipes.
 
 ### ARCHITECTURE
-PepperApp uses Entity Framework to manage connections to a sqlite database.
-The Services/Repository pattern and a Data Transfer Object (DTO) are employed to separate concerns.
+PepperApp uses Entity Framework to manage connections to a SQLite database.
+The Services/Repository pattern and Data Transfer Objects (DTO) are employed to separate concerns.
 These abstractions limit exposure to the database, which makes the code more secure and easier to maintain.
 The services handle logic and validation while the repository addresses data storage and retrieval.
-The DTO decouples the data model from the other layers of the project.
+The DTO's decouple the data model from the other layers of the project.
 
 The use of these patterns facilitates the creation of two, independent applications that can interact with the data: 
 - A CRUD API with a Swagger UI that allows users to interact with the database through a web browser.
