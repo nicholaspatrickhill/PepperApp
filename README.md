@@ -78,7 +78,7 @@ To run the unit tests for PepperApp, follow these steps:
 
 The unit tests cover the following areas of the application:
 - 'PepperHeatClassTest': Validates the functionality of the AssignPepperHeatClass algorithm, which assigns the appropriate Heat Class to entries in the database.
-- 'PrintPepperToConsoleTest': Validates that the values of a PepperDTO are being printed to the console correctly.
+- 'PrintPepperToConsoleTest': Validates that the values of a PepperDto are being printed to the console correctly.
 - 'IsInstanceOfTypeTest': Validates that objects added are of the expected type.
 
 ### FUTURE UPDATES

@@ -47,8 +47,8 @@ namespace PepperApp.Services
         public async Task CreatePepperServiceAsync(PepperDto pepperDto)
         {
             var pepperName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(pepperDto.PepperName!.ToLower());
-            var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperDto.PepperName!);
-            if (existingPepper?.PepperName != null)
+            var existingPepper = await _pepperRepository.GetPepperByNameAsync(pepperName!);
+            if (existingPepper != null)
             {
                 Log.Error($"Creation failed. A pepper with that name already exists in the database: {pepperDto.PepperName}");
                 throw new ArgumentException("A pepper with that name already exists in the database.");
