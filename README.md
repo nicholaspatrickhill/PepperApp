@@ -12,7 +12,7 @@ PepperApp consists of several modular and extensible layers that allow for flexi
 Entity Framework is employed to manage connections to a SQLite database in the Data layer.
 The Entities layer defines the data structure that represents a pepper for the purposes of the project and includes some objects that are seeded into the database at creation.
 Logic and validation is isolated in the Services layer while the Repository layer addresses data storage and retrieval.
-The Data Transfer Objects decouple the data model from other layers by exposing only necessary values, providing a simplified view of the data required by end users and other classes in the projects.
+The Data Transfer Objects (DTOs) decouple the data model from other layers by exposing only necessary values, providing a simplified view of the data required by end users and other classes in the projects.
 
 By way of these abstractions, PepperApp is able to support multiple applications that interact with the same data in different ways:
 - A console application that enables users to perform CRUD operations on the database based on input received from the console.
@@ -20,16 +20,17 @@ By way of these abstractions, PepperApp is able to support multiple applications
 
 ### FEATURES
 The following items from the Project Requirements Feature List are implemented in PepperApp:
+
 - **Create 3 or more unit tests for your application:** The PepperApp.Tests project contains the unit tests for PepperApp. 
 PepperApp.Tests uses the MSTest framework.
 The unit tests are contained in the PepperTest and PepperHeatClassTest files, which each inherit from the TestBase class.
 
 - **Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program:** The Entities folder contains the defaultPeppers dictionary.
 The defaultPeppers dictionary contains several common pepper varieties that are instantiated and seeded into the database at creation.
-These entries are designated as read-only by a boolean to prevent their modification or removal from the database.
+These entries are protected by the isReadOnly boolean to prevent their modification or removal from the database.
 
 - **Implement a log that records errors, invalid inputs, or other important events and writes them to a text file:** Serilog is employed to log erroneous entries and important events to a text file.
-The Logger folder contains the startLogger method which sets up and starts the logging process and sets the log file path according to the operating system.
+The Logger folder contains the StartLogger method which sets up and starts the logging process and sets the log file path according to the operating system.
 
 - **Make your application an API:** The PepperApp.API project contains the Startup and Program classes that generate the API.
 SQLite, the PepperContext, and the services and repository layers are registered as services to enable interaction with the data.
@@ -60,7 +61,7 @@ To use PepperApp, follow these steps:
 
 ### CONSOLE APPLICATION
 The console application is designed around a main menu that is navigable by using the UP and DOWN arrow keys.
-Users are given options to view all peppers in the database; view only peppers within a selected heat class; view a single pepper by name; add, update or remove pepper entries; or to save a list of all of the peppers in the database to a text file.
+Users are given options to view, add, update or remove pepper entries; or to save a list of all of the peppers in the database to a text file.
 The console application guides users through these functions and receives input to update the database accordingly.
 When finished, users may terminate the application by selecting exit and pressing enter.
 
@@ -86,6 +87,25 @@ The following endpoints are available in the PepperApp API:
 	Description: Update a pepper entry from the database by name.
 - **'/api/pepper/{pepperName}'** (DELETE)  
 	Description: Remove a pepper entry from the database by name.
+
+Successful requests to these endpoints will return JSON objects with the following fields: "pepperName", "pepperScovilleUnitMinimum", "pepperScovilleUnitMaximum", "pepperHeatClass".
+Invalid requests, such as when an entry is not found or when a user attempts to create a pepper with a duplicate name, will return errors.
+In case of an error, a message will be displayed on screen with details about the issue and the error is logged in the application's log file.
+
+**Example JSON request body:**
+{
+  "pepperName": "SomePepper",
+  "pepperScovilleUnitMinimum": 100000,
+  "pepperScovilleUnitMaximum": 350000
+}
+
+**Example JSON response body:**
+{
+  "pepperName": "SomePepper",
+  "pepperScovilleUnitMinimum": 100000,
+  "pepperScovilleUnitMaximum": 350000,
+  "pepperHeatClass": "hot"
+}
 
 ### UNIT TESTS
 To run the unit tests for PepperApp, follow these steps:
