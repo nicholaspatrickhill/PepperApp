@@ -12,21 +12,37 @@ PepperApp is comprised of several modular and extensible layers that allow for f
 Entity Framework is employed to manage connections to a SQLite database in the Data layer.
 The Entities layer defines the data structure that represents a pepper for the purposes of the project and includes some objects that are seeded into the database at creation.
 Logic and validation is isolated in the Services layer while the Repository layer addresses data storage and retrieval.
-The Data Transfer Objects decouple the data model from other layers by exposing only necessary properties, providing a simplified view of the data required by end users and other classes in the projects.
+The Data Transfer Objects decouple the data model from other layers by exposing only necessary values, providing a simplified view of the data required by end users and other classes in the projects.
 
 By way of these abstractions, PepperApp is able to support multiple applications that interact with the same data in different ways:
 - A console application that enables users to perform CRUD operations on the database based on input received from the console.
 - A CRUD API with a Swagger UI that allows users to interact with the database through a web browser.
 
 ### FEATURES
-The following items from the Feature List are implemented:
-- Create 3 or more unit tests for your application.
-- Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program.
-- Implement a log that records errors, invalid inputs, or other important events and writes them to a text file.
-- Make your application an API.
-- Make your application a CRUD API.
-- Make your application asynchronous.
-- Query your database using a raw SQL query, not EF.
+The following items from the Project Requirements Feature List are implemented in PepperApp:
+- **Create 3 or more unit tests for your application:** The PepperApp.Tests project contains the unit tests for PepperApp. 
+PepperApp.Tests uses the MSTest framework.
+The unit tests are contained in the PepperTest and PepperHeatClassTest classes, which each inherit from the TestBase class.
+
+- **Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program:** The Entities folder contains the defaultPeppers dictionary.
+The defaultPeppers dictionary contains several common pepper varities that are instantiated and seeded into the database at creation.
+These entries are designated as read-only by a boolean to prevent their modification or removal from the database.
+
+- **Implement a log that records errors, invalid inputs, or other important events and writes them to a text file:** Serilog is employed to log erroneous entries and important events to a text file.
+The Logger folder contains the PepperAppLogger which sets up and starts the logging process and sets the log file path according to operating system.
+
+- **Make your application an API:** The PepperApp.API project contains the Startup and Program classes that generate the API.
+The API is configured to use Swagger as a UI for development and testing purposes.
+The dbContext is registered a service to enable interaction with the data.
+
+- **Make your application a CRUD API:** The PepperController class enables CRUD operations as API endpoints in the Swagger UI.
+These endpoints depend on the Services layer to provide logic and validation and to make calls to the repository layer that interacts with the database.
+The endpoints use the Request and Response DTOs to expose only the necessary data to the end user.
+
+- **Make your application asynchronous:** Most methods in PepperApp and the projects that derive from it are written asynchronously.
+This enables improved performance while freeing up system resources by allowing tasks to run in the background while the application continues to respond to user input.
+
+- **Query your database using a raw SQL query, not EF:** All of the repository methods that return lists of the peppers sorted by Heat Class make raw SQL queries on the database to return only the requested data.
 
 ### DEPENDENCIES
 PepperApp uses several libraries including AutoMapper, Serilog, FluentValidation, Swashbuckle and Entity Framework Core.
