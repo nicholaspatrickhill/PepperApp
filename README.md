@@ -92,20 +92,20 @@ Successful requests to these endpoints will return JSON objects with the followi
 Invalid requests, such as when an entry is not found or when a user attempts to create a pepper with a duplicate name, will return errors.
 In case of an error, a message will be displayed on screen with details about the issue and the error is logged in the application's log file.
 
-**Example JSON request body:**
-{
-  "pepperName": "SomePepper",
-  "pepperScovilleUnitMinimum": 100000,
-  "pepperScovilleUnitMaximum": 350000
+**Example JSON request body:**  
+{  
+  "pepperName": "SomePepper",  
+  "pepperScovilleUnitMinimum": 100000,  
+  "pepperScovilleUnitMaximum": 350000  
 }
 
-**Example JSON response body:**
-{
-  "pepperName": "SomePepper",
-  "pepperScovilleUnitMinimum": 100000,
-  "pepperScovilleUnitMaximum": 350000,
-  "pepperHeatClass": "hot"
-}
+**Example JSON response body:**  
+{  
+  "pepperName": "SomePepper",  
+  "pepperScovilleUnitMinimum": 100000,  
+  "pepperScovilleUnitMaximum": 350000,  
+  "pepperHeatClass": "hot"  
+}  
 
 ### UNIT TESTS
 To run the unit tests for PepperApp, follow these steps:
