@@ -94,17 +94,17 @@ In case of an error, a message will be displayed on screen with details about th
 
 **Example JSON request body:**  
 {  
-  "pepperName": "SomePepper",  
-  "pepperScovilleUnitMinimum": 100000,  
-  "pepperScovilleUnitMaximum": 350000  
+&nbsp; "pepperName": "SomePepper",  
+&nbsp; "pepperScovilleUnitMinimum": 100000,  
+&nbsp; "pepperScovilleUnitMaximum": 350000  
 }
 
 **Example JSON response body:**  
 {  
-  "pepperName": "SomePepper",  
-  "pepperScovilleUnitMinimum": 100000,  
-  "pepperScovilleUnitMaximum": 350000,  
-  "pepperHeatClass": "hot"  
+&nbsp; "pepperName": "SomePepper",  
+&nbsp; "pepperScovilleUnitMinimum": 100000,  
+&nbsp; "pepperScovilleUnitMaximum": 350000,  
+&nbsp; "pepperHeatClass": "hot"  
 }  
 
 ### UNIT TESTS
