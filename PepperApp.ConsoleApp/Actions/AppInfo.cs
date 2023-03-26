@@ -9,17 +9,12 @@ namespace PepperApp.ConsoleApp
             Clear();
 
             WriteLine(@$"PepperApp was created in 2023 by Nick Hill as a capstone project for Code Kentucky's Software Development Course 2.
-The application helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
+PepperApp was built using Visual Studio and .NET 7.0.
 
-PepperApp uses Entity Framework to manage connections to a SQLite database.
-The Services/Repository pattern and Data Transfer Objects (DTO) are employed to separate concerns.
-These abstractions limit exposure to the database, which makes the code more secure and easier to maintain.
-The services handle logic and validation while the repository addresses data storage and retrieval.
-The DTO's decouple the data model from other layers by exposing only necessary properties, providing a simplified view of the data required by end users and other classes in the projects.
-
-The use of these patterns facilitates the creation of two, independent applications that can interact with the data: 
-- A CRUD API with a Swagger UI that allows users to interact with the database through a web browser.
-- A console application that enables users to perform CRUD operations on the database based on input received from the console.
+PepperApp helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
+The Scoville scale is a tool for measuring the spiciness or pungency of hot peppers.
+The scale measures the amount of capsaicin in a pepper and assigns it a number rating in Scoville Heat Units (SHUs).
+Hot pepper enthusiasts and hot sauce artisans may find PepperApp useful for storing and updating information about their favorite peppers or for discovering new varities to try in their recipes.
 
 The following items from the Feature List are implemented:
 - Create 3 or more unit tests for your application.

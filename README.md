@@ -1,4 +1,5 @@
 **PepperApp** was created in 2023 as my capstone project for Code Kentucky's Software Development Course 2.
+PepperApp was built using Visual Studio and .NET 7.0.
 
 ### DESCRIPTION
 PepperApp helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
@@ -7,15 +8,15 @@ The scale measures the amount of capsaicin in a pepper and assigns it a number r
 Hot pepper enthusiasts and hot sauce artisans may find PepperApp useful for storing and updating information about their favorite peppers or for discovering new varities to try in their recipes.
 
 ### ARCHITECTURE
-PepperApp uses Entity Framework to manage connections to a SQLite database.
-The Services/Repository pattern and Data Transfer Objects (DTO) are employed to separate concerns.
-These abstractions limit exposure to the database, which makes the code more secure and easier to maintain.
-The services handle logic and validation while the repository addresses data storage and retrieval.
-The DTO's decouple the data model from other layers by exposing only necessary properties, providing a simplified view of the data required by end users and other classes in the projects.
+PepperApp is comprised of several modular and extensible layers that allow for flexibility and adaptability to different applications and use cases.
+Entity Framework is employed to manage connections to a SQLite database in the Data layer.
+The Entities layer defines the data structure that represents a pepper for the purposes of the project and includes some objects that are seeded into the database at creation.
+Logic and validation is isolated in the Services layer while the Repository layer addresses data storage and retrieval.
+The Data Transfer Objects decouple the data model from other layers by exposing only necessary properties, providing a simplified view of the data required by end users and other classes in the projects.
 
-The use of these patterns facilitates the creation of two, independent applications that can interact with the data: 
-- A CRUD API with a Swagger UI that allows users to interact with the database through a web browser.
+By way of these abstractions, PepperApp is able to support multiple applications that interact with the same data in different ways:
 - A console application that enables users to perform CRUD operations on the database based on input received from the console.
+- A CRUD API with a Swagger UI that allows users to interact with the database through a web browser.
 
 ### FEATURES
 The following items from the Feature List are implemented:
@@ -72,7 +73,7 @@ The folloiwing endpoints are available in the PepperApp API:
 
 ### UNIT TESTS
 To run the unit tests for PepperApp, follow these steps:
-1. In the Test Explorer window, review a list of all available tests.
+1. In the Test Explorer window, review the list of available tests.
 2. Click the "Run All" button to execute the tests.
 3. Review the results of the tests.
 
