@@ -5,10 +5,10 @@ PepperApp was built using Visual Studio and .NET 7.0.
 PepperApp helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
 The Scoville scale is a tool for measuring the spiciness or pungency of hot peppers.
 The scale measures the amount of capsaicin in a pepper and assigns it a number rating in Scoville Heat Units (SHUs).
-Hot pepper enthusiasts and hot sauce artisans may find PepperApp useful for storing and updating information about their favorite peppers or for discovering new varities to try in their recipes.
+Hot pepper enthusiasts and hot sauce artisans may find PepperApp useful for storing and updating information about their favorite peppers or for discovering new varieties to try in their recipes.
 
 ### ARCHITECTURE
-PepperApp is comprised of several modular and extensible layers that allow for flexibility and adaptability to different applications and use cases.
+PepperApp consists of several modular and extensible layers that allow for flexibility and adaptability to different applications and use cases.
 Entity Framework is employed to manage connections to a SQLite database in the Data layer.
 The Entities layer defines the data structure that represents a pepper for the purposes of the project and includes some objects that are seeded into the database at creation.
 Logic and validation is isolated in the Services layer while the Repository layer addresses data storage and retrieval.
@@ -25,14 +25,14 @@ PepperApp.Tests uses the MSTest framework.
 The unit tests are contained in the PepperTest and PepperHeatClassTest files, which each inherit from the TestBase class.
 
 - **Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program:** The Entities folder contains the defaultPeppers dictionary.
-The defaultPeppers dictionary contains several common pepper varities that are instantiated and seeded into the database at creation.
+The defaultPeppers dictionary contains several common pepper varieties that are instantiated and seeded into the database at creation.
 These entries are designated as read-only by a boolean to prevent their modification or removal from the database.
 
 - **Implement a log that records errors, invalid inputs, or other important events and writes them to a text file:** Serilog is employed to log erroneous entries and important events to a text file.
-The Logger folder contains the startLogger method which sets up and starts the logging process and sets the log file path according to operating system.
+The Logger folder contains the startLogger method which sets up and starts the logging process and sets the log file path according to the operating system.
 
 - **Make your application an API:** The PepperApp.API project contains the Startup and Program classes that generate the API.
-The data, services and repository layers are registered a service to enable interaction with the data.
+SQLite, the PepperContext, and the services and repository layers are registered as services to enable interaction with the data.
 Swagger UI is registered for development and testing purposes.
 
 - **Make your application a CRUD API:** The PepperController class enables CRUD operations as API endpoints.
@@ -65,7 +65,7 @@ The console application guides users through these functions and receives input 
 When finished, users may terminate the application by selecting exit and pressing enter.
 
 ### API ENDPOINTS
-The folloiwing endpoints are available in the PepperApp API:  
+The following endpoints are available in the PepperApp API:  
 - **'/api/pepper/all'**  (GET)  
 	Description: Get all peppers in the database.    		
 - **'/api/pepper/mild'** (GET)  
@@ -99,7 +99,7 @@ The unit tests cover the following areas of the application:
 - 'IsInstanceOfTypeTest': Validates that objects added are of the expected type.
 
 ### FUTURE UPDATES
-- Build a web applicaton that consumes the PepperApp API.
+- Build a web application that consumes the PepperApp API.
 - Expand the database schema to include additional information about the peppers, such as their species, flavor profile or growing conditions.
 - Implement additional search functionality to find peppers by other classifications.
 - Add additional unit tests.
