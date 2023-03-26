@@ -92,14 +92,14 @@ Successful requests to these endpoints will return JSON objects with the followi
 Invalid requests, such as when an entry is not found or when a user attempts to create a pepper with a duplicate name, will return errors.
 In case of an error, a message will be displayed on screen with details about the issue and the error is logged in the application's log file.
 
-**Example JSON request body:**  
+**Example JSON POST request body:**  
 {  
-&nbsp;  "pepperName": "SomePepper",  
+&nbsp;&nbsp;"pepperName": "SomePepper",  
 &nbsp;  "pepperScovilleUnitMinimum": 100000,  
 &nbsp;  "pepperScovilleUnitMaximum": 350000  
 }
 
-**Example JSON response body:**  
+**Example JSON GET response body:**  
 {  
 &nbsp;  "pepperName": "SomePepper",  
 &nbsp;  "pepperScovilleUnitMinimum": 100000,  
