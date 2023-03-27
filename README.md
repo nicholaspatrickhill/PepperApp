@@ -1,5 +1,6 @@
 **PepperApp** was created in 2023 as my capstone project for Code Kentucky's Software Development Course 2.
-PepperApp was built using Visual Studio and .NET 7.0.
+PepperApp was built using Visual Studio Community 2022 and .NET 7.0.
+All instructions in this file are specific to running the project from Visual Studio.
 
 ### DESCRIPTION
 PepperApp helps users manage information about hot peppers and their Scoville Heat Unit ratings, making it easy to recall, update and maintain this data.
