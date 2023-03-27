@@ -12,7 +12,7 @@ Hot pepper enthusiasts and hot sauce artisans may find PepperApp useful for stor
 PepperApp consists of several modular and extensible layers that allow for flexibility and adaptability to different applications and use cases.
 Entity Framework is employed to manage connections to a SQLite database in the Data layer.
 The Entities layer defines the data structure that represents a pepper for the purposes of the project and includes some objects that are seeded into the database at creation.
-Logic and validation is isolated in the Services layer while the Repository layer addresses data storage and retrieval.
+Logic and validation are isolated in the Services layer while the Repository layer addresses data storage and retrieval.
 The Data Transfer Objects (DTOs) decouple the data model from other layers by exposing only necessary values, providing a simplified view of the data required by end users and other classes in the projects.
 
 By way of these abstractions, PepperApp is able to support multiple applications that interact with the same data in different ways:
