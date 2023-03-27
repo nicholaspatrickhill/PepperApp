@@ -89,8 +89,8 @@ The following endpoints are available in the PepperApp API:
 	Description: Remove a pepper entry from the database by name.
 
 Successful requests to these endpoints will return JSON objects with the following fields: "pepperName", "pepperScovilleUnitMinimum", "pepperScovilleUnitMaximum", "pepperHeatClass".
-Invalid requests, such as when an entry is not found or when a user attempts to create a pepper with a duplicate name, will return errors.
-In case of an error, a message will be displayed on screen with details about the issue and the error is logged in the application's log file.
+Invalid requests will return errors, such as when an entry is not found or when a user attempts to create a pepper with a duplicate name.
+In case of an error, the system displays a message with details about the issue and logs the error in the application's log file.
 
 **Example JSON POST request body:**  
 {  
